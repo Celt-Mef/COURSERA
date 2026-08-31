@@ -1,0 +1,924 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Kişiselleştirilmiş Öğrenme Deneyimi ve Coursera | MEF Üniversitesi CELT</title>
+<meta name="description" content="MEF Üniversitesi CELT — Kişiselleştirilmiş Öğrenme Deneyimi (PLE) ve Coursera Programı: süreç rehberi, akademik takvim, ders kataloğu, kredilendirme kuralları, bölüm koordinatörleri ve sık sorulan sorular.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,600;12..96,700;12..96,800&family=Instrument+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Caveat:wght@600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --cream:#FDFBF7; --ink:#232C48;
+    --navy:#1F2D5C; --navy-dark:#101B41;
+    --red:#E8432D; --red-dark:#C9331F; --red-darker:#B32A17;
+    --blue:#0056D2;
+    --green:#1D7A46; --green-light:#5CDB95;
+    --purple:#7A5AB8;
+    --muted:#7A86A8; --muted2:#4A5170; --muted3:#6E7590; --muted4:#565E7C; --muted5:#98A2B8;
+    --border:#E0E7F3; --border2:#E4EBF6; --border3:#D5DDEB; --border4:#DCE5F4;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{margin:0; background:var(--cream); color:var(--ink); font-family:'Instrument Sans',sans-serif; min-width:0; overflow-x:hidden}
+  a{color:var(--red); text-decoration:none}
+  a:hover{color:var(--red-darker); text-decoration:underline}
+  button{font:inherit}
+  img{max-width:100%}
+  .wrap{max-width:1080px; margin:0 auto}
+  .eyebrow{font-family:'Bricolage Grotesque',sans-serif; font-weight:700; font-size:14px; letter-spacing:2px; color:var(--muted); text-transform:uppercase; margin-bottom:16px}
+  .h2{font-family:'Bricolage Grotesque',sans-serif; font-weight:800; color:var(--navy); margin:0 0 20px}
+
+  @keyframes pulseRing{0%{box-shadow:0 0 0 0 rgba(29,122,70,.45)}70%{box-shadow:0 0 0 14px rgba(29,122,70,0)}100%{box-shadow:0 0 0 0 rgba(29,122,70,0)}}
+  @keyframes stepIn{from{opacity:0; transform:translateX(-14px)}to{opacity:1; transform:translateX(0)}}
+
+  /* NAV */
+  nav{position:sticky; top:0; z-index:50; background:rgba(253,251,247,.94); backdrop-filter:blur(10px); display:flex; align-items:center; gap:16px; padding:12px clamp(16px,3vw,40px); min-height:76px; flex-wrap:wrap; border-bottom:1px solid var(--border)}
+  .nav-logo{display:flex; align-items:center; gap:14px; text-decoration:none; cursor:pointer}
+  .nav-logo:hover{text-decoration:none}
+  .nav-logo img{height:clamp(42px,6vw,58px); width:auto; display:block}
+  .nav-divider{width:1px; height:34px; background:var(--border4)}
+  .nav-brand{font-family:'Bricolage Grotesque',sans-serif; font-weight:700; font-size:14px; letter-spacing:.2px; color:var(--navy); line-height:1.2; max-width:230px}
+  .nav-spacer{flex:1 1 0; min-width:0}
+  .nav-links{display:flex; flex-wrap:wrap; justify-content:flex-start; gap:5px; font-size:13.5px; font-weight:600}
+  .nav-btn{all:unset; box-sizing:border-box; cursor:pointer; color:var(--muted2); background:transparent; padding:9px 13px; border-radius:999px; font-family:'Instrument Sans',sans-serif; font-weight:600; white-space:nowrap; min-height:38px; display:inline-flex; align-items:center}
+  .nav-btn:hover{background:#E9EFFB; color:var(--navy)}
+  .nav-btn.active{background:var(--navy); color:#fff}
+  .nav-btn.active:hover{background:var(--navy)}
+
+  /* HERO */
+  header.hero{background:linear-gradient(150deg,#D6E4FA 0%,#EAF1FC 30%,#FDFBF7 60%,#DCE6FA 100%); background-image:repeating-linear-gradient(180deg,transparent 0px,transparent 43px,rgba(31,45,92,.10) 43px,rgba(31,45,92,.10) 44px),linear-gradient(150deg,#D6E4FA 0%,#EAF1FC 30%,#FDFBF7 60%,#DCE6FA 100%); padding:clamp(52px,8vw,104px) clamp(18px,4vw,48px) clamp(56px,8vw,112px); position:relative; overflow:hidden}
+  .hero-blob-1{position:absolute; right:60px; top:70px; width:210px; height:210px; border-radius:50%; background:var(--red); opacity:.10}
+  .hero-blob-2{position:absolute; right:190px; top:220px; width:120px; height:120px; border-radius:50%; background:var(--navy); opacity:.10}
+  .hero-blob-3{position:absolute; right:110px; bottom:60px; width:64px; height:64px; border-radius:16px; background:var(--blue); opacity:.22; transform:rotate(18deg)}
+  .hero-inner{max-width:1080px; margin:0 auto; position:relative}
+  .hero-badge{display:inline-flex; align-items:center; gap:10px; background:var(--navy); color:#fff; padding:9px 20px; border-radius:999px; font-size:13.5px; font-weight:700; box-shadow:0 6px 18px rgba(31,45,92,.22)}
+  .hero-badge .dot{width:9px; height:9px; border-radius:50%; background:var(--green-light); display:inline-block; animation:pulseRing 2s ease-out infinite}
+  .hero h1{font-family:'Caveat',cursive; font-weight:700; font-size:clamp(42px,8vw,78px); line-height:1.05; margin:26px 0 14px; color:var(--navy); text-wrap:balance}
+  .hero h1 .accent{color:var(--red); position:relative; display:inline-block; white-space:nowrap}
+  .hero h1 .accent .underline{position:absolute; left:0; right:0; bottom:2px; height:14px; background:linear-gradient(90deg,rgba(0,86,210,.28),rgba(0,86,210,.07)); border-radius:999px; z-index:-1}
+  .hero-cards{display:grid; grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); gap:18px; margin-top:12px}
+  .hero-card{border-radius:20px; padding:clamp(22px,3vw,30px) clamp(20px,3vw,28px) clamp(20px,3vw,26px); text-decoration:none; display:block; transition:transform .2s ease, border-color .2s ease; cursor:pointer}
+  .hero-card:hover{text-decoration:none; transform:translateY(-4px)}
+  .hero-card .emoji{display:block; font-size:28px; margin-bottom:16px}
+  .hero-card .title{display:block; font-family:'Bricolage Grotesque',sans-serif; font-weight:800; font-size:21px; line-height:1.2}
+  .hero-card .desc{display:block; font-size:14.5px; margin-top:8px; line-height:1.5}
+  .hero-card .cta{display:inline-block; margin-top:16px; font-weight:700; font-size:14px}
+  .hero-card.red{background:var(--red); box-shadow:0 12px 30px rgba(232,67,45,.28)}
+  .hero-card.red .title, .hero-card.red .cta{color:#fff}
+  .hero-card.red .desc{color:#FBD9D2}
+  .hero-card.white{background:#fff; border:1.5px solid var(--border3); box-shadow:0 6px 20px rgba(31,45,92,.07)}
+  .hero-card.white:hover{border-color:var(--blue)}
+  .hero-card.white .title{color:var(--navy)}
+  .hero-card.white .desc{color:var(--muted)}
+  .hero-card.white .cta{color:var(--blue)}
+  .hero-card.navy{background:var(--navy); box-shadow:0 12px 30px rgba(31,45,92,.22)}
+  .hero-card.navy .title{color:#fff}
+  .hero-card.navy .desc{color:#B9C4E2}
+  .hero-card.navy .cta{color:#7FA8EE}
+
+  /* Generic section */
+  section.tab-section{scroll-margin-top:92px; padding:clamp(48px,7vw,96px) clamp(18px,4vw,48px)}
+  .section-bg-1{background:#FDFBF7; background-image:repeating-linear-gradient(-45deg,rgba(31,45,92,.035) 0px,rgba(31,45,92,.035) 1px,transparent 1px,transparent 18px),radial-gradient(circle at 6% 10%,rgba(0,86,210,.10) 0%,rgba(0,86,210,0) 30%),radial-gradient(circle at 95% 90%,rgba(31,45,92,.09) 0%,rgba(31,45,92,0) 32%),linear-gradient(180deg,#FDFBF7 0%,#F3EFFA 100%)}
+  .section-bg-2{background:#FDFBF7; background-image:radial-gradient(circle at 8% 12%,rgba(232,67,45,.09) 0%,rgba(232,67,45,0) 30%),radial-gradient(circle at 94% 85%,rgba(0,86,210,.09) 0%,rgba(240,160,40,0) 32%),repeating-linear-gradient(0deg,rgba(31,45,92,.03) 0px,rgba(31,45,92,.03) 1px,transparent 1px,transparent 22px),linear-gradient(180deg,#FDFBF7 0%,#E9F0FB 100%)}
+  .section-bg-3{background:#EEF2F9; background-image:radial-gradient(rgba(232,67,45,.06) 1.5px,transparent 1.5px),linear-gradient(170deg,#E4EDFA 0%,#EEF2F9 50%,#EAEDF8 100%); background-size:26px 26px, auto}
+  .section-bg-4{background:#EEF2F9; background-image:radial-gradient(circle at 90% 12%,rgba(0,86,210,.09) 0%,rgba(0,86,210,0) 32%),linear-gradient(180deg,#F1F5FC 0%,#EEF2F9 100%)}
+  .section-bg-5{background:#FDFBF7; background-image:radial-gradient(circle at 92% 10%,rgba(0,86,210,.09) 0%,rgba(0,86,210,0) 32%),repeating-linear-gradient(180deg,rgba(31,45,92,.03) 0px,rgba(31,45,92,.03) 1px,transparent 1px,transparent 20px),linear-gradient(180deg,#FDFBF7 0%,#F1F5FC 100%)}
+  .section-bg-6{background:#EEF2F9; background-image:radial-gradient(rgba(31,45,92,.07) 1.5px,transparent 1.5px),linear-gradient(165deg,#DDE9FB 0%,#EEF2F9 45%,#E9EDF9 100%); background-size:26px 26px, auto}
+
+  /* PROCESS */
+  .process-heading-row{display:flex; align-items:baseline; gap:20px; flex-wrap:wrap; margin-bottom:12px}
+  .process-heading-row h2{font-size:clamp(28px,5vw,46px); line-height:1.1; margin:0}
+  .process-heading-row h2 .accent{color:var(--red)}
+  .current-pill{display:inline-flex; align-items:center; gap:8px; background:var(--green); color:#fff; padding:7px 16px; border-radius:999px; font-size:13px; font-weight:700}
+  .current-pill .dot{width:8px; height:8px; border-radius:50%; background:var(--green-light); display:inline-block}
+  .process-intro{font-size:16.5px; line-height:1.7; margin:0 0 14px; max-width:760px; color:var(--muted2)}
+  .process-legend{font-size:15.5px; line-height:1.7; margin:0 0 26px; max-width:760px; color:#66708C}
+  .tag-chip{display:inline-block; color:#fff; font-size:11px; font-weight:700; padding:2px 8px; border-radius:4px; vertical-align:1px}
+  .tag-chip.celt{background:var(--red)}
+  .tag-chip.coord{background:var(--blue)}
+  .tag-chip.student{background:var(--purple)}
+  .tag-chip.current{background:var(--green); animation:pulseRing 2.4s ease-out infinite}
+  .tag-chip.done{background:#E7EEFB; color:var(--navy)}
+  .resource-link{display:inline-flex; align-items:center; gap:12px; background:#fff; border:1.5px solid var(--border3); border-radius:14px; padding:14px 22px; text-decoration:none; margin:0 0 44px; box-shadow:0 3px 10px rgba(31,45,92,.06); cursor:pointer}
+  .resource-link:hover{border-color:var(--blue); text-decoration:none}
+  .resource-link .emoji{font-size:20px}
+  .resource-link .title{display:block; font-family:'Bricolage Grotesque',sans-serif; font-weight:700; font-size:15px; color:var(--navy)}
+  .resource-link .sub{display:block; font-size:13px; color:var(--muted); margin-top:1px}
+  .resource-link .arrow{color:var(--blue); font-weight:700; margin-left:6px}
+
+  .rail{display:flex; flex-wrap:wrap; align-items:stretch; gap:4px; background:#fff; border:1px solid var(--border4); border-radius:18px; padding:8px; margin:0 0 40px; box-shadow:0 6px 20px rgba(31,45,92,.08)}
+  .rail-btn{all:unset; box-sizing:border-box; cursor:pointer; flex:1 1 120px; min-width:110px; display:flex; flex-direction:column; align-items:center; gap:8px; padding:14px 8px 12px; border-radius:12px; background:transparent; transition:box-shadow .18s ease, transform .18s ease}
+  .rail-btn:hover{box-shadow:inset 0 0 0 2px var(--navy); transform:translateY(-2px)}
+  .rail-btn .circle{width:26px; height:26px; border-radius:50%; display:grid; place-items:center; font-family:'Bricolage Grotesque',sans-serif; font-weight:800; font-size:12.5px; border:2px solid var(--border3); background:#fff; color:var(--muted5)}
+  .rail-btn .label{font-size:11.5px; font-weight:700; text-align:center; line-height:1.25; color:var(--muted5)}
+  .rail-btn.done .circle{background:var(--navy); color:#fff; border-color:var(--navy)}
+  .rail-btn.done .label{color:var(--navy)}
+  .rail-btn.current .circle{background:var(--green); color:#fff; border-color:var(--green)}
+  .rail-btn.current .label{color:var(--green)}
+  .rail-btn.selected{background:var(--navy)}
+  .rail-btn.selected .circle{background:#fff; border-color:#fff; color:var(--navy)}
+  .rail-btn.selected .label{color:#fff}
+
+  .step-card{position:relative; border-radius:20px; padding:clamp(22px,3vw,34px) clamp(20px,3vw,40px) clamp(22px,3vw,34px) clamp(18px,3vw,36px); overflow:hidden; animation:stepIn .5s ease both; border:1.5px solid var(--border2); border-left:6px solid var(--blue); background:#fff; box-shadow:0 6px 20px rgba(31,45,92,.07)}
+  .step-card.current{border-color:#BFE3CD; border-left-color:var(--green); background:#F6FCF8; box-shadow:0 14px 34px rgba(29,122,70,.16)}
+  .step-card.done{border-left-color:var(--navy)}
+  .step-ghost{position:absolute; right:22px; top:-18px; font-family:'Bricolage Grotesque',sans-serif; font-weight:800; font-size:clamp(72px,12vw,132px); line-height:1; color:rgba(0,86,210,.07); pointer-events:none; user-select:none}
+  .step-card.current .step-ghost{color:rgba(29,122,70,.10)}
+  .step-card.done .step-ghost{color:rgba(31,45,92,.06)}
+  .step-content{position:relative}
+  .step-badges{display:flex; align-items:center; gap:10px; flex-wrap:wrap; margin-bottom:4px}
+  .step-eyebrow{font-family:'Bricolage Grotesque',sans-serif; font-weight:800; font-size:12px; letter-spacing:1.4px; color:var(--blue); text-transform:uppercase}
+  .step-card.current .step-eyebrow{color:var(--green)}
+  .step-card.done .step-eyebrow{color:var(--navy)}
+  .step-title{font-family:'Bricolage Grotesque',sans-serif; font-weight:800; font-size:25px; line-height:1.2; color:#3A4160; max-width:660px}
+  .step-card.current .step-title{color:var(--green)}
+  .step-card.done .step-title{color:var(--navy)}
+  .step-body{margin-top:12px}
+  .step-desc{font-size:15.5px; line-height:1.7; color:var(--muted2); max-width:760px}
+  .step-desc p{margin:0 0 10px}
+  .step-desc p:last-child{margin-bottom:0}
+  .step-desc .bullets{padding-left:4px}
+  .step-note{margin-top:18px; border-radius:14px; padding:16px 20px; display:flex; gap:14px; align-items:flex-start; max-width:700px; border:1px solid}
+  .step-note .emoji{font-size:18px; flex-shrink:0}
+  .step-note .text{font-size:14.5px; line-height:1.65}
+  .step-link{margin-top:20px; display:inline-flex; align-items:center; gap:10px; background:var(--navy); border:1.5px solid var(--navy); border-radius:12px; padding:13px 22px; text-decoration:none; box-shadow:0 6px 16px rgba(31,45,92,.18); transition:transform .18s ease}
+  .step-link:hover{background:var(--red); border-color:var(--red); text-decoration:none; transform:translateY(-2px)}
+  .step-link .emoji{font-size:18px}
+  .step-link .title{font-family:'Bricolage Grotesque',sans-serif; font-weight:700; font-size:14.5px; color:#fff}
+  .step-link .arrow{color:#fff; font-weight:700}
+
+  .checklist-panel{background:var(--navy); border-radius:18px; padding:26px 28px 22px; box-shadow:0 14px 34px rgba(31,45,92,.24); margin-bottom:20px}
+  .checklist-toggle{all:unset; box-sizing:border-box; display:flex; align-items:center; justify-content:space-between; gap:14px; width:100%; cursor:pointer; padding-bottom:16px; border-bottom:1px solid rgba(255,255,255,.16)}
+  .checklist-panel.closed .checklist-toggle{padding-bottom:0; border-bottom:none}
+  .checklist-toggle .title{font-family:'Bricolage Grotesque',sans-serif; font-weight:800; font-size:18px; color:#fff}
+  .checklist-toggle .meta{display:flex; align-items:center; gap:12px; flex-shrink:0}
+  .checklist-toggle .count{font-family:'Bricolage Grotesque',sans-serif; font-weight:700; font-size:12px; letter-spacing:1.2px; color:#7FA8EE; white-space:nowrap}
+  .checklist-toggle .icon{width:28px; height:28px; border-radius:50%; background:rgba(255,255,255,.14); color:#fff; display:grid; place-items:center; font-size:17px; font-weight:700}
+  .checklist-items{display:none}
+  .checklist-panel.open .checklist-items{display:block}
+  .checklist-item{display:grid; grid-template-columns:30px 1fr; gap:14px; align-items:start; padding:16px 0; border-bottom:1px solid rgba(255,255,255,.09); animation:stepIn .35s ease both}
+  .checklist-item .no{font-family:'Bricolage Grotesque',sans-serif; font-weight:800; font-size:15px; color:var(--green-light); line-height:1.35}
+  .checklist-item .ctitle{display:block; font-family:'Bricolage Grotesque',sans-serif; font-weight:700; font-size:15.5px; color:#fff}
+  .checklist-item .ctext{display:block; font-size:14px; line-height:1.65; color:#B9C4E2; margin-top:5px}
+
+  /* PROGRAM info card (kredilendirme + coursera catalog shared bits) */
+  .card{background:#fff; border:1.5px solid var(--border2); border-radius:20px; padding:clamp(20px,2.5vw,26px) clamp(18px,2.5vw,28px); box-shadow:0 6px 20px rgba(31,45,92,.07)}
+  .card-head{display:flex; align-items:center; gap:12px; margin-bottom:14px}
+  .card-num{width:30px; height:30px; border-radius:10px; background:var(--navy); color:#fff; display:grid; place-items:center; font-family:'Bricolage Grotesque',sans-serif; font-weight:800; font-size:15px; flex-shrink:0}
+  .card-head .title{font-family:'Bricolage Grotesque',sans-serif; font-weight:800; font-size:19px; color:var(--navy)}
+  .check-row{display:grid; grid-template-columns:24px 1fr; gap:12px; align-items:start}
+  .check-box{width:22px; height:22px; border:2px solid #C6D2E8; border-radius:6px; margin-top:2px; flex-shrink:0}
+  .check-text{font-size:14px; line-height:1.6; color:var(--muted2)}
+  .check-text strong{color:var(--navy)}
+  .warn-box{background:#FFF9E8; border:1px solid #F0E0B0; border-radius:14px; padding:18px 22px}
+  .warn-box .head{display:flex; align-items:center; gap:10px; margin-bottom:8px}
+  .warn-box .head .emoji{font-size:17px}
+  .warn-box .head .title{font-family:'Bricolage Grotesque',sans-serif; font-weight:700; font-size:15px; color:#6B5518}
+  .warn-box .body{font-size:13.5px; line-height:1.6; color:#6B5518}
+  .warn-box .body strong{color:#6B5518}
+
+  /* DEPARTMENTS */
+  .contact-panel{border-radius:20px; padding:clamp(20px,3vw,28px) clamp(20px,3vw,32px); color:#fff}
+  .contact-panel.red{background:linear-gradient(135deg,var(--red) 0%,var(--red-dark) 100%); box-shadow:0 10px 26px rgba(232,67,45,.24)}
+  .contact-panel.blue{background:linear-gradient(135deg,var(--blue) 0%,var(--navy) 100%); box-shadow:0 10px 26px rgba(31,45,92,.24)}
+  .contact-head{display:flex; align-items:center; gap:12px; margin-bottom:14px}
+  .contact-icon{width:40px; height:40px; border-radius:12px; background:rgba(255,255,255,.18); display:grid; place-items:center; font-size:19px; flex-shrink:0}
+  .contact-head .title{display:block; font-family:'Bricolage Grotesque',sans-serif; font-weight:800; font-size:20px; line-height:1.15}
+  .contact-head .sub{display:block; font-size:12.5px; margin-top:1px}
+  .contact-panel.red .contact-head .sub{color:#FBD9D2}
+  .contact-panel.blue .contact-head .sub{color:#C3D5F5}
+  .contact-tags{display:flex; flex-wrap:wrap; gap:7px; margin-bottom:18px}
+  .contact-tags span{background:rgba(255,255,255,.18); border:1px solid rgba(255,255,255,.24); padding:6px 13px; border-radius:999px; font-size:13px; font-weight:600}
+  .contact-btn{display:inline-block; background:#fff; color:var(--red); font-weight:800; font-size:14.5px; padding:11px 22px; border-radius:999px; text-decoration:none}
+  .contact-btn:hover{background:var(--navy); color:#fff; text-decoration:none}
+  .contact-hint{display:inline-block; font-weight:800; font-size:14.5px; color:#9FC0F2}
+
+  .fac-item{background:#fff; border:1px solid var(--border); border-radius:14px; overflow:hidden}
+  .fac-toggle{all:unset; box-sizing:border-box; display:flex; justify-content:space-between; align-items:center; gap:16px; width:100%; padding:15px 22px; cursor:pointer}
+  .fac-toggle:hover{background:#F2F6FD}
+  .fac-toggle .left{display:flex; align-items:center; gap:12px}
+  .fac-dot{width:8px; height:8px; border-radius:2px; display:inline-block}
+  .fac-name{font-family:'Bricolage Grotesque',sans-serif; font-weight:700; font-size:16.5px; color:var(--navy)}
+  .fac-count{font-size:12.5px; font-weight:600; color:var(--muted5)}
+  .fac-icon{width:26px; height:26px; border-radius:50%; background:#F2F6FD; color:var(--blue); display:grid; place-items:center; font-size:16px; flex-shrink:0}
+  .fac-body{padding:0 22px 16px; display:none}
+  .fac-item.open .fac-body{display:block}
+  .fac-depts{display:grid; gap:1px; background:#EDF2F9; border:1px solid var(--border2); border-radius:10px; overflow:hidden}
+  .fac-dept-row{display:grid; grid-template-columns:repeat(auto-fit,minmax(160px,1fr)); gap:6px 16px; align-items:center; background:#fff; padding:12px 16px; font-size:13.5px}
+  .fac-dept-row .dname{font-weight:700; color:var(--navy); line-height:1.35}
+  .fac-dept-row .dcoord{color:var(--muted2)}
+  .fac-dept-row a{font-size:13px}
+
+  /* CALENDAR */
+  .cal-legend{display:flex; flex-wrap:wrap; gap:12px; margin-bottom:28px}
+  .cal-legend-item{display:inline-flex; align-items:center; gap:8px; background:#fff; border:1px solid var(--border2); border-radius:999px; padding:7px 16px; font-size:13px; font-weight:600; color:var(--muted2)}
+  .cal-legend-item .sw{width:10px; height:10px; border-radius:50%; flex-shrink:0}
+  .cal-list{display:grid; gap:10px}
+  .cal-row{background:#fff; border:1px solid var(--border2); border-radius:14px; border-left:5px solid; padding:18px 24px; display:grid; grid-template-columns:repeat(auto-fit,minmax(160px,1fr)); gap:8px 20px; align-items:center; box-shadow:0 3px 10px rgba(31,45,92,.05)}
+  .cal-row .date{font-family:'Bricolage Grotesque',sans-serif; font-weight:800; font-size:16px; color:var(--navy)}
+  .cal-row .chip{display:inline-block; font-size:12px; font-weight:700; padding:4px 12px; border-radius:999px}
+  .cal-row .event{font-size:14.5px; line-height:1.55; color:var(--muted2)}
+  .footnote{font-size:13.5px; color:var(--muted5); margin:24px 0 0; font-style:italic}
+
+  /* CATALOG */
+  .catalog-head{display:flex; align-items:flex-end; justify-content:space-between; gap:24px; flex-wrap:wrap; margin-bottom:12px}
+  .catalog-head h2{margin:0}
+  .btn-red{background:var(--red); color:#fff; font-weight:700; font-size:15px; padding:13px 26px; border-radius:999px; text-decoration:none; box-shadow:0 8px 22px rgba(232,67,45,.28); white-space:nowrap; display:inline-block}
+  .btn-red:hover{background:var(--red-dark); color:#fff; text-decoration:none}
+  .catalog-intro{font-size:16px; color:var(--muted3); margin:0 0 28px; max-width:820px; line-height:1.6}
+  .catalog-frame{background:#fff; border:1px solid var(--border); border-radius:18px; padding:10px; box-shadow:0 8px 26px rgba(31,45,92,.08)}
+  .catalog-frame iframe{width:100%; height:640px; border:0; border-radius:12px; display:block}
+
+  /* RULES */
+  .rules-head-row{display:flex; flex-wrap:wrap; align-items:center; justify-content:space-between; gap:16px; margin:0 0 24px}
+  .rules-head-row p{font-size:15.5px; line-height:1.6; color:var(--muted2); margin:0; max-width:640px}
+  .btn-navy-pill{display:inline-flex; align-items:center; gap:10px; background:var(--navy); color:#fff; font-weight:700; font-size:14px; padding:11px 22px; border-radius:999px; text-decoration:none; white-space:nowrap}
+  .btn-navy-pill:hover{background:var(--red); color:#fff; text-decoration:none}
+  .rules-cards{display:grid; grid-template-columns:repeat(auto-fit,minmax(300px,1fr)); gap:20px; align-items:start}
+  .rules-cards .card > div{display:grid; gap:11px}
+  .rules-cards .card .note-below{margin-top:14px; font-size:13.5px; line-height:1.6; color:var(--muted4)}
+  .rules-cards .card .note-below strong{color:var(--navy)}
+  .warn-grid{display:grid; grid-template-columns:repeat(auto-fit,minmax(320px,1fr)); gap:16px; margin-top:16px}
+  .completion-block{margin-top:16px; background:var(--navy); border-radius:20px; padding:clamp(22px,3vw,32px) clamp(20px,3vw,36px)}
+  .completion-block .title{font-family:'Bricolage Grotesque',sans-serif; font-weight:800; font-size:19px; color:#fff; margin-bottom:10px}
+  .completion-block .body{font-size:14.5px; line-height:1.7; color:#D7DDF0}
+  .completion-block .body strong{color:#fff}
+  .ie-note{margin-top:16px; background:#FDECE8; border:1px solid #F6C9BE; border-radius:16px; padding:18px 24px; display:flex; gap:16px; align-items:flex-start}
+  .ie-note .emoji{font-size:20px; flex-shrink:0}
+  .ie-note .body{font-size:14px; line-height:1.6; color:#8A2A18}
+
+  /* FAQ */
+  .faq-tabs{display:flex; gap:10px; flex-wrap:wrap; margin-bottom:26px}
+  .faq-tab{all:unset; box-sizing:border-box; cursor:pointer; display:inline-flex; align-items:center; gap:9px; background:#fff; color:var(--muted2); border:1.5px solid var(--border3); padding:11px 20px; border-radius:999px; font-family:'Bricolage Grotesque',sans-serif; font-weight:700; font-size:14.5px}
+  .faq-tab:hover{border-color:var(--navy)}
+  .faq-tab.active{background:var(--navy); color:#fff; border-color:var(--navy)}
+  .faq-tab .pill{background:#EDF2F9; color:var(--muted); font-size:12px; font-weight:800; padding:2px 9px; border-radius:999px}
+  .faq-tab.active .pill{background:rgba(255,255,255,.22); color:#fff}
+  .faq-list{display:grid; grid-template-columns:repeat(auto-fit,minmax(300px,1fr)); gap:12px; align-items:start}
+  .faq-item{background:#fff; border:1px solid var(--border); border-radius:14px; overflow:hidden}
+  .faq-toggle{all:unset; box-sizing:border-box; display:flex; justify-content:space-between; align-items:center; gap:14px; width:100%; padding:16px 20px; cursor:pointer; font-family:'Bricolage Grotesque',sans-serif; font-weight:700; font-size:15px; line-height:1.35; color:var(--navy)}
+  .faq-toggle:hover{background:#F2F6FD}
+  .faq-toggle .icon{width:26px; height:26px; border-radius:50%; background:#E3EDFC; color:var(--red); display:grid; place-items:center; font-size:16px; flex-shrink:0}
+  .faq-body{padding:0 20px 18px; font-size:14px; line-height:1.7; color:var(--muted4); display:none}
+  .faq-item.open .faq-body{display:block}
+
+  footer.site-footer{background:var(--navy); color:#9FABCC; padding:52px 48px; font-size:13.5px}
+  .footer-inner{max-width:1080px; margin:0 auto; display:flex; justify-content:space-between; align-items:center; gap:24px; flex-wrap:wrap}
+  .footer-left{display:flex; align-items:center; gap:16px}
+  .footer-logo{background:#fff; border-radius:10px; padding:7px 12px}
+  .footer-logo img{height:42px; width:auto; display:block}
+  .footer-left p{margin:0}
+  footer.site-footer a{color:#C7D1E8}
+  footer.site-footer a:hover{color:#fff}
+
+  @media (max-width:640px){
+    .rules-head-row, .catalog-head{flex-direction:column; align-items:flex-start}
+    .footer-inner{flex-direction:column; align-items:flex-start; text-align:left}
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#top" class="nav-logo" data-tab="home">
+    <img src="data:image/webp;base64,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" alt="MEF Üniversitesi CELT">
+    <div class="nav-divider"></div>
+    <div class="nav-brand">Kişiselleştirilmiş Öğrenme Deneyimi ve Coursera</div>
+  </a>
+  <div class="nav-spacer"></div>
+  <div class="nav-links" id="navLinks"></div>
+</nav>
+
+<!-- HERO -->
+<header id="top" class="hero" data-panel="home">
+  <div class="hero-blob-1"></div>
+  <div class="hero-blob-2"></div>
+  <div class="hero-blob-3"></div>
+  <div class="hero-inner">
+    <div class="hero-badge"><span class="dot"></span>2026–2027 Güz · <span id="heroStepLabel"></span></div>
+    <h1>Öğrenme yolculuğunu <span class="accent">sen tasarla.<span class="underline"></span></span></h1>
+    <div class="hero-cards">
+      <a href="#" id="applyFormLink" target="_blank" rel="noopener" class="hero-card red">
+        <span class="emoji">📝</span>
+        <span class="title">Lisans talep formu</span>
+        <span class="desc">Coursera kontenjanı için başvurunu yap</span>
+        <span class="cta">Formu aç ↗</span>
+      </a>
+      <a href="#catalog" data-tab="catalog" class="hero-card white">
+        <span class="emoji">🎓</span>
+        <span class="title">Coursera kurs kataloğu</span>
+        <span class="desc">Tüm katalog MEF öğrencilerine açık</span>
+        <span class="cta">Dersleri gör →</span>
+      </a>
+      <a href="#process" data-tab="process" class="hero-card navy">
+        <span class="emoji">🧭</span>
+        <span class="title">Süreçte neredeyiz?</span>
+        <span class="desc">6 adımlık rehber ve bu dönemin aşaması</span>
+        <span class="cta">Rehberi aç →</span>
+      </a>
+    </div>
+  </div>
+</header>
+
+<!-- 1. PROCESS -->
+<section id="process" class="tab-section section-bg-6" data-panel="process">
+  <div class="wrap">
+    <div class="eyebrow">Adım Adım Ne Yapmalıyım?</div>
+    <div class="process-heading-row">
+      <h2 class="h2">Başvurudan krediye <span class="accent">6 adım</span></h2>
+      <div class="current-pill"><span class="dot"></span>Şu an buradayız: <span id="processStepLabel"></span></div>
+    </div>
+    <p class="process-intro">CELT, her dönem Coursera takvimini ilan eder. Lisans talebinden derslerinin PLE kapsamında kredilendirilmesine kadar izlemen gereken tüm adımları aşağıda bulabilirsin. Takvimde yer alan önemli tarihleri takip etmeyi unutma.</p>
+    <p class="process-legend"><span class="tag-chip celt">CELT</span>&nbsp;etiketi bulunan adımlara ilişkin sorularını&nbsp;<a href="mailto:celt@mef.edu.tr">celt@mef.edu.tr</a> adresine iletebilirsin. Ders seçimi, kredilendirme ve belge teslimiyle ilgili konularda ise bölümünün&nbsp;<span class="tag-chip coord">MOOC KOORDİNATÖRÜ</span> ile iletişime geçmelisin.</p>
+    <a href="#calendar" data-tab="calendar" class="resource-link">
+      <span class="emoji">🗓️</span>
+      <span><span class="title">2026 - 27 Güz dönemi tarihleri</span><span class="sub">Lisans talebi, kayıt ve teslim tarihleri için Akademik Takvim'e bak</span></span>
+      <span class="arrow">→</span>
+    </a>
+
+    <div class="rail" id="stepRail"></div>
+    <div id="stepCard"></div>
+  </div>
+</section>
+
+<!-- 2. ACADEMIC CALENDAR -->
+<section id="calendar" class="tab-section section-bg-5" data-panel="calendar">
+  <div class="wrap">
+    <div class="eyebrow">Ne Zaman Ne Oluyor?</div>
+    <h2 class="h2">2026–2027 Güz Dönemi takvimi</h2>
+    <p class="catalog-intro" style="margin-bottom:32px">Başvuru, kayıt, etkileşim raporları ve akademik tarihleri tek bakışta gör. Renkler kategoriyi gösterir.</p>
+    <div class="cal-legend" id="calLegend"></div>
+    <div class="cal-list" id="calList"></div>
+    <p class="footnote">Tarihler CELT tarafından güncellenebilir. Güncel takvim için CELT duyurularını takip et.</p>
+  </div>
+</section>
+
+<!-- 3. CATALOG -->
+<section id="catalog" class="tab-section section-bg-4" data-panel="catalog">
+  <div class="wrap">
+    <div class="eyebrow">Hangi Dersleri Alabilirim?</div>
+    <div class="catalog-head">
+      <h2 class="h2">Güncel Coursera kurs kataloğu</h2>
+      <a href="https://docs.google.com/spreadsheets/d/1UMVP2HVuiDOX4zz484hQk3gmw2C7w-qGyOb0diPqci4/edit?gid=0#gid=0" target="_blank" rel="noopener" class="btn-red">Tam ekranda aç ↗</a>
+    </div>
+    <p class="catalog-intro">2025–2026 Güz Dönemi itibarıyla Coursera'nın <strong>tüm kataloğu</strong> açıktır. Aşağıdaki listede ders adı, sağlayıcı, seviye, süre ve dersin bağlantısını bulabilirsin. Arama ve filtreleme için sağ üstten tam ekranda açman önerilir.</p>
+    <div class="catalog-frame">
+      <iframe src="https://docs.google.com/spreadsheets/d/1UMVP2HVuiDOX4zz484hQk3gmw2C7w-qGyOb0diPqci4/preview?gid=0&widget=true&headers=false&rm=minimal" title="Coursera kurs kataloğu" loading="lazy"></iframe>
+    </div>
+    <p class="footnote">Liste Coursera tarafından düzenli olarak güncellenir. Bir dersi PLE kapsamında saydırmadan önce bölümünün MOOC Koordinatörüne danış.</p>
+  </div>
+</section>
+
+<!-- 4. RULES / KREDİLENDİRME -->
+<section id="rules" class="tab-section section-bg-1" data-panel="rules">
+  <div class="wrap">
+    <div class="eyebrow">Ders Nasıl Krediye Dönüşür?</div>
+    <h2 class="h2">Kredilendirme koşullarını <span class="accent" style="color:var(--red)">kontrol et</span></h2>
+    <div class="rules-head-row">
+      <p>Bir dersi tamamlamak ve sertifika almak, dersin otomatik olarak PLE kredisine dönüşeceği anlamına gelmez. Kredilendirme; PLE Programı Esasları, bölüm yönergeleri ve akademik değerlendirme doğrultusunda yapılır.</p>
+      <a href="https://drive.google.com/file/d/1bt_UrSCg0MhVYgrwiip21y4fUv1BtR0i/view" target="_blank" rel="noopener" class="btn-navy-pill">📘 PLE Programı Esasları ↗</a>
+    </div>
+
+    <div class="rules-cards">
+      <div class="card">
+        <div class="card-head"><span class="card-num">1</span><span class="title">Derse başlamadan önce</span></div>
+        <div>
+          <div class="check-row"><span class="check-box"></span><span class="check-text"><strong>Bölümünün yönergelerini incele.</strong> Öncelikle bölümünün web sitesinde yayımlanan MOOC/PLE ders listesini ve kredilendirme yönergelerini kontrol et. Bölümün uygun dersleri web sitesinde yayımlıyorsa seçimini bu listeye göre yap. Ders listesi bulunmuyorsa veya seçtiğin dersin uygunluğundan emin değilsen MOOC Koordinatörüne danış.</span></div>
+          <div class="check-row"><span class="check-box"></span><span class="check-text"><strong>Dersin özelliklerini kontrol et.</strong> Dersin sertifika sunduğunu hem Coursera kurs kataloğundan hem de Coursera'daki ders sayfasından kontrol et. Ayrıca dersin süresini, haftalık çalışma yükünü, zorunlu değerlendirmelerini ve peer review içerip içermediğini incele. Peer review bulunan derslerde değerlendirme süresini dikkate alarak çalışmalarını bölümünün teslim tarihinden önce tamamlayabileceğinden emin ol.</span></div>
+          <div class="check-row"><span class="check-box"></span><span class="check-text"><strong>12 AKTS sınırını göz önünde bulundur.</strong> Öğrenimin boyunca PLE kapsamında toplam en fazla 12 AKTS kredilendirebilirsin. MOOC derslerinin AKTS karşılıkları bölüm tarafından belirlendiği için bu sınırın karşılık geldiği ders sayısı bölümlere göre değişebilir.</span></div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-head"><span class="card-num">2</span><span class="title">Dersi tamamlarken</span></div>
+        <div>
+          <div class="check-row"><span class="check-box"></span><span class="check-text"><strong>İçerik etkileşimini en az %70'te tut.</strong> Videoları izle, okuma materyallerini incele ve quiz, ödev ve değerlendirme etkinliklerini tamamla.</span></div>
+          <div class="check-row"><span class="check-box"></span><span class="check-text"><strong>Peer review ödevlerini erkenden tamamla.</strong> Değerlendirme sürecinin sertifikanın oluşmasını geciktirmemesi için peer review içeren ödevleri dönem sonuna bırakma.</span></div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-head"><span class="card-num">3</span><span class="title">Dönem sonunda</span></div>
+        <div>
+          <div class="check-row"><span class="check-box"></span><span class="check-text"><strong>Coursera sertifikanı hazırla.</strong></span></div>
+          <div class="check-row"><span class="check-box"></span><span class="check-text"><strong>Sunum kaydını hazırla.</strong> Dersin ana fikrini ve öğrendiklerini anlattığın 2–5 dakikalık kaydı çek.</span></div>
+          <div class="check-row"><span class="check-box"></span><span class="check-text"><strong>Belgelerini teslim et.</strong> Sertifikanı ve sunum kaydını bölümünün belirlediği yöntemle ve son teslim tarihine kadar teslim et.</span></div>
+        </div>
+        <div class="note-below">Sertifika ve sunum kaydı için <strong>teslim tarihleri bölümler tarafından belirlenir</strong> ve bölümlere göre farklılık gösterebilir. Belgelerini hangi tarihe kadar ve nasıl teslim etmen gerektiğini bölümünün web sitesinden, bölüm duyurularından veya MOOC Koordinatöründen öğrenebilirsin.</div>
+      </div>
+    </div>
+
+    <div class="warn-grid">
+      <div class="warn-box">
+        <div class="head"><span class="emoji">⚠️</span><span class="title">Peer review süresine dikkat et</span></div>
+        <div class="body">Peer review içeren ödevlerin değerlendirilmesi genellikle <strong>7–14 gün</strong> sürebilir. Yeterli sayıda değerlendirme alınmaması durumunda bu süre uzayabilir ve değerlendirme tamamlanmadan sertifikan oluşturulmayabilir.<br><br>Coursera'daki esnek teslim tarihleri, bölümünün belirlediği sertifika teslim tarihini değiştirmez. Bu nedenle peer review ödevlerini teslim tarihinden yeterince önce tamamla.</div>
+      </div>
+      <div class="warn-box">
+        <div class="head"><span class="emoji">⚠️</span><span class="title">Sertifika almak tek başına yeterli değildir</span></div>
+        <div class="body">PLE kapsamında kredilendirilecek her ders için içerik etkileşim oranının <strong>en az %70</strong> olması gerekir. Ders sertifikasını almış olsan bile içerik etkileşim oranın %70'in altındaysa PLE kredilendirme sürecinde sorun yaşayabilirsin.<br><br>Öğrenciler içerik etkileşim verisini doğrudan görüntüleyemez; bu veri MOOC Koordinatörleri tarafından takip edilir. Etkileşim oranın %70'in altında kalırsa CELT tarafından her ay bilgilendirme maili gönderilir.</div>
+      </div>
+    </div>
+
+    <div class="completion-block">
+      <div class="title">Kredilendirme ne zaman tamamlanır?</div>
+      <div class="body">Gerekli koşulları yerine getirmen ve belgelerini teslim etmen, dersin doğrudan krediye dönüşmesini sağlamaz. Belgelerin ve ders bilgilerin bölümün tarafından değerlendirilir. İlgili akademik onayların tamamlanmasının ardından PLE kredin <strong>"GE"</strong> ders koduyla dönem sonunda veya takip eden dönemde transkriptine işlenebilir.<br><br>Eksik veya hatalı bir bilgi olduğunu düşünüyorsan bölümünün MOOC Koordinatörüyle iletişime geçebilirsin.</div>
+    </div>
+
+    <div class="ie-note">
+      <span class="emoji">☀️</span>
+      <div class="body"><strong>Endüstri Mühendisliği öğrencileri için önemli not:</strong> Coursera yaz döneminde de erişime açılır; ancak yaz döneminde tamamlanan Coursera dersleri Endüstri Mühendisliği Bölümünde PLE kapsamında kredilendirilemez. Yaz döneminde Coursera derslerine kişisel ve mesleki gelişim amacıyla devam edebilirsin.</div>
+    </div>
+  </div>
+</section>
+
+<!-- 5. DEPARTMENTS -->
+<section id="departments" class="tab-section section-bg-2" data-panel="departments">
+  <div class="wrap">
+    <div class="eyebrow">Kime Sorayım?</div>
+    <h2 class="h2">Bölümünün MOOC Koordinatörünü bul</h2>
+
+    <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:18px; align-items:stretch; margin-bottom:32px">
+      <div class="contact-panel red">
+        <div class="contact-head">
+          <span class="contact-icon">✉️</span>
+          <span><span class="title">CELT'e yaz</span><span class="sub">Program yönetimi ve teknik destek</span></span>
+        </div>
+        <div class="contact-tags"><span>Lisans talebi</span><span>Coursera erişimi</span><span>Teknik destek</span></div>
+        <a href="mailto:celt@mef.edu.tr" class="contact-btn">celt@mef.edu.tr</a>
+      </div>
+      <div class="contact-panel blue">
+        <div class="contact-head">
+          <span class="contact-icon">🎓</span>
+          <span><span class="title">MOOC Koordinatörüne sor</span><span class="sub">Bölüm bazlı akademik süreçler</span></span>
+        </div>
+        <div class="contact-tags"><span>Ders seçimi ve onay</span><span>Kredilendirme</span><span>Transkript</span></div>
+        <span class="contact-hint">Bölümünü aşağıdan seç ↓</span>
+      </div>
+    </div>
+
+    <div id="facultyList" style="display:grid; gap:10px"></div>
+  </div>
+</section>
+
+<!-- 6. FAQ -->
+<section id="faq" class="tab-section section-bg-3" data-panel="faq">
+  <div class="wrap">
+    <div class="eyebrow">Aklına Takılanlar</div>
+    <h2 class="h2" style="margin-bottom:36px">Sık sorulan sorular</h2>
+    <div class="faq-tabs" id="faqTabs"></div>
+    <div class="faq-list" id="faqList"></div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div class="footer-left">
+      <div class="footer-logo"><img src="data:image/webp;base64,UklGRrAeAABXRUJQVlA4WAoAAAAgAAAAHwEAHwEASUNDUMgBAAAAAAHIAAAAAAQwAABtbnRyUkdCIFhZWiAH4AABAAEAAAAAAABhY3NwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAA9tYAAQAAAADTLQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAlkZXNjAAAA8AAAACRyWFlaAAABFAAAABRnWFlaAAABKAAAABRiWFlaAAABPAAAABR3dHB0AAABUAAAABRyVFJDAAABZAAAAChnVFJDAAABZAAAAChiVFJDAAABZAAAAChjcHJ0AAABjAAAADxtbHVjAAAAAAAAAAEAAAAMZW5VUwAAAAgAAAAcAHMAUgBHAEJYWVogAAAAAAAAb6IAADj1AAADkFhZWiAAAAAAAABimQAAt4UAABjaWFlaIAAAAAAAACSgAAAPhAAAts9YWVogAAAAAAAA9tYAAQAAAADTLXBhcmEAAAAAAAQAAAACZmYAAPKnAAANWQAAE9AAAApbAAAAAAAAAABtbHVjAAAAAAAAAAEAAAAMZW5VUwAAACAAAAAcAEcAbwBvAGcAbABlACAASQBuAGMALgAgADIAMAAxADZWUDggwhwAADByAJ0BKiABIAE+USSPRSOkIRPJzXxABQSm78Y9im5AGO/C9khk31X93/cj2pLC/gPxn+T3Ju2f5tnMf/H+5v5s/5n/pf2T3O/qv2A/1O/4nUh/dT1F/sh+33u6f7v9xfdn/av97+QHyB/1T/RdaH6Df7Xf//15v3W+GX+yf879x/Z6/9ms9eav8H2q/2HxR/Evk/6h+SfJsiR/GvsZ+V/t/7j/m38w96fyd1Avx3+R/4L+tfupwpIAP0f+u/8Pw2dVDwR7AH84/rH/F8rvw0fPfYE/qX+g/9Hs1/4X7T/6H1o/U//x/0/wJfzj+3/9Qsmyfdfr9fr9fr9fr9fr9fr9fr9fr9fr9fr9fr9fr9SWI4pluWRL5aZsvgNkOGoeSNEIuv1+v1+vio+4xgEcI9t4pv13iOxEjKHXd+AOLPTRxGxAEp2TkYbDYbDYaYkCjBT4HtFUXDAks11FsDkAf3hhEyf4z2aF5CdHqYpWMd031jLqxdftZ1Aq8UcHWxy1Ns8davc277nTVrUajNCRqFZWeL9gWwS5mEekLY8eq5HofF7KVO9aJY6XIvxGBge8KtEEWLnqdzEgsan/wxsBSh+e6iRXUz5t7ejJAL7Gbqn7vThkkztTo1G/+kPF2fIBS8OKNapyzgQUwadCDCB4AbqfkQQBBEGjn9udU+x190BMXloRxzpwN0VLlmsoQZTjo7zeih0NBVFSKj04EztZLnz1QV33mM6ryPr4v6mwycmraINrnc4+Z+NHt7pM5rXK3/kZWvlrPq7MCvYbB8Upid7VrwsnrNYxku0cyNqOCPtPWPXxyjk0qmCuXK4MoF3B665s4MMRzM4AndVFghr2/uUUMYlxMeCzjdOm4Jzqt3p1uSgEhCGwStjDhF7yp/GU7uApoRnZoH2S2gWC69Fmk7s3DQsWLcjqsG25/t4DbJVpJMByPrnN6xZGkt3DLxN5/baLIe8oBAODk6x1jB9f84aJHLy5PJQerCWi5ojVyqOyfu05cM1ltbj+DKw70eL2YBVI2fF+HN2rq1iNE4fm7N82R6EIf6qEqeie9/3UffdvaPz6jv8nHU6yFixGWVJfuBj/GaqeloApkqKqWi25p9OM+zywb2xVfc4HxNNYyjaLQtamr8xRD6LWXBkvaCW3f6KkodBC/Oqjh4c1NH9OskwynfwY7D1q6p9ag7ABkdlK2zO4RjJ97IFsFQCLj+WbAT7r9fr9fr9fr2gA/v9+gAAAAAAFEkhKARTm2+tcNX8uIqeN1PnP6gSEP4igIFg6b/Ptv1/hv4pFW9QQrMzle+dTH5LVrcupJpVSpJT4E1ot5QL4Ssfzh66HmIv2CJeXcuiFg6ESCWNcMfXOmlBNisbs8NGXoSVkBit2DZ5SzgCB7BKY8Ixs42DhoUrmDJ8Hl+6rFUN2d4tSoFYuh6Q/K5Z4zkXk571aPi6g1vE6kVSgpYYDjjwN534hz6ykLZGw5A2tavtGL5F9eSvfuMrciod+9gAw3+ntSksQmcWXJdlUQCGZCtsfSEtdxv5THKSpf4a9kEgCZBJ/GH4pOJBV9+L/UUPPnnfenrdKskpylbw+g/uxvaNHXvGZcUXj3KntsoPd9IDhbBtee6QDYZyruVc28txu0c9e+7IrTClAQURAIbjimPKvOvlCqbYOjjeu0ZIqfYHO4gxDxrqqcJ6LjP+Cku2YpSslQ5Qkh00yhHjvP/JOUsNoHJKBaC/ZTfwZ4SQQV1uA66AudLi4djcVpQOA6A0AcU1de8pTmIv7m9TwnRvajpI3iPoGiD/VuVmECaxBNcTC3PDf+Z6tf/m41ce6FlbnW2+INJnODNrdT1bz6N3Dt1r+T+RYfJmC5Gxxv6roRAkv8pNJINNxBTWklA3duasshdGY0QC9YabJy//bTjtOdSEVMJdXO0I1dgZd3WKfNzCuD1ZD+BYmzFA87ghr/tgqCka/7PzagbyCti7sIK+7pDBnukcuFBAlnOl+XybtVJmrNwp4J9N4h7vfZ61Kky5fKtVVVOu7VizJTTeLiPyaksRzEquxsuiX6fpJM3tqd7Z6jKyOADKZuXMZGk7M146Olaly4Lr+pqEJUZ+1Yt/Wj2Hri6uaoYOhg8uqMyNRasvVDRb50GL6oNKv/GwudMgePeSLu+PFFj3G6xT3R79tz46cuxNgbVQwEY80Wm9zsSMQ3I0Z039mfsReiX0iS/u9PwaFCgGp8s1oMDJdKMUsx+JSqkMeeg6kC1O4p6leWf4Yop+8gruOF/ZbuD4C+zVqUnqh2Pz+PwboDf5WkolSJWCzsfSdZRb8X7AbIdlJcydOLu1c7NM3SmP98VuwZ5F6xQbGK7GHWSdx7GWSRrRtlCJ1BSxYIIIAOK4b4ihV9S9sjrI8MQk22WvKDMsVa0jtQoJmWNkv7Qm7husLLwDOXFgphgTaNuU+7mTrpGmVY6JZ9Eu/DTzQTXVR2wK5vxBxg37QkQF2ODd+0TO1fTpNGmBtKHieOSYzj06VxNgsGWtV1HeKYWA1rgKVxCqNPiqU++5A+SsxR2VF8mQA/s8Kr9ICF9so7Hlmsj63uzhMiEn5cBwJu225hD8/vDLvd9a6k8rVXCnePQAYNmvZZ7N5Ba5cud/3NORp1yKgN8S+NszzrvJMkiEOzbNb5LSteHteBnhr38V9eJosIXvFISUNMloKZlnRR6DxO9cj/QO1f/Ev6KUvhLokdnNZYWgffqIXN6c2ar+Tx5d+9DmOzRZoz/zGMchlEE9KCeOLjod/i8Op4YlYtF9WT/6Rzc9OKzgikeE9+fchJ6uv9EcIIf24B47/tdxuOltIH78+4PDzFW8XYX9+LVaD/UlqiAe/4tnrNrWeOkuBvoBci4IsoX7qWNYSYR/tzeMV+B0VTfzCqX+v+OeEfgQ6PUR/HkP9uyhxoYnqnTot4kQJ+2bP+LlQR4xYigbrDsreW6PwvCJomPVaMbljyH85TDKCC/Eb2qQXeoxYLNAGFJoKaCYlHNwugEx2JowsjInc98C+u8OhhuaMqR4biMsy2rQU6dSjYinUo2KSO+Rjjnd5+mEpAFOGBnW3KlA4hDAK/aRcvCcI0l03NlVYYuYeLu/dPGUdP3716ETVzQx8N7H1FYUChR1GjPh3M6+cgDZucQAt9ibCrp9/TVYt5Ya1+p3xx9IDvxrmlvcMPxfwNdPTMF9OHp/9DxfWJH7PxmRiQG8kxkACm9OCg3Z2laCWXEBA2T0JYzwaAPrsO8kW1aD5GVYMnBIv/ao161j+BnNPGZGTTfxKBqEKCWI7juBG7IAF9bxu5+Ovkh/QXbsFcxz0g6d/lXNl5TNL1XBvFYuTeltaJmS9g5JI1G5HWoveQgI/mcpnqwveY4CB/ak8sf+vTntgBnYLVVHcKHcYHF2Yxr17hdJ2G7SXKTICNHozk5PMiHolvAUK0AmbBGdP8U2uxazqVEXEouLPApmo4VYvzTxvpPIajvWu7MMNmny8+MW/hMeaLlMrtN03vZSnJWknqQwwo8IEAAu50evcHajMuIGg/sgRjqpjc+80pyCvVEaj97lquw0GYAgxYaRCcXv8OEDGRO8pt+zXy6gESK075NtWEhZNDKQpOqen7/s81GrnYLvHIPhsPUmVpzWU74l+9HieNiXcqAaQmhOhFQqZc8wuJp9jAe8R8TSNgI82mAW3BBGUNDlTOSz9Vb3l3Dy4iF3jP/HSuiEdWtB6l/zW81a02/M9qggJR/4Fjp3Q1YxDdCYQbt67iwoeShGEI5tx88wDg92+HRTlKi2+QFo2P5hesqeasd3Xq4BLPO+a8203K37eJsy2S5/7zP2Hy/h6iDuCs+LMIrqWGpkiLJS5l8h4ihKjnUlHkXt+uHlNkytGRJIYg7nqFfcnw1HYNTft7neocD1dv+Jyowj/eDpkQhulCEyFhH292x5WoQ/OjDIxkUM6wzAkQHB+l5HBMJUfbsklp1naO++3s7wea8Vr33rcdApKsyHsDpEeE7m2J8Sj2xPGQVB6+l9Sm8YW1p+pU44pz7iYEHXBCtz8TY3HYa7UFXjxBmLdCiyZocLxV51PKDMeP6bHChsi7NFZoWo/c3yfjyTiI2aLqhYPBX6lTBrZoAcZlExpkWyrAtbwqr2bfbFHfN1SkgtP0GrBfyZmsD82xZaF+hZ0DoT0N+HqS7VD7uRyTGo0eQK0rPZNQgLV482PZX6xnyKHYLsOLFsaUD6xr8WUH+dVnkyi4jUbHhjwqGguxAPAFqvPYrWaIqFwRS5HPQNuU64lhoFC/aX9VtSfguNpBTPG/SJEwJhQyBCSJEi9Xa5ldu/DZsB7QNLKZzYUrbkR9rbmfD85QPnxxsHWwX+hq+D2gMqBm9ytebPVfA91pt+HWJiAtk8pnHmNkn0+xMwofg6XmDAg0imvWbS/eO9/ZIAFb7x5pVHyaeIZ5ubJsmDg4MXrw/a2XnZdj4iC2i5ianw4QROmJaqlQWNiZwNhHTqA1EeL0zYuPpcrQMs74FL7n++F3bcydAG24FDegGuSvY/kNpxl58b/hafbXqCdCDunuc6EonGw6pWAC2HSFA0SWQfv9mv6QH6K4qEprXAAru3fGqJkUgJQ/UwUB8yrYXFs2sHZEi0YsHIRIUHM14aPPh6IuQ3zvOjG41V5BDGKBfx7vuJIxYPuqqr6kEk6Fm1M/SZ6yBEaVjA7oHu+oxEUvHDyE2uOcjSgVTVU9CMiulNZ4TYNLSuVDRRVFN70qIFAKrtJmROLayl++quYbHEO6JXClPVfJ/M1R5gJV4xkXNNcAbcSMEMTLwL9c5symD8H+GaWXMCwZ2W1IQakngkXx4ZtfKU9UxOritjOHLTEo0u8QpC5/9NuwxCKF7vWgfuOMH0UHbadP7KR/KI7mjh/rPQYqgJP2LGX9p8TmvG0ojZl276OIViS3dJVDvGDNKep7Xrmjy1eIczQMleZ4gq274hhwr6b44CGAVUmb3pvyY06EXcJUx1JrSBJ1wfsA8eRxhvqtivdFqNMUvWJrfZXNjeUHHOlrJEJM8YAPUq64qPaHL3u+zEb25zNVmAD1Ym3688iPPdfVjGfBtNmGvCjK7tiqawwKIg717vDvuRMD8sMTxivatM641g+31ZKRUr/kK1NQU7/GijPOThHfXqMqEvaYIYztLejNb+1YaaoZEMmPSoF9W1wCn8Eh4h7AOi3YYkHtoiIQiw3lp8zQIc2bECqWT2RbomAf6kZJF9uSsAma2RAcpaFkpS/PcTfNui2OH1Pgsuqt18Rfv7QQ4ibH1t+R/lShtSqYgo/4U5ZsCEdvQdWPPtep65D1HPam82vsubdervPb2iWW9En7dbwnPi48l6qNfiYKds9atHnZh/PcQrkjJgvyBfwgoQbEqk8i0ztfl/x4t8EHNrhQ5ZRVlv9E1mSscTHqsJrS8Xyxp2/wY+vJbHfc3jhFzKR6+laHKLL4oDD3Z0H3B10T6cdcAmQgBHTolDfSfLNQRpfhQZlFhhv48yhmTC4IJ9Igs2i2/cdgvC4+KftCjFPUCAzRSvDNyqt0fP/IEolwCsrHv/8je7bg2pSrTDCJDyuvJrbVxG3y6wpuhvjFbJOMuDOB2+FfrYaJZPdYi/+RWDPYPskcqNDF/Wi2YDBPY4tkWIsB6+0Cv/Kwga0GBdYOFL/0S95agKyDcuzcIp8L4RlUCi6AyMcDrC+dOEszRegpG73YxDJDyssmNKuOODj41IyGX/BATDVvdc0OfvFGEB9SDPmvNodw7ogSpOoQroJeFb7FEfzNzvaJPZQ+Xh3CrVmafmvhJsy3Q37F/XKfivUCfQUcjLLJRSmwHTqkgIcdp497+D+p+h2OPzB58Jaag4y/HsYjRpi41NupzhRN8e84c/oktAYw35JFojrArOLmmeh5ErgA5ZigivDqlKogJXEFd0IOySaFPch1I36Ca/BshuDeDqBjOGjGjPdcGuPMm0AZ+QGF5DyPCBcSCwSfbwHlaymppbOXxSBgEk+sdiUNeh0gZAxc062yjp73jg1uL2UyTOU9M5H6TWZMZBdnnup7dfK9eaMUm7oN8mny0iM1Mlx++qq0j5m1ylAPdsxfM8YFGna2l3qh5KWvr8g0fi+wP1OF8qyoW5uufNiftXmomHKXM7bh4XWMNq4mKVIJMHleeEdz/Gnz2l0myvZ7J+xGUBPW9vtwA++CAHUg6yqVVFN+6HoJSKFYgFJHS7UG/T7gGAAR6CJuiQr7OgWGm6b/CCuhc46TN1ZJVrKotSmvmeFIiVtQABRZLIcrYCoHfXLuViqgdynR2K7rUYi9o16Aqu883GQ5p36gPa+wuHh+DDwkM8HGbudm6RNYq9iu8d4xjFLFwIS7X2VNFL18oktIC19D2gv9GoUOhsul8I4u3kjR0aUjCqiI6MM0Ty90ivCYws/Pg8LCbHzbtCIHvpJuDD/WvMQ/HWzaLKGIQtuZR+IuW28QFyoF23SaLErOrMCHNZvroAkE2sFcBQIhLzI0QNNZKFYXFTOkMSAd5vHA1Q2SNAmcN6tpGFFSnsxFrYMYWky5XBoeYz79Qw//93RaZg+IuT9PKIN20oLjS8UdF1LiC0rUZAed1sawd6IWnn/iLggypOxoTuHKQR26Z3tIuBTmeEe7sLCWo525iSEMbCPd7r7faj3JkPhSlD/K+NJ++Mefvr85lmbDeXl2yD2hIUiMqjDbpzTnev5bsXuzxfiX4bbDKbuc3YAA56j+yFLeT4jZ6IIXMAU9CV7skWKmWPeu+RYCsDjTO26NkkfbRvA5vZwM9FJ6IVvCBmDoSLCJ9WrPzS4wyvkdUOPMSWSksptVFxWtxjkwsrNUUzQzKQxJ+/jvJmNPJd+MRTOyYiqlySq9P9+4BS3E9H4lqSLnjr9MduG7qw59ZtpTErbTB8xUWSHQT7EGYYbxvmnhYy7MNgOkLOfJd+93gNs/+NFLjj2jycFhEuo+7YsaxKx7JkUGpfr3xjc0ZngRdALhr7RAQbXFLDZejA1Pr3b8U0yxOHv0svmWHlVQpcdcuZ1xrB83thg6hw0W0psaKYtzlNb4Hda/gY2URedwSVSIMu3g6DHynBd3D7dnAoUCIIlvylWd2pffbVj8bxuUZepaM9OUdMM52/Mb6wJtgDdvq9U6hqaFBaRNBW4dPyHQajI6QhWysk3k2dblkoUtZl8fJwJ5fCd/s70ZpGZWaRm9OSvMRkzcRi1+SlXPQiuc6ogSIocCEKLea58wOy3yWgfyRaxTEF1rebPrXmnoIAAlHgQUPKE4rhGd4k60Ij3BCRm4BfrR4zBO5pJ9uI3xMvXJfsenWylQoOGNRDqyH6h6n4RRsVdEfjSu6xGcTDV0HsO/cHPM1pNkyNUzOBtxGOWCJsFA9MUNAXnbAE6sVWb0wzTdtIyNi2wR7a6Dkqv6ObaMAgebRxgkcsG1RnuqgUPYMdIUSMhgMJ/45+RbOwptmeFRbX1ltP1gEH0M7n6ZU6bPeicGbSQYoJAIRqGW0kqiZnj5/8bjRL4YhRvdkP/m9wpUgBxjquKdgn5d6IsEWg6Ryv/jwwQ7d4c5GI2eQvHsSgo5hZgRgPUzS6y0fzq3RnCWKN3+Z91nsZf16+98tHXEaV8uV1O/KmdrwmBJkvAbLE8XCInWhUTOMfjsvaHTloe0mfOAZnkfeEH4aKb/HkL4Haf3tbw4ljfnR9ZSQGfjMskLLcRA6Xw48Q04wQU931rfDORyXM7z3enffdl3BJzuAhcVB/9yJMB1yarSAJzKHDnCdbd0LRhAu1LkXcuf/B5InI/m85BiXigeN/6nXdJI1VxsMMBLo65JXkAHisawpE2g+INaUlZCmySHc+LG/Z9ZcukkTcGgcoh8QyG7QWIh4NqpkDXkunP87Fkqso1eWrZp2nV/w4sVvwxgAeR0JN+KYAVBze3QORChdJ9Xl38zS01dKfwPPPqp+40jxDoFawUUu+UVj4pdxjLiU582S6FCZkrs1zQtzX2Y2owtQpF122qhzOTSp6r2GlSMRRo0Oxq/+vEInHHB6s7nqZtlWq7PLVfp2XtAcswEhc7tThC5ABpzv8NASgKBk5qX9QG42zTIurHU/x/6qKhqY8ACIVMCgl5rgkdGKPrR/HhDXXNPPKiylD2GuiOjOBPhhhiW7BaH2LW4TN+OTVSdAr78TDraJ3Qg95C8RfcqFgu4atOohpVe4hgGoVVjWnLu7N2HRJz+jJu2//7wYAXxnId4X3gah8btfkFJQhugFj2dv7aM0vBDVqF3E3ro6AoI3Z5HsK+JD+WVUFvEzCmeSE7iA2g1wsPCDu2U+U1fCoBmYQG9Em1YIAMz9Te7zXxSuDqRa//PaLOKiLk0dyvsJVthddTWV5kwzhoezvErF1T4ir2XsqCU8pVZDk4JQoCb22/m1+3iDmfECgwGbKBbdyySLxV+yKCA/JW6ZAuTHJVKmSRLd4j6D4v+fkPsq/yQEM12sB3vDeC4QAzIJa6F07Tq/uzqJCgjbBYNhyJprEX4O6o3x0VKOTP2+pUJi5++aPIZU3fqvD7/8YTwhcCldkl657WQLY4qkv9v8h4+w5fbKVFSzVCQTVE04iYQDOIxsOIYRzUw61oOYvkgnGvGxICG0DlqNS443FNuzFw4bJ1bip7tRT6bgAengTaigSfWJuZPaGTqHK+keK2V3yh7PkJih769LEkkR4AOPySU11OYEZIggPmGc48NrKVKBmyjvRE0VtZ3t8q6bGxRR9acwk34TujEBJ4qXtrIf2CJgpRusTJ3lMbhPomGmquxFMivgP0ry7uXe2U78HOn+b83gS1Ts1fIsq0Uo6ArHw+f38ilMCkRc3RbE4kxcjzLWZZntxhlos4Y9ywSho+x1n/w7NSb3bZxp4GtSPtkgvJwh7B3WI332yeLxX4xkpaD54yObEEQx5yTmk6gv2McXKiZK3NUB3ggburOUxmDFHg+raowxPM4T/aanL2aB5VAF4TI8O3hh6sVT0Drf3B9M3r/oW3FbSlOrJiDYZ6ORx3tBT/CUnC5yiaCB4O9wBpq7mqdtLPIxDhp9RvOU/2K1mfNSl8Eas8L4t27UNa+fbOyT2bXhJBuXzZ+xZTRVN3MVGLgWTkFelx+Mxj8LH6drbx9v+fBLUgbHCBP+/Kj4QcgL44dhNfKKoW08tGTlLlbqq20bCrqaaC9pBZqEsuDZ7xepNZYOBrJu3IW/blSSWZ33dhy84uNiVaF55cJV86KouTtjk84zFF6l8ayvn59dOqBm29ixUCoAt8Zk7Dv/JriyYVQPPkNSG5zC1D1LnPmXq0sdRxKdoZFpex5eIutaHxozmqQYiHlLzQZXjCNKbz9lOH6HbiaAFraJNZRCiuJUlPaD54uMx8MWQFo3/njgpMjE8/tCj116NFJ/uOogAxkSZVjza2AzifugJCP94poLr8qDnrAwrKKHLXDE9BQrXGARne+iyiDsxXMWg7csqrjfHGH6csv5BugXhyMYBfYQGISZr1wGI3SE9qhnBoZoNqXLvZGYDM6e8S7C98gkrFfYP9YBwZLRZgGEZhWCFaOM6xutZXxXh2fiZEMtKxslknoO4pkKJ8PUQEgM+RMIeYngSUf66dG1xAXhdjRq3pPq2XhVEBrrQUnEQq5+xtnxBrWOgvHUvMd+htdFqJDM6RZpYg9tw0st5AqGbdml2Tql4WKVQma9TPYXI+hvMCZ4M0QuNiFMTBn4+YGjCzJQY1tOFpsSbq93MXZVooFmXm0jpzcZtbiwBAZthErGx8IptH1cWzRm0maFyxlkgUmudgxypDoFzuw3FFdsFpadTI1JWLVCgRBgTIJhd37Pqab5t9ZCHaAUsoq/5EzO3dG0AAAAAAAA==" alt="MEF Üniversitesi CELT"></div>
+      <p>Kişiselleştirilmiş Öğrenme Deneyimi ve Coursera</p>
+    </div>
+    <div><a href="mailto:celt@mef.edu.tr">celt@mef.edu.tr</a></div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  "use strict";
+
+  /* ============ CONFIG — CELT ekibi burayı güncelleyebilir ============ */
+  // Süreç rehberinde vurgulanacak aşama. Şu değerlerden biri olmalı:
+  // 'apply' | 'result' | 'bundle' | 'learn' | 'deliver' | 'transcript'
+  var CURRENT_STEP = 'apply';
+
+  var LINKS = {
+    applicationForm: 'https://forms.gle/QJtmagJb77CvF3P7A',
+    courseList: 'https://docs.google.com/spreadsheets/d/1UMVP2HVuiDOX4zz484hQk3gmw2C7w-qGyOb0diPqci4/edit?gid=0#gid=0',
+    senateTr: 'https://drive.google.com/file/d/1bt_UrSCg0MhVYgrwiip21y4fUv1BtR0i/view'
+  };
+
+  var STEP_LABELS = {
+    apply: 'Başvurular açık', result: 'Sonuçlar açıklanıyor', bundle: 'Ders seçimi',
+    learn: 'Dersler devam ediyor', deliver: 'Sertifika ve sunum teslimi', transcript: 'Transkriptler işleniyor'
+  };
+  var RAIL_LABELS = {
+    apply: 'Lisans talebi', result: 'Lisans dağıtımı', bundle: 'Ders seçimi',
+    learn: 'Dersleri tamamla', deliver: 'Belge teslimi', transcript: 'Transkript'
+  };
+
+  var STEPS = [
+    { key:'apply', title:"MOOC Lisans Talep Formu'nu doldur", tags:['celt'],
+      linkEmoji:'📝', linkTitle:'MOOC Lisans Talep Formu', linkUrl: LINKS.applicationForm,
+      desc: "<p>MOOC Lisans Talep Formu, her dönem başlamadan önce erişime açılır ve ekle-bırak döneminin sonunda kapanır. Coursera lisans talebini bu süre içinde form üzerinden ilet. Talepler, mevcut kontenjan ve program esasları doğrultusunda değerlendirilir. Lisans dağıtımında mezuniyet aşamasındaki 4. sınıf öğrencilerine öncelik verilir.</p>" },
+    { key:'result', title:'Lisans talebinin sonucunu takip et', tags:['celt'],
+      noteEmoji:'☀️', noteLabel:'Önemli not:', noteType:'red',
+      noteText:"Coursera yaz döneminde de erişime açılır; ancak bölüm kararı gereği Endüstri Mühendisliği Bölümü öğrencilerinin yaz döneminde tamamladıkları Coursera dersleri PLE kapsamında kredilendirilemez.",
+      desc: "<p>CELT, Coursera lisanslarını ders kayıtlarının başladığı tarihten ekle-bırak haftasının sonuna kadar aşamalı olarak tanımlar. Lisansın tanımlandığında MEF mail adresine CELT tarafından bir bilgilendirme maili gönderilir. Bu nedenle ekle-bırak haftası boyunca MEF mailini düzenli olarak kontrol et.</p><p>Bu dönem Coursera lisansı alamazsan bir sonraki dönemde yeniden lisans talebinde bulunabilirsin. Coursera lisans talep süreci Güz, Bahar ve Yaz dönemlerinde yürütülür.</p>" },
+    { key:'bundle', title:'MOOC Koordinatörüne danış', tags:['coord'], hasChecklist:true,
+      linkEmoji:'🎓', linkTitle:'Coursera kurs kataloğunu incele', linkUrl: LINKS.courseList,
+      noteEmoji:'💡', noteLabel:'Not:', noteType:'yellow',
+      noteText:"Bir dersin Coursera sertifikası sunması, tek başına PLE kapsamında kredilendirileceği anlamına gelmez. Bölümünün web sitesinde yayımlanan ders seçimi ve PLE kredilendirme yönergelerini mutlaka incele ve derse başlamadan önce MOOC Koordinatöründen uygunluk teyidi al. PLE kapsamında toplam en fazla 12 AKTS kredilendirebilirsin.",
+      desc: "<p>Coursera kurs kataloğunu inceleyerek hedeflerine ve bölümünün PLE koşullarına uygun dersleri belirle. Seçtiğin dersi PLE kapsamında kredilendirmek istiyorsan derse başlamadan önce bölümünün websitesini ziyaret et ve MOOC Koordinatörüyle iletişime geçerek dersin uygunluğunu teyit et.</p>" },
+    { key:'learn', title:"Derslerini tamamla ve içerik etkileşimini en az %70'te tut", tags:[],
+      noteEmoji:'✨', noteLabel:'İpucu:', noteType:'green',
+      noteText:"Videoları sonuna kadar izle, okuma materyallerini aç ve quizler ile ödevleri eksiksiz tamamla.",
+      desc: "<p>Coursera derslerini dönem boyunca düzenli olarak takip et. İçerik etkileşim oranı; videoları izleme, okuma materyallerini inceleme ve değerlendirme etkinliklerini tamamlama durumuna göre hesaplanır.</p><p>PLE kapsamında kredilendirilecek her ders için içerik etkileşim oranının en az %70 olması gerekir. Etkileşim oranı %70'in altında kalan öğrencilere CELT tarafından her ay bilgilendirme maili gönderilir.</p>" },
+    { key:'deliver', title:'Sertifikanı ve sunum kaydını teslim et', tags:['coord'],
+      desc: "<p>Dönem sonunda, tamamladığın her MOOC dersi için aşağıdaki iki belgeyi bölümünün MOOC Koordinatörüne teslim et:</p><p class=\"bullets\">•&nbsp; Coursera ders sertifikası<br>•&nbsp; Dersin ana fikrini ve öğrendiklerini anlattığın 2–5 dakikalık sunum kaydı</p><p>Coursera sertifikası ve sunum kaydı için teslim tarihleri bölümler tarafından belirlenir ve bölümlere göre farklılık gösterebilir. Belgelerini hangi tarihe kadar ve hangi yöntemle teslim etmen gerektiğini bölümünün duyurularından veya MOOC Koordinatöründen öğrenebilirsin.</p>" },
+    { key:'transcript', title:'PLE kredinin transkriptine işlenmesini takip et', tags:['coord','student'],
+      desc: "<p>Teslim ettiğin belgelerin kontrol edilmesi ve bölümündeki değerlendirme sürecinin tamamlanmasının ardından onaylanan PLE kredin transkriptine işlenir.</p><p>PLE ders kodu \"GE\" olarak dönem sonunda veya takip eden dönemde transkriptinde görünebilir. Eksik ya da hatalı bir bilgi olduğunu düşünüyorsan bölümünün MOOC Koordinatörüyle iletişime geçebilirsin.</p>" }
+  ];
+
+  var CHECKLIST = [
+    { emoji:'🏅', title:'Sertifika uygunluğunu kontrol et', text:"Dersi başarıyla tamamladığında sertifika alıp almayacağını hem Coursera kurs kataloğundan hem de Coursera'daki ders sayfasından kontrol et. Sertifika sunmayan içerikler PLE kapsamında kredilendirilemez." },
+    { emoji:'⏳', title:'Peer review süresini hesaba kat', text:"Dersin peer review ile değerlendirilen ödevler içerip içermediğini incele. Bu ödevlerin değerlendirilmesi genellikle 7–14 gün sürebilir ve değerlendirme tamamlanmadan sertifika oluşturulmaz. Bu nedenle ödevlerini dönem sonuna bırakma." },
+    { emoji:'📅', title:'Ders süresini ve çalışma yükünü incele', text:"Dersin tahminî tamamlanma süresini, haftalık çalışma yükünü ve modül sayısını kontrol et. Coursera'daki esnek teslim tarihleri, MEF tarafından açıklanan dönem sonu teslim tarihlerini değiştirmez." },
+    { emoji:'✅', title:'Zorunlu değerlendirmeleri kontrol et', text:"Ders kapsamında tamamlanması gereken quiz, ödev, proje, sınav veya capstone çalışması bulunup bulunmadığını incele. Sertifika alabilmek için ders sayfasında belirtilen tüm zorunlu değerlendirmeleri başarıyla tamamlaman gerekir." },
+    { emoji:'🌐', title:'Dil ve erişilebilirlik seçeneklerini değerlendir', text:"Dersin anlatım dilinin, altyazı seçeneklerinin ve içerik seviyesinin senin için uygun olduğundan emin ol. Ders için ön koşul, özel bir yazılım veya ek materyal gerekip gerekmediğini de kontrol et." },
+    { emoji:'🧩', title:'Program yapısını incele', text:'Bir Specialization veya Professional Certificate programı seçiyorsan programın kaç dersten oluştuğunu ve seçtiğin dersin tek başına sertifika sunup sunmadığını kontrol et.' }
+  ];
+
+  var CAL_CATS = {
+    Applications:      { label:'Başvurular',            color:'#E8432D', chipBg:'#FDECE8' },
+    Enrollment:         { label:'Kayıt & Kontenjan',      color:'#0056D2', chipBg:'#E7EEFB' },
+    'Academic Process':  { label:'Akademik Süreç',         color:'#1D7A46', chipBg:'#E5F3EB' },
+    'Engagement Reports':{ label:'Etkileşim Raporları',    color:'#B8860B', chipBg:'#FBF3DE' },
+    'Program Review':    { label:'Program Değerlendirme',  color:'#6B4FA0', chipBg:'#EFEAF7' }
+  };
+
+  var CALENDAR = [
+    ['01.09.2026', 'Applications', 'Coursera Güz Dönemi başvurularının açılması'],
+    ['07.09.2026', 'Enrollment', 'Yaz Döneminde kullanılan Coursera koltuklarının boşaltılması'],
+    ['27.09.2026', 'Applications', 'Coursera Güz Dönemi başvuruları için son tarih'],
+    ['07.09.2026 – 28.09.2026', 'Enrollment', "Yeni kabul edilen öğrencilerin Coursera Güz Dönemi kontenjanlarına yerleştirilmesi, 4. sınıflardan başlayarak lisans eklemeleri yapılır, bu dönemde her Cuma yapılacaktır."],
+    ['14.09.2026', 'Academic Process', "Güz Dönemi'nin başlaması"],
+    ['16.11.2026', 'Engagement Reports', 'İçerik etkileşim raporlarının MOOC koordinatörlerine iletilmesi. %70 altındaki öğrencilere uyarı e-postası'],
+    ['07.12.2026', 'Engagement Reports', 'İçerik etkileşim raporlarının MOOC koordinatörlerine iletilmesi. %70 altındaki öğrencilere uyarı e-postası'],
+    ['11.12.2026', 'Academic Process', 'Derslerin son günü'],
+    ['18.12.2026', 'Engagement Reports', 'İçerik etkileşim raporlarının MOOC koordinatörlerine iletilmesi. %70 altındaki öğrencilere uyarı e-postası'],
+    ['25.12.2026', 'Engagement Reports', 'İçerik etkileşim raporlarının MOOC koordinatörlerine iletilmesi. %70 altındaki öğrencilere uyarı e-postası'],
+    ['30.12.2026', 'Engagement Reports', 'İçerik etkileşim raporlarının YALNIZCA MOOC koordinatörlerine iletilmesi'],
+    ['03.01.2027', 'Academic Process', 'Dönem sonu not girişlerinin tamamlanması'],
+    ['TBD', 'Program Review', 'MOOC koordinatörleri ile program değerlendirme toplantısı. Teknolojik gelişmeler ve bölüm ihtiyaçları doğrultusunda müfredatın gözden geçirilmesi']
+  ];
+
+  var FACULTIES = [
+    { name: 'İktisadi, İdari ve Sosyal Bilimler Fakültesi', dot: '#0056D2', departments: [
+      { name: 'İşletme', coordinator: 'Rüya Yüksel', email: 'yukselzeh@mef.edu.tr' },
+      { name: 'İktisat', coordinator: 'Narod Erkol', email: 'erkoln@mef.edu.tr' },
+      { name: 'Siyaset Bilimi ve Uluslararası İlişkiler', coordinator: 'Begüm Uzun Taşkın', email: 'taskinbe@mef.edu.tr' },
+      { name: 'Psikoloji', coordinator: 'Melike Acar', email: 'acarmel@mef.edu.tr' }
+    ]},
+    { name: 'Mühendislik Fakültesi', dot: '#E8432D', departments: [
+      { name: 'Elektrik-Elektronik Mühendisliği', coordinator: 'Ebru Arısoy Saraçlar', email: 'saraclare@mef.edu.tr' },
+      { name: 'Makine Mühendisliği', coordinator: 'Mostafa Khalil Abdou Saleh', email: 'salehm@mef.edu.tr' },
+      { name: 'İnşaat Mühendisliği', coordinator: 'Gökçe Tönük', email: 'gokce.tonuk@mef.edu.tr' },
+      { name: 'Bilgisayar Mühendisliği', coordinator: 'İlker Bekmezci', email: 'bekmezcii@mef.edu.tr' },
+      { name: 'Endüstri Mühendisliği', coordinator: 'Şirin Özlem', email: 'ozlems@mef.edu.tr' }
+    ]},
+    { name: 'Sanat, Tasarım ve Mimarlık Fakültesi', dot: '#0056D2', departments: [
+      { name: 'Mimarlık', coordinator: 'Ayşe Hilal Uğurlu', email: 'ugurlua@mef.edu.tr' },
+      { name: 'İç Mimarlık', coordinator: 'Ayşe Hilal Uğurlu', email: 'ugurlua@mef.edu.tr' }
+    ]},
+    { name: 'Eğitim Fakültesi', dot: '#1D7A46', departments: [
+      { name: 'İngilizce Öğretmenliği', coordinator: 'Derya Altınmakas', email: 'altinmakasd@mef.edu.tr' },
+      { name: 'Rehberlik ve Psikolojik Danışmanlık', coordinator: 'Vincent Henry Sienkiewicz', email: 'sienkiewiczv@mef.edu.tr' },
+      { name: 'Matematik Öğretmenliği', coordinator: 'Bengi Birgili', email: 'birgilib@mef.edu.tr' }
+    ]},
+    { name: 'Hukuk Fakültesi', dot: '#E8432D', departments: [
+      { name: 'Hukuk', coordinator: 'Hülya Dinçer', email: 'dincerhu@mef.edu.tr' }
+    ]}
+  ];
+
+  var FAQ_GROUPS = [
+    { title: 'PLE Programı ve Kredilendirme', color: '#E8432D', items: [
+      { q: "Coursera lisans talebinde nasıl bulunabilirim?", a: "CELT, Coursera sürecine ilişkin takvimi her dönem ilan eder. İlan edilen tarihler arasında <b>MOOC Lisans Talep Formu'nu</b> doldurman gerekir. Talepler, mevcut kontenjanlar ve program esasları doğrultusunda değerlendirilir." },
+      { q: "Kontenjan dağıtımında kimlere öncelik verilir?", a: "Lisans dağıtımında mezuniyet aşamasındaki 4. sınıf öğrencilerine öncelik verilir. Lisans talep formunu doldurmak, Coursera lisansının kesin olarak tahsis edileceği anlamına gelmez." },
+      { q: "Bu dönem Coursera lisansı alamazsam ne yapabilirim?", a: "Bir sonraki dönemde yeniden lisans talebinde bulunabilirsin. Coursera lisans talep süreci Güz, Bahar ve Yaz dönemlerinde yürütülür." },
+      { q: "PLE kapsamında kredilendireceğim dersi nasıl seçmeliyim?", a: "Öncelikle bölümünün web sitesinde yayımlanan <b>MOOC/PLE ders listesini ve kredilendirme yönergelerini</b> incele. Bölümün uygun dersleri web sitesinde yayımlıyorsa seçimini bu listeye göre yap. Ders listesi bulunmuyorsa veya seçtiğin dersin uygunluğundan emin değilsen bölümünün MOOC Koordinatörüne danış.<br><br>Ayrıca dersin sertifika sunduğunu, tahminî tamamlanma süresini, zorunlu değerlendirmelerini ve peer review içerip içermediğini kontrol et." },
+      { q: "Her Coursera dersi PLE kredisine dönüşür mü?", a: "Hayır. Coursera'da bir dersi tamamlamak ve sertifika almak, dersin otomatik olarak PLE kredisine dönüşeceği anlamına gelmez. Dersin bölümünün PLE yönergelerine uygun olması ve ilgili akademik değerlendirme sürecinin tamamlanması gerekir." },
+      { q: "Sertifika sunmayan bir dersi kredilendirebilir miyim?", a: "Hayır. PLE kapsamında kredilendirilecek dersin, başarıyla tamamlandığında Coursera sertifikası sunması gerekir. Sertifika bilgisini hem Coursera kurs kataloğundan hem de Coursera'daki ders sayfasından kontrol edebilirsin.<br><br>Sertifika sunmayan içerikleri kişisel ve mesleki gelişimin için tamamlayabilirsin; ancak bu içerikler PLE kapsamında kredilendirilemez." },
+      { q: "En fazla kaç AKTS kredilendirebilirim?", a: "Öğrenimin boyunca PLE kapsamında toplam en fazla <b>12 AKTS</b> kredilendirebilirsin. Bir MOOC dersinin AKTS karşılığı bölüm tarafından belirlendiği için 12 AKTS'nin karşılık geldiği ders sayısı bölümlere göre değişebilir." },
+      { q: "12 AKTS sınırına ulaştıktan sonra Coursera dersi alabilir miyim?", a: "Evet. Coursera derslerine kişisel ve mesleki gelişimin için devam edebilirsin; ancak 12 AKTS sınırına ulaştıktan sonra tamamladığın yeni dersleri PLE kredisi olarak saydıramazsın." },
+      { q: "Bir dersi tamamlamış sayılmam nasıl belirlenir?", a: "Coursera sertifikasını alabilmek için ders kapsamında zorunlu olan tüm değerlendirmeleri başarıyla tamamlaman gerekir. PLE kredilendirmesi için ayrıca içerik etkileşim oranının <b>en az %70</b> olması, Coursera sertifikanın alınması ve sunum kaydının bölümüne teslim edilmesi gerekir. Coursera, sertifika için gerekli notlandırılmış değerlendirmelerin tamamlanmasını şart koşar. <a href='https://www.coursera.support/s/article/learner-000001563' target='_blank' rel='noopener'>Coursera: Değerlendirmeleri tamamlama ↗</a>" },
+      { q: "%70 içerik etkileşimi ne anlama gelir?", a: "İçerik etkileşimi; ders videolarını izleme, okuma materyallerini inceleme ve quiz, ödev ve değerlendirme etkinliklerini tamamlama durumuna göre hesaplanır. PLE kapsamında kredilendirilecek her ders için içerik etkileşim oranının en az %70 olması gerekir.<br><br>Dersi yalnızca hızlıca geçmek veya bazı içerikleri atlayarak sertifika almak, yeterli içerik etkileşiminin oluşmasını sağlamayabilir." },
+      { q: "Kendi içerik etkileşim verimi görebilir miyim?", a: "Öğrenciler içerik etkileşim verisini doğrudan görüntüleyemez. Bu veri MOOC Koordinatörleri tarafından takip edilir. Etkileşim oranın %70'in altında kalırsa CELT tarafından her ay bilgilendirme maili gönderilir." },
+      { q: "Peer review nedir ve neden önemlidir?", a: "Peer review, yüklediğin bir ödevin diğer Coursera öğrencileri tarafından belirlenen ölçütlere göre değerlendirilmesidir. Bazı derslerde sertifika alabilmek için peer review ödevini teslim etmen, gerekli sayıda öğrenci ödevini değerlendirmen ve kendi çalışman için değerlendirme alman gerekir. <a href='https://www.coursera.support/s/article/learner-000001352' target='_blank' rel='noopener'>Coursera: Peer review ödevleri ↗</a><br><br>Değerlendirme süreci genellikle <b>7–14 gün</b> sürebilir ve yeterli değerlendirme alınamadığında uzayabilir. Bu nedenle peer review ödevlerini bölümünün sertifika teslim tarihine bırakmamalısın." },
+      { q: "Dönem sonunda ne teslim etmem gerekiyor?", a: "Tamamladığın her MOOC dersi için aşağıdaki iki belgeyi bölümünün MOOC Koordinatörüne teslim etmelisin:<br><br>1. Coursera ders sertifikası<br>2. Dersin ana fikrini ve öğrendiklerini anlattığın <b>2–5 dakikalık sunum kaydı</b>" },
+      { q: "Sertifika ve sunum kaydı için son teslim tarihini nereden öğrenebilirim?", a: "Teslim tarihleri ve teslim yöntemi bölümler tarafından belirlenir ve bölümlere göre farklılık gösterebilir. Güncel teslim tarihini bölümünün web sitesinden, bölüm duyurularından veya MOOC Koordinatöründen öğrenmelisin.<br><br>Coursera'daki esnek ders tarihleri, bölümünün belirlediği sertifika teslim tarihini değiştirmez." },
+      { q: "GE kodu transkriptime ne zaman işlenir?", a: "Belgelerinin kontrol edilmesi, bölüm değerlendirmesi ve ilgili akademik onayların tamamlanmasının ardından PLE kredin transkriptine işlenir. <b>“GE”</b> ders kodu dönem sonunda veya takip eden dönemde transkriptinde görünebilir.<br><br>Eksik veya hatalı bir bilgi olduğunu düşünüyorsan bölümünün MOOC Koordinatörüyle iletişime geçebilirsin." },
+      { q: "Endüstri Mühendisliği öğrencileri yaz döneminde PLE yapabilir mi?", a: "Coursera yaz döneminde de erişime açılır; ancak Endüstri Mühendisliği Bölümü öğrencilerinin yaz döneminde tamamladıkları Coursera dersleri PLE kapsamında kredilendirilemez. Yaz döneminde Coursera derslerine kişisel ve mesleki gelişim amacıyla devam edilebilir." },
+      { q: "PLE Programı'nın resmî esaslarına nereden ulaşabilirim?", a: "Kredilendirme sürecinin resmî dayanağına aşağıdaki belgeden ulaşabilirsin:<br><br><b>PLE Programı Esasları – MEF Üniversitesi Senato Kararı (2019)</b> — Kredilendirme sekmesindeki bağlantıdan açabilirsin." },
+      { q: "CELT'e mi, MOOC Koordinatörüme mi yazmalıyım?", a: "<b>CELT:</b> Coursera lisans talebi, lisans dağıtımı, Coursera erişimi ve içerik etkileşim uyarıları için <a href='mailto:celt@mef.edu.tr'>celt@mef.edu.tr</a> adresine yazabilirsin.<br><br><b>Bölüm veya MOOC Koordinatörü:</b> Ders seçimi, PLE uygunluğu, AKTS eşleştirmesi, sertifika ve sunum kaydı teslimi ile kredilendirme süreçleri için bölümüne başvurmalısın.<br><br><b>Coursera Destek:</b> Kilitli değerlendirmeler, eksik sertifika, isim veya kimlik doğrulama ve hesap birleştirme gibi platform kaynaklı teknik sorunlar için <a href='https://www.coursera.support/s/learner-help-center' target='_blank' rel='noopener'>Coursera Learner Help Center ↗</a> üzerinden destek alabilirsin." }
+    ]},
+    { title: 'Coursera Kullanımı ve Teknik Sorular', color: '#0056D2', items: [
+      { q: "Coursera hesabıma nasıl giriş yapmalıyım?", a: "Coursera lisansının tanımlandığı <b>MEF uzantılı mail adresini</b> kullanmalısın. Coursera giriş ekranında <b>“Google ile devam et”</b> seçeneğini seçerek MEF Google hesabınla giriş yapabilirsin.<br><br>Daha önce farklı bir giriş yöntemi kullandıysan doğru Coursera hesabında olduğundan emin ol. Coursera, Google hesabının mevcut Coursera hesabına bağlanmasına izin verir. <a href='https://www.coursera.support/s/article/learner-000001888' target='_blank' rel='noopener'>Coursera: Google hesabıyla giriş ↗</a>" },
+      { q: "Coursera lisansım tanımlandı ancak dersler ücretli görünüyor. Ne yapmalıyım?", a: "Öncelikle MEF uzantılı mail adresinin bağlı olduğu doğru Coursera hesabında bulunduğunu kontrol et. Kişisel Coursera hesabınla giriş yaptıysan MEF lisansına dâhil içerikler ücretli görünebilir.<br><br>Herhangi bir ödeme yapmadan önce hesabından çıkış yaparak <b>“Google ile devam et”</b> seçeneğiyle MEF hesabına yeniden giriş yap. Sorun devam ederse ekran görüntüsüyle birlikte <a href='mailto:celt@mef.edu.tr'>celt@mef.edu.tr</a> adresine yaz." },
+      { q: "Bir dersin sertifika verip vermediğini nasıl kontrol edebilirim?", a: "Sertifika bilgisini Coursera kurs kataloğundan ve Coursera'daki ders sayfasından kontrol edebilirsin. Ders sayfasında sertifika sunulduğuna ilişkin bilgi bulunmuyorsa dersi PLE amacıyla seçmemelisin.<br><br>Bir Specialization veya Professional Certificate programı seçiyorsan programın kaç dersten oluştuğunu ve seçtiğin dersin tek başına sertifika sunup sunmadığını da kontrol et." },
+      { q: "Coursera sertifikası alabilmek için ne yapmalıyım?", a: "Ders kapsamında zorunlu olan tüm notlandırılmış quizleri, ödevleri, projeleri ve sınavları başarıyla tamamlamalısın. Peer review zorunluysa bu değerlendirme de tamamlanmadan sertifikan oluşturulmayabilir. Coursera ayrıca isim doğrulaması; bazı ders ve programlarda ise kimlik doğrulaması isteyebilir. <a href='https://www.coursera.support/s/article/learner-000001268' target='_blank' rel='noopener'>Coursera: Sertifika alma koşulları ↗</a>" },
+      { q: "Sertifikamı nereden indirebilirim?", a: "Coursera hesabına giriş yaptıktan sonra <b>My Learning</b> bölümünü aç ve <b>Certificates</b> sekmesine git. Buradan kazandığın sertifikayı görüntüleyebilir, indirebilir veya paylaşabilirsin. <a href='https://www.coursera.support/s/article/learner-000001329' target='_blank' rel='noopener'>Coursera: Sertifika indirme ve paylaşma ↗</a><br><br>Sertifikanı hangi formatta teslim etmen gerektiğini bölümünün duyurularından veya MOOC Koordinatöründen öğrenmelisin." },
+      { q: "Dersi tamamladım ancak sertifikam oluşmadı. Ne yapmalıyım?", a: "Öncelikle aşağıdakileri kontrol et:<br><br>• Tüm zorunlu ve notlandırılmış değerlendirmeleri geçtin mi?<br>• Bekleyen bir peer review ödevin var mı?<br>• Gerekli sayıda öğrenci ödevini değerlendirdin mi?<br>• İsim veya kimlik doğrulaman tamamlandı mı?<br>• Dersi MEF lisansının tanımlı olduğu doğru Coursera hesabında mı tamamladın?<br><br>Sorun devam ederse <a href='https://www.coursera.support/s/article/learner-000001456' target='_blank' rel='noopener'>Coursera'nın sertifika sorunları rehberini ↗</a> incele ve Coursera Destek ile iletişime geç. Bölümünün teslim tarihi yaklaşıyorsa durumu ekran görüntüleriyle birlikte CELT'e ve MOOC Koordinatörüne bildir." },
+      { q: "Peer review ödevim değerlendirilmiyor. Ne yapabilirim?", a: "Ödevini doğru şekilde gönderdiğini ve sistemin istediği sayıda öğrenci ödevini değerlendirdiğini kontrol et. Değerlendirme beklerken dersin tartışma alanında diğer öğrencilerden çalışmanı değerlendirmelerini isteyebilirsin.<br><br>Sorun devam ederse <a href='https://www.coursera.support/s/article/learner-000001477' target='_blank' rel='noopener'>Coursera'nın peer review sorun giderme adımlarını ↗</a> takip et. Bölümünün sertifika teslim tarihinin değişmediğini unutma." },
+      { q: "Sertifikamda ismim yanlış görünüyor. Nasıl düzeltebilirim?", a: "Coursera sertifikalarında hesabındaki <b>doğrulanmış isim</b> kullanılır. Coursera hesabında <b>Settings</b> bölümüne giderek isim doğrulama alanını kontrol et. Doğrulanmış isminin resmî belgelerindeki adınla eşleşmesi gerekir. <a href='https://www.coursera.support/s/article/learner-000002203' target='_blank' rel='noopener'>Coursera: Doğrulanmış ismi güncelleme ↗</a><br><br>Sertifikanı bölümüne teslim etmeden önce isim bilgisinin doğru olduğundan emin ol." },
+      { q: "Coursera neden isim veya kimlik doğrulaması istiyor?", a: "Coursera, sertifikanın doğru kişiye düzenlenebilmesi için isim doğrulaması ister. Çoğu derste isim doğrulaması yeterliyken bazı ders ve programlarda kimlik doğrulaması da gerekebilir. <a href='https://www.coursera.support/s/article/learner-000001457' target='_blank' rel='noopener'>Coursera: İsim doğrulama ↗</a> ve <a href='https://www.coursera.support/s/article/learner-000001213' target='_blank' rel='noopener'>kimlik doğrulama ↗</a> adımlarını Coursera üzerinden tamamlayabilirsin.<br><br>Doğrulama sırasında teknik bir sorun yaşarsan kimlik belgeni CELT'e göndermek yerine Coursera Destek ile iletişime geç. Sorun bölümünün teslim tarihini etkiliyorsa CELT'i ve MOOC Koordinatörünü ayrıca bilgilendir." },
+      { q: "Coursera'daki ders teslim tarihini kaçırırsam ne olur?", a: "Bazı Coursera derslerinde kaçırılan değerlendirme tarihleri yeniden planlanabilir veya sistem tarafından sıfırlanabilir. Ancak Coursera'daki tarihin değişmesi, bölümünün Coursera sertifikası ve sunum kaydı için belirlediği teslim tarihini uzatmaz. <a href='https://www.coursera.support/s/article/learner-000001570' target='_blank' rel='noopener'>Coursera: Değerlendirme tarihleri ↗</a>" },
+      { q: "Birden fazla Coursera hesabım varsa ne yapmalıyım?", a: "Derslerinin, ilerleme bilgilerinin ve sertifikalarının farklı hesaplara dağılmaması için MEF lisansının tanımlı olduğu hesabı kullanmaya devam et. Coursera, uygun durumlarda birden fazla hesabı birleştirme konusunda destek sağlayabilir. <a href='https://www.coursera.support/s/article/learner-000001500' target='_blank' rel='noopener'>Coursera: Birden fazla hesabı birleştirme ↗</a><br><br>Hesaplarını kendi başına silmeden veya yeni bir hesap oluşturmadan önce Coursera Destek ile iletişime geç." },
+      { q: "Seçtiğim ders Coursera kataloğundan kaldırılırsa ne yapmalıyım?", a: "Coursera kurs kataloğu zaman içinde değişebilir. Derse başlamadan önce dersin güncel katalogda bulunduğunu ve erişilebilir olduğunu kontrol et.<br><br>Ders katalogdan kaldırılmışsa veya erişime kapanmışsa başka bir ders seçmeden önce bölümünün web sitesindeki güncel listeyi incele. Dersin PLE uygunluğu konusunda belirsizlik varsa MOOC Koordinatörüne danış." },
+      { q: "Coursera'da teknik bir sorun yaşarsam nereye başvurmalıyım?", a: "Öncelikle <a href='https://www.coursera.support/s/learner-help-center' target='_blank' rel='noopener'>Coursera Learner Help Center ↗</a> üzerindeki ilgili sorun giderme adımlarını incele. Çözüm bulamazsan Coursera Destek ekibiyle iletişime geçebilirsin.<br><br>Sorun MEF lisansının hesabına tanımlanmaması, Coursera erişimin veya CELT tarafından gönderilen etkileşim uyarısıyla ilgiliyse <a href='mailto:celt@mef.edu.tr'>celt@mef.edu.tr</a> adresine yaz. Ders seçimi, sertifika teslimi veya kredilendirme ile ilgiliyse bölümünün MOOC Koordinatörüne başvur." }
+    ]}
+  ];
+
+  var TAG_LABEL = { celt:'CELT', coord:'MOOC KOORDİNATÖRÜ', student:'ÖĞRENCİ İŞLERİ' };
+  var NOTE_STYLES = {
+    red:    { bg:'#FDECE8', border:'#F6C9BE', color:'#8A2A18' },
+    yellow: { bg:'#FFF9E8', border:'#F0E0B0', color:'#6B5518' },
+    green:  { bg:'#EAF6EF', border:'#BFE3CD', color:'#1D5C38' }
+  };
+  var TAB_DEFS = [
+    { key:'process', label:'Süreç Rehberi' },
+    { key:'calendar', label:'Akademik Takvim' },
+    { key:'catalog', label:'Ders Kataloğu' },
+    { key:'rules', label:'Kredilendirme' },
+    { key:'departments', label:'Koordinatörler' },
+    { key:'faq', label:'SSS' }
+  ];
+
+  /* ============ RENDER: NAV ============ */
+  var navLinks = document.getElementById('navLinks');
+  TAB_DEFS.forEach(function(t){
+    var btn = document.createElement('button');
+    btn.className = 'nav-btn';
+    btn.type = 'button';
+    btn.dataset.tab = t.key;
+    btn.textContent = t.label;
+    navLinks.appendChild(btn);
+  });
+  document.getElementById('applyFormLink').href = LINKS.applicationForm;
+
+  /* ============ TAB SWITCHING ============ */
+  var panels = {};
+  document.querySelectorAll('[data-panel]').forEach(function(el){ panels[el.dataset.panel] = el; });
+
+  function showTab(key, opts){
+    opts = opts || {};
+    if (!panels[key]) key = 'home';
+    Object.keys(panels).forEach(function(k){ panels[k].style.display = (k === key) ? '' : 'none'; });
+    document.querySelectorAll('.nav-btn').forEach(function(b){ b.classList.toggle('active', b.dataset.tab === key); });
+    if (!opts.noScroll) { try { window.scrollTo({ top: 0, behavior: 'smooth' }); } catch (e) { window.scrollTo(0, 0); } }
+  }
+
+  document.addEventListener('click', function(e){
+    var el = e.target.closest('[data-tab]');
+    if (!el) return;
+    e.preventDefault();
+    showTab(el.dataset.tab);
+  });
+
+  /* ============ PROCESS: RAIL + STEP CARD ============ */
+  var currentIdx = Math.max(0, STEPS.findIndex(function(s){ return s.key === CURRENT_STEP; }));
+  var selectedIdx = currentIdx;
+  var checklistOpen = true;
+
+  document.getElementById('heroStepLabel').textContent = STEP_LABELS[CURRENT_STEP] || STEP_LABELS.apply;
+  document.getElementById('processStepLabel').textContent = STEP_LABELS[CURRENT_STEP] || STEP_LABELS.apply;
+
+  var railEl = document.getElementById('stepRail');
+  var stepCardEl = document.getElementById('stepCard');
+
+  function renderRail(){
+    railEl.innerHTML = '';
+    STEPS.forEach(function(s, i){
+      var done = i < currentIdx, isCurrent = i === currentIdx, sel = i === selectedIdx;
+      var btn = document.createElement('button');
+      btn.type = 'button';
+      btn.className = 'rail-btn' + (done ? ' done' : '') + (isCurrent ? ' current' : '') + (sel ? ' selected' : '');
+      var circle = document.createElement('span');
+      circle.className = 'circle';
+      circle.textContent = done ? '✓' : String(i + 1);
+      var label = document.createElement('span');
+      label.className = 'label';
+      label.textContent = RAIL_LABELS[s.key];
+      btn.appendChild(circle);
+      btn.appendChild(label);
+      btn.addEventListener('click', function(){ selectedIdx = i; renderRail(); renderStepCard(); });
+      railEl.appendChild(btn);
+    });
+  }
+
+  function renderStepCard(){
+    var i = selectedIdx, s = STEPS[i];
+    var done = i < currentIdx, isCurrent = i === currentIdx;
+    var card = document.createElement('div');
+    card.className = 'step-card' + (isCurrent ? ' current' : (done ? ' done' : ''));
+    card.id = 'step-' + s.key;
+
+    var ghost = document.createElement('div');
+    ghost.className = 'step-ghost';
+    ghost.textContent = String(i + 1);
+    card.appendChild(ghost);
+
+    var content = document.createElement('div');
+    content.className = 'step-content';
+
+    var badges = document.createElement('div');
+    badges.className = 'step-badges';
+    var eyebrow = document.createElement('span');
+    eyebrow.className = 'step-eyebrow';
+    eyebrow.textContent = 'Adım ' + (i + 1);
+    badges.appendChild(eyebrow);
+    (s.tags || []).forEach(function(tag){
+      var chip = document.createElement('span');
+      chip.className = 'tag-chip ' + tag;
+      chip.textContent = TAG_LABEL[tag];
+      badges.appendChild(chip);
+    });
+    if (isCurrent) {
+      var cur = document.createElement('span');
+      cur.className = 'tag-chip current';
+      cur.textContent = 'ŞU ANKİ AŞAMA';
+      badges.appendChild(cur);
+    } else if (done) {
+      var doneChip = document.createElement('span');
+      doneChip.className = 'tag-chip done';
+      doneChip.textContent = 'TAMAMLANDI';
+      badges.appendChild(doneChip);
+    }
+    content.appendChild(badges);
+
+    var title = document.createElement('div');
+    title.className = 'step-title';
+    title.textContent = s.title;
+    content.appendChild(title);
+
+    var body = document.createElement('div');
+    body.className = 'step-body';
+
+    if (s.hasChecklist) {
+      var panel = document.createElement('div');
+      panel.className = 'checklist-panel ' + (checklistOpen ? 'open' : 'closed');
+      var toggle = document.createElement('button');
+      toggle.type = 'button';
+      toggle.className = 'checklist-toggle';
+      toggle.innerHTML = '<span class="title">Ders seçerken şunlara dikkat et</span><span class="meta"><span class="count">6 KONTROL</span><span class="icon">' + (checklistOpen ? '−' : '+') + '</span></span>';
+      toggle.addEventListener('click', function(){ checklistOpen = !checklistOpen; renderStepCard(); });
+      panel.appendChild(toggle);
+      var items = document.createElement('div');
+      items.className = 'checklist-items';
+      CHECKLIST.forEach(function(c, ci){
+        var row = document.createElement('div');
+        row.className = 'checklist-item';
+        row.innerHTML = '<span class="no">' + String(ci + 1).padStart(2, '0') + '</span><span><span class="ctitle">' + c.emoji + ' ' + c.title + '</span><span class="ctext">' + c.text + '</span></span>';
+        items.appendChild(row);
+      });
+      panel.appendChild(items);
+      body.appendChild(panel);
+    }
+
+    var desc = document.createElement('div');
+    desc.className = 'step-desc';
+    desc.innerHTML = s.desc;
+    body.appendChild(desc);
+    content.appendChild(body);
+
+    if (s.noteText) {
+      var ns = NOTE_STYLES[s.noteType];
+      var note = document.createElement('div');
+      note.className = 'step-note';
+      note.style.background = ns.bg;
+      note.style.borderColor = ns.border;
+      note.style.color = ns.color;
+      note.innerHTML = '<span class="emoji">' + s.noteEmoji + '</span><span class="text"><strong>' + s.noteLabel + '</strong> ' + s.noteText + '</span>';
+      content.appendChild(note);
+    }
+
+    if (s.linkUrl) {
+      var link = document.createElement('a');
+      link.className = 'step-link';
+      link.href = s.linkUrl;
+      link.target = '_blank';
+      link.rel = 'noopener';
+      link.innerHTML = '<span class="emoji">' + s.linkEmoji + '</span><span class="title">' + s.linkTitle + '</span><span class="arrow">↗</span>';
+      content.appendChild(link);
+    }
+
+    card.appendChild(content);
+    stepCardEl.innerHTML = '';
+    stepCardEl.appendChild(card);
+  }
+
+  renderRail();
+  renderStepCard();
+
+  /* ============ CALENDAR ============ */
+  var calLegend = document.getElementById('calLegend');
+  Object.keys(CAL_CATS).forEach(function(k){
+    var cat = CAL_CATS[k];
+    var item = document.createElement('div');
+    item.className = 'cal-legend-item';
+    item.innerHTML = '<span class="sw" style="background:' + cat.color + '"></span>' + cat.label;
+    calLegend.appendChild(item);
+  });
+
+  var calList = document.getElementById('calList');
+  CALENDAR.forEach(function(row){
+    var date = row[0], catKey = row[1], event = row[2];
+    var cat = CAL_CATS[catKey];
+    var el = document.createElement('div');
+    el.className = 'cal-row';
+    el.style.borderLeftColor = cat.color;
+    el.innerHTML = '<div class="date">' + date + '</div>' +
+      '<div><span class="chip" style="background:' + cat.chipBg + '; color:' + cat.color + '">' + cat.label + '</span></div>' +
+      '<div class="event">' + event + '</div>';
+    calList.appendChild(el);
+  });
+
+  /* ============ DEPARTMENTS ============ */
+  var facultyList = document.getElementById('facultyList');
+  FACULTIES.forEach(function(f, fi){
+    var item = document.createElement('div');
+    item.className = 'fac-item' + (fi === 0 ? ' open' : '');
+
+    var toggle = document.createElement('button');
+    toggle.type = 'button';
+    toggle.className = 'fac-toggle';
+    toggle.innerHTML = '<span class="left"><span class="fac-dot" style="background:' + f.dot + '"></span><span class="fac-name">' + f.name + '</span><span class="fac-count">' + f.departments.length + ' bölüm</span></span><span class="fac-icon">' + (fi === 0 ? '−' : '+') + '</span>';
+    toggle.addEventListener('click', function(){
+      var willOpen = !item.classList.contains('open');
+      item.classList.toggle('open', willOpen);
+      toggle.querySelector('.fac-icon').textContent = willOpen ? '−' : '+';
+    });
+    item.appendChild(toggle);
+
+    var body = document.createElement('div');
+    body.className = 'fac-body';
+    var depts = document.createElement('div');
+    depts.className = 'fac-depts';
+    f.departments.forEach(function(d){
+      var row = document.createElement('div');
+      row.className = 'fac-dept-row';
+      row.innerHTML = '<span class="dname">' + d.name + '</span><span class="dcoord">' + d.coordinator + '</span><span><a href="mailto:' + d.email + '">' + d.email + '</a></span>';
+      depts.appendChild(row);
+    });
+    body.appendChild(depts);
+    item.appendChild(body);
+
+    facultyList.appendChild(item);
+  });
+
+  /* ============ FAQ ============ */
+  var faqTabsEl = document.getElementById('faqTabs');
+  var faqListEl = document.getElementById('faqList');
+  var faqCat = 0;
+
+  function renderFaqTabs(){
+    faqTabsEl.innerHTML = '';
+    FAQ_GROUPS.forEach(function(g, gi){
+      var btn = document.createElement('button');
+      btn.type = 'button';
+      btn.className = 'faq-tab' + (gi === faqCat ? ' active' : '');
+      btn.innerHTML = g.title + ' <span class="pill">' + g.items.length + '</span>';
+      btn.addEventListener('click', function(){ faqCat = gi; renderFaqTabs(); renderFaqList(); });
+      faqTabsEl.appendChild(btn);
+    });
+  }
+
+  function renderFaqList(){
+    faqListEl.innerHTML = '';
+    FAQ_GROUPS[faqCat].items.forEach(function(item){
+      var el = document.createElement('div');
+      el.className = 'faq-item';
+      var btn = document.createElement('button');
+      btn.type = 'button';
+      btn.className = 'faq-toggle';
+      btn.innerHTML = '<span>' + item.q + '</span><span class="icon">+</span>';
+      var bodyEl = document.createElement('div');
+      bodyEl.className = 'faq-body';
+      bodyEl.innerHTML = item.a;
+      btn.addEventListener('click', function(){
+        var willOpen = !el.classList.contains('open');
+        faqListEl.querySelectorAll('.faq-item.open').forEach(function(o){
+          o.classList.remove('open');
+          o.querySelector('.faq-toggle .icon').textContent = '+';
+        });
+        if (willOpen) {
+          el.classList.add('open');
+          btn.querySelector('.icon').textContent = '−';
+        }
+      });
+      el.appendChild(btn);
+      el.appendChild(bodyEl);
+      faqListEl.appendChild(el);
+    });
+  }
+
+  renderFaqTabs();
+  renderFaqList();
+
+  /* ============ INITIAL VIEW ============ */
+  showTab('home', { noScroll: true });
+})();
+</script>
+</body>
+</html>
