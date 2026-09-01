@@ -46,6 +46,11 @@
   .nav-btn:hover{background:#E9EFFB; color:var(--navy)}
   .nav-btn.active{background:var(--navy); color:#fff}
   .nav-btn.active:hover{background:var(--navy)}
+  .lang-toggle{display:flex; align-items:center; gap:2px; background:#EDF2F9; border:1px solid var(--border4); border-radius:999px; padding:3px; flex-shrink:0}
+  .lang-btn{all:unset; box-sizing:border-box; cursor:pointer; font-family:'Bricolage Grotesque',sans-serif; font-weight:800; font-size:12.5px; letter-spacing:.6px; padding:7px 14px; border-radius:999px; min-height:30px; display:inline-flex; align-items:center; color:var(--muted)}
+  .lang-btn:hover{color:var(--navy)}
+  .lang-btn.active{background:var(--navy); color:#fff}
+  .lang-btn.active:hover{color:#fff}
 
   /* HERO */
   header.hero{background:linear-gradient(150deg,#D6E4FA 0%,#EAF1FC 30%,#FDFBF7 60%,#DCE6FA 100%); background-image:repeating-linear-gradient(180deg,transparent 0px,transparent 43px,rgba(31,45,92,.10) 43px,rgba(31,45,92,.10) 44px),linear-gradient(150deg,#D6E4FA 0%,#EAF1FC 30%,#FDFBF7 60%,#DCE6FA 100%); padding:clamp(52px,8vw,104px) clamp(18px,4vw,48px) clamp(56px,8vw,112px); position:relative; overflow:hidden}
@@ -319,713 +324,631 @@
 </head>
 <body>
 
-<!-- NAV -->
 <nav>
-  <a href="#top" class="nav-logo" data-tab="home">
-    <img src="data:image/webp;base64,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" alt="MEF Üniversitesi CELT">
+  <a href="#top" class="nav-logo" data-action="tab:home">
+    <img src="data:image/webp;base64,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" alt="MEF University CELT">
     <div class="nav-divider"></div>
-    <div class="nav-brand">Kişiselleştirilmiş Öğrenme Deneyimi ve Coursera</div>
+    <div class="nav-brand" id="navBrand"></div>
   </a>
   <div class="nav-spacer"></div>
   <div class="nav-links" id="navLinks"></div>
+  <div class="lang-toggle" id="langToggle"></div>
 </nav>
 
-<!-- HERO -->
 <header id="top" class="hero" data-panel="home">
   <div class="hero-blob-1"></div>
   <div class="hero-blob-2"></div>
   <div class="hero-blob-3"></div>
-  <div class="hero-inner">
-    <div class="hero-badge"><span class="dot"></span>2026–2027 Güz · <span id="heroStepLabel"></span></div>
-    <h1>Öğrenme yolculuğunu <span class="accent">sen tasarla.<span class="underline"></span></span></h1>
-    <div class="hero-cards">
-      <a href="#" id="applyFormLink" target="_blank" rel="noopener" class="hero-card red">
-        <span class="emoji">📝</span>
-        <span class="title">Lisans talep formu</span>
-        <span class="desc">Coursera kontenjanı için başvurunu yap</span>
-        <span class="cta">Formu aç ↗</span>
-      </a>
-      <a href="#catalog" data-tab="catalog" class="hero-card white">
-        <span class="emoji">🎓</span>
-        <span class="title">Coursera kurs kataloğu</span>
-        <span class="desc">Tüm katalog MEF öğrencilerine açık</span>
-        <span class="cta">Dersleri gör →</span>
-      </a>
-      <a href="#process" data-tab="process" class="hero-card navy">
-        <span class="emoji">🧭</span>
-        <span class="title">Süreçte neredeyiz?</span>
-        <span class="desc">6 adımlık rehber ve bu dönemin aşaması</span>
-        <span class="cta">Rehberi aç →</span>
-      </a>
-    </div>
-  </div>
+  <div class="hero-inner" id="heroInner"></div>
 </header>
 
-<!-- 1. PROCESS -->
 <section id="process" class="tab-section section-bg-6" data-panel="process">
-  <div class="wrap">
-    <div class="eyebrow">Adım Adım Ne Yapmalıyım?</div>
-    <div class="process-heading-row">
-      <h2 class="h2">Başvurudan krediye <span class="accent">6 adım</span></h2>
-      <div class="current-pill"><span class="dot"></span>Şu an buradayız: <span id="processStepLabel"></span></div>
-    </div>
-    <p class="process-intro">CELT, her dönem Coursera takvimini ilan eder. Lisans talebinden derslerinin PLE kapsamında kredilendirilmesine kadar izlemen gereken tüm adımları aşağıda bulabilirsin. Takvimde yer alan önemli tarihleri takip etmeyi unutma.</p>
-    <p class="process-legend"><span class="tag-chip celt">CELT</span>&nbsp;etiketi bulunan adımlara ilişkin sorularını&nbsp;<a href="mailto:celt@mef.edu.tr">celt@mef.edu.tr</a> adresine iletebilirsin. Ders seçimi, kredilendirme ve belge teslimiyle ilgili konularda ise bölümünün&nbsp;<span class="tag-chip coord">MOOC KOORDİNATÖRÜ</span> ile iletişime geçmelisin.</p>
-    <a href="#calendar" data-tab="calendar" class="resource-link">
-      <span class="emoji">🗓️</span>
-      <span><span class="title">2026 - 27 Güz dönemi tarihleri</span><span class="sub">Lisans talebi, kayıt ve teslim tarihleri için Akademik Takvim'e bak</span></span>
-      <span class="arrow">→</span>
-    </a>
-
-    <div class="rail" id="stepRail"></div>
-    <div id="stepCard"></div>
-  </div>
+  <div class="wrap" id="processWrap"></div>
 </section>
 
-<!-- 2. ACADEMIC CALENDAR -->
 <section id="calendar" class="tab-section section-bg-5" data-panel="calendar">
-  <div class="wrap">
-    <div class="eyebrow">Ne Zaman Ne Oluyor?</div>
-    <h2 class="h2">2026–2027 Güz Dönemi takvimi</h2>
-    <p class="catalog-intro" style="margin-bottom:32px">Başvuru, kayıt, etkileşim raporları ve akademik tarihleri tek bakışta gör. Renkler kategoriyi gösterir.</p>
-    <div class="cal-legend" id="calLegend"></div>
-    <div class="cal-list" id="calList"></div>
-    <p class="footnote">Tarihler CELT tarafından güncellenebilir. Güncel takvim için CELT duyurularını takip et.</p>
-  </div>
+  <div class="wrap" id="calendarWrap"></div>
 </section>
 
-<!-- 3. CATALOG -->
 <section id="catalog" class="tab-section section-bg-4" data-panel="catalog">
-  <div class="wrap" style="max-width:1120px">
-    <div class="eyebrow" style="margin-bottom:14px">Hangi Dersleri Alabilirim?</div>
-    <div class="catalog-head" style="align-items:flex-end; margin-bottom:22px">
-      <div>
-        <h2 class="h2" style="margin:0 0 10px">Güncel Coursera kurs kataloğu</h2>
-        <div style="display:flex; flex-wrap:wrap; gap:8px">
-          <span class="catalog-pill"><span class="dot"></span>Tüm katalog açık</span>
-        </div>
-      </div>
-      <a href="https://docs.google.com/spreadsheets/d/1UMVP2HVuiDOX4zz484hQk3gmw2C7w-qGyOb0diPqci4/edit?gid=0#gid=0" target="_blank" rel="noopener" class="btn-red">Tam ekranda aç ↗</a>
-    </div>
-    <div class="catalog-browser">
-      <div class="catalog-toolbar">
-        <span class="catalog-dots"><span style="background:#E8432D"></span><span style="background:#F0A028"></span><span style="background:#5CDB95"></span></span>
-        <span class="catalog-address">coursera-kurs-katalogu · MEF CELT</span>
-        <span class="catalog-live">CANLI LİSTE</span>
-      </div>
-      <div class="catalog-frame-inner">
-        <iframe src="https://docs.google.com/spreadsheets/d/1UMVP2HVuiDOX4zz484hQk3gmw2C7w-qGyOb0diPqci4/preview?gid=0&widget=true&headers=false&rm=minimal" title="Coursera kurs kataloğu" loading="lazy"></iframe>
-      </div>
-    </div>
-    <div class="catalog-tip">
-      <span class="emoji">💡</span>
-      <div>Dersin sertifika verip vermediğini ve süresini bu listeden ve Coursera'daki ders sayfasından kontrol edebilirsin. Liste Coursera tarafından düzenli olarak güncellenir; arama ve filtreleme için tam ekranda açman önerilir. Bir dersi PLE kapsamında saydırmadan önce bölümünün <a href="#departments" data-tab="departments">MOOC Koordinatörüne</a> danış.</div>
-    </div>
-  </div>
+  <div class="wrap" id="catalogWrap" style="max-width:1120px"></div>
 </section>
 
-<!-- 4. RULES / KREDİLENDİRME -->
 <section id="rules" class="tab-section section-bg-1" data-panel="rules">
-  <div class="wrap">
-    <div class="eyebrow">Ders Nasıl Krediye Dönüşür?</div>
-    <h2 class="h2">Kredilendirme koşullarını <span class="accent" style="color:var(--red)">kontrol et</span></h2>
-    <div class="rules-head-row">
-      <p>Bir dersi tamamlamak ve sertifika almak, dersin otomatik olarak PLE kredisine dönüşeceği anlamına gelmez. Kredilendirme; PLE Programı Esasları, bölüm yönergeleri ve akademik değerlendirme doğrultusunda yapılır.</p>
-      <a href="https://drive.google.com/file/d/1bt_UrSCg0MhVYgrwiip21y4fUv1BtR0i/view" target="_blank" rel="noopener" class="btn-navy-pill">📘 PLE Programı Esasları ↗</a>
-    </div>
-
-    <div id="credAccordion" class="cred-accordion"></div>
-
-    <div class="cred-summary-grid">
-      <div class="cred-summary-box navy">
-        <div class="head"><span class="emoji">📋</span><span class="title">Kredilendirme ne zaman tamamlanır?</span></div>
-        <div class="body">Belgelerin ve ders bilgilerin bölümün tarafından değerlendirilir. Akademik onayların ardından PLE kredin <strong>"GE"</strong> ders koduyla dönem sonunda veya takip eden dönemde transkriptine işlenir. Eksik veya hatalı bir bilgi olduğunu düşünüyorsan MOOC Koordinatörüne yaz.</div>
-      </div>
-      <div class="cred-summary-box pink">
-        <div class="head"><span class="emoji">☀️</span><span class="title">Endüstri Mühendisliği öğrencileri</span></div>
-        <div class="body">Coursera yaz döneminde de erişime açılır; ancak bölüm kararı gereği yaz döneminde tamamlanan Coursera dersleri PLE kapsamında kredilendirilemez. Yaz döneminde derslere kişisel ve mesleki gelişim amacıyla devam edebilirsin.</div>
-      </div>
-    </div>
-  </div>
+  <div class="wrap" id="rulesWrap"></div>
 </section>
 
-<!-- 5. DEPARTMENTS -->
 <section id="departments" class="tab-section section-bg-2" data-panel="departments">
-  <div class="wrap">
-    <div class="eyebrow">Kime Sorayım?</div>
-    <h2 class="h2">Bölümünün MOOC Koordinatörünü bul</h2>
-
-    <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:18px; align-items:stretch; margin-bottom:32px">
-      <div class="contact-panel red">
-        <div class="contact-head">
-          <span class="contact-icon">✉️</span>
-          <span><span class="title">CELT'e yaz</span><span class="sub">Program yönetimi ve teknik destek</span></span>
-        </div>
-        <div class="contact-tags"><span>Lisans talebi</span><span>Coursera erişimi</span><span>Teknik destek</span></div>
-        <a href="mailto:celt@mef.edu.tr" class="contact-btn">celt@mef.edu.tr</a>
-      </div>
-      <div class="contact-panel blue">
-        <div class="contact-head">
-          <span class="contact-icon">🎓</span>
-          <span><span class="title">MOOC Koordinatörüne sor</span><span class="sub">Bölüm bazlı akademik süreçler</span></span>
-        </div>
-        <div class="contact-tags"><span>Ders seçimi ve onay</span><span>Kredilendirme</span><span>Transkript</span></div>
-        <span class="contact-hint">Bölümünü aşağıdan seç ↓</span>
-      </div>
-    </div>
-
-    <div id="facultyList" style="display:grid; gap:10px"></div>
-  </div>
+  <div class="wrap" id="departmentsWrap"></div>
 </section>
 
-<!-- 6. FAQ -->
 <section id="faq" class="tab-section section-bg-3" data-panel="faq">
-  <div class="wrap">
-    <div class="eyebrow">Aklına Takılanlar</div>
-    <h2 class="h2" style="margin-bottom:36px">Sık sorulan sorular</h2>
-    <div class="faq-tabs" id="faqTabs"></div>
-    <div class="faq-list" id="faqList"></div>
-  </div>
+  <div class="wrap" id="faqWrap"></div>
 </section>
 
-<!-- FOOTER -->
 <footer class="site-footer">
-  <div class="footer-inner">
-    <div class="footer-left">
-      <div class="footer-logo"><img src="data:image/webp;base64,UklGRrAeAABXRUJQVlA4WAoAAAAgAAAAHwEAHwEASUNDUMgBAAAAAAHIAAAAAAQwAABtbnRyUkdCIFhZWiAH4AABAAEAAAAAAABhY3NwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAA9tYAAQAAAADTLQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAlkZXNjAAAA8AAAACRyWFlaAAABFAAAABRnWFlaAAABKAAAABRiWFlaAAABPAAAABR3dHB0AAABUAAAABRyVFJDAAABZAAAAChnVFJDAAABZAAAAChiVFJDAAABZAAAAChjcHJ0AAABjAAAADxtbHVjAAAAAAAAAAEAAAAMZW5VUwAAAAgAAAAcAHMAUgBHAEJYWVogAAAAAAAAb6IAADj1AAADkFhZWiAAAAAAAABimQAAt4UAABjaWFlaIAAAAAAAACSgAAAPhAAAts9YWVogAAAAAAAA9tYAAQAAAADTLXBhcmEAAAAAAAQAAAACZmYAAPKnAAANWQAAE9AAAApbAAAAAAAAAABtbHVjAAAAAAAAAAEAAAAMZW5VUwAAACAAAAAcAEcAbwBvAGcAbABlACAASQBuAGMALgAgADIAMAAxADZWUDggwhwAADByAJ0BKiABIAE+USSPRSOkIRPJzXxABQSm78Y9im5AGO/C9khk31X93/cj2pLC/gPxn+T3Ju2f5tnMf/H+5v5s/5n/pf2T3O/qv2A/1O/4nUh/dT1F/sh+33u6f7v9xfdn/av97+QHyB/1T/RdaH6Df7Xf//15v3W+GX+yf879x/Z6/9ms9eav8H2q/2HxR/Evk/6h+SfJsiR/GvsZ+V/t/7j/m38w96fyd1Avx3+R/4L+tfupwpIAP0f+u/8Pw2dVDwR7AH84/rH/F8rvw0fPfYE/qX+g/9Hs1/4X7T/6H1o/U//x/0/wJfzj+3/9Qsmyfdfr9fr9fr9fr9fr9fr9fr9fr9fr9fr9fr9fr9SWI4pluWRL5aZsvgNkOGoeSNEIuv1+v1+vio+4xgEcI9t4pv13iOxEjKHXd+AOLPTRxGxAEp2TkYbDYbDYaYkCjBT4HtFUXDAks11FsDkAf3hhEyf4z2aF5CdHqYpWMd031jLqxdftZ1Aq8UcHWxy1Ns8davc277nTVrUajNCRqFZWeL9gWwS5mEekLY8eq5HofF7KVO9aJY6XIvxGBge8KtEEWLnqdzEgsan/wxsBSh+e6iRXUz5t7ejJAL7Gbqn7vThkkztTo1G/+kPF2fIBS8OKNapyzgQUwadCDCB4AbqfkQQBBEGjn9udU+x190BMXloRxzpwN0VLlmsoQZTjo7zeih0NBVFSKj04EztZLnz1QV33mM6ryPr4v6mwycmraINrnc4+Z+NHt7pM5rXK3/kZWvlrPq7MCvYbB8Upid7VrwsnrNYxku0cyNqOCPtPWPXxyjk0qmCuXK4MoF3B665s4MMRzM4AndVFghr2/uUUMYlxMeCzjdOm4Jzqt3p1uSgEhCGwStjDhF7yp/GU7uApoRnZoH2S2gWC69Fmk7s3DQsWLcjqsG25/t4DbJVpJMByPrnN6xZGkt3DLxN5/baLIe8oBAODk6x1jB9f84aJHLy5PJQerCWi5ojVyqOyfu05cM1ltbj+DKw70eL2YBVI2fF+HN2rq1iNE4fm7N82R6EIf6qEqeie9/3UffdvaPz6jv8nHU6yFixGWVJfuBj/GaqeloApkqKqWi25p9OM+zywb2xVfc4HxNNYyjaLQtamr8xRD6LWXBkvaCW3f6KkodBC/Oqjh4c1NH9OskwynfwY7D1q6p9ag7ABkdlK2zO4RjJ97IFsFQCLj+WbAT7r9fr9fr9fr2gA/v9+gAAAAAAFEkhKARTm2+tcNX8uIqeN1PnP6gSEP4igIFg6b/Ptv1/hv4pFW9QQrMzle+dTH5LVrcupJpVSpJT4E1ot5QL4Ssfzh66HmIv2CJeXcuiFg6ESCWNcMfXOmlBNisbs8NGXoSVkBit2DZ5SzgCB7BKY8Ixs42DhoUrmDJ8Hl+6rFUN2d4tSoFYuh6Q/K5Z4zkXk571aPi6g1vE6kVSgpYYDjjwN534hz6ykLZGw5A2tavtGL5F9eSvfuMrciod+9gAw3+ntSksQmcWXJdlUQCGZCtsfSEtdxv5THKSpf4a9kEgCZBJ/GH4pOJBV9+L/UUPPnnfenrdKskpylbw+g/uxvaNHXvGZcUXj3KntsoPd9IDhbBtee6QDYZyruVc28txu0c9e+7IrTClAQURAIbjimPKvOvlCqbYOjjeu0ZIqfYHO4gxDxrqqcJ6LjP+Cku2YpSslQ5Qkh00yhHjvP/JOUsNoHJKBaC/ZTfwZ4SQQV1uA66AudLi4djcVpQOA6A0AcU1de8pTmIv7m9TwnRvajpI3iPoGiD/VuVmECaxBNcTC3PDf+Z6tf/m41ce6FlbnW2+INJnODNrdT1bz6N3Dt1r+T+RYfJmC5Gxxv6roRAkv8pNJINNxBTWklA3duasshdGY0QC9YabJy//bTjtOdSEVMJdXO0I1dgZd3WKfNzCuD1ZD+BYmzFA87ghr/tgqCka/7PzagbyCti7sIK+7pDBnukcuFBAlnOl+XybtVJmrNwp4J9N4h7vfZ61Kky5fKtVVVOu7VizJTTeLiPyaksRzEquxsuiX6fpJM3tqd7Z6jKyOADKZuXMZGk7M146Olaly4Lr+pqEJUZ+1Yt/Wj2Hri6uaoYOhg8uqMyNRasvVDRb50GL6oNKv/GwudMgePeSLu+PFFj3G6xT3R79tz46cuxNgbVQwEY80Wm9zsSMQ3I0Z039mfsReiX0iS/u9PwaFCgGp8s1oMDJdKMUsx+JSqkMeeg6kC1O4p6leWf4Yop+8gruOF/ZbuD4C+zVqUnqh2Pz+PwboDf5WkolSJWCzsfSdZRb8X7AbIdlJcydOLu1c7NM3SmP98VuwZ5F6xQbGK7GHWSdx7GWSRrRtlCJ1BSxYIIIAOK4b4ihV9S9sjrI8MQk22WvKDMsVa0jtQoJmWNkv7Qm7husLLwDOXFgphgTaNuU+7mTrpGmVY6JZ9Eu/DTzQTXVR2wK5vxBxg37QkQF2ODd+0TO1fTpNGmBtKHieOSYzj06VxNgsGWtV1HeKYWA1rgKVxCqNPiqU++5A+SsxR2VF8mQA/s8Kr9ICF9so7Hlmsj63uzhMiEn5cBwJu225hD8/vDLvd9a6k8rVXCnePQAYNmvZZ7N5Ba5cud/3NORp1yKgN8S+NszzrvJMkiEOzbNb5LSteHteBnhr38V9eJosIXvFISUNMloKZlnRR6DxO9cj/QO1f/Ev6KUvhLokdnNZYWgffqIXN6c2ar+Tx5d+9DmOzRZoz/zGMchlEE9KCeOLjod/i8Op4YlYtF9WT/6Rzc9OKzgikeE9+fchJ6uv9EcIIf24B47/tdxuOltIH78+4PDzFW8XYX9+LVaD/UlqiAe/4tnrNrWeOkuBvoBci4IsoX7qWNYSYR/tzeMV+B0VTfzCqX+v+OeEfgQ6PUR/HkP9uyhxoYnqnTot4kQJ+2bP+LlQR4xYigbrDsreW6PwvCJomPVaMbljyH85TDKCC/Eb2qQXeoxYLNAGFJoKaCYlHNwugEx2JowsjInc98C+u8OhhuaMqR4biMsy2rQU6dSjYinUo2KSO+Rjjnd5+mEpAFOGBnW3KlA4hDAK/aRcvCcI0l03NlVYYuYeLu/dPGUdP3716ETVzQx8N7H1FYUChR1GjPh3M6+cgDZucQAt9ibCrp9/TVYt5Ya1+p3xx9IDvxrmlvcMPxfwNdPTMF9OHp/9DxfWJH7PxmRiQG8kxkACm9OCg3Z2laCWXEBA2T0JYzwaAPrsO8kW1aD5GVYMnBIv/ao161j+BnNPGZGTTfxKBqEKCWI7juBG7IAF9bxu5+Ovkh/QXbsFcxz0g6d/lXNl5TNL1XBvFYuTeltaJmS9g5JI1G5HWoveQgI/mcpnqwveY4CB/ak8sf+vTntgBnYLVVHcKHcYHF2Yxr17hdJ2G7SXKTICNHozk5PMiHolvAUK0AmbBGdP8U2uxazqVEXEouLPApmo4VYvzTxvpPIajvWu7MMNmny8+MW/hMeaLlMrtN03vZSnJWknqQwwo8IEAAu50evcHajMuIGg/sgRjqpjc+80pyCvVEaj97lquw0GYAgxYaRCcXv8OEDGRO8pt+zXy6gESK075NtWEhZNDKQpOqen7/s81GrnYLvHIPhsPUmVpzWU74l+9HieNiXcqAaQmhOhFQqZc8wuJp9jAe8R8TSNgI82mAW3BBGUNDlTOSz9Vb3l3Dy4iF3jP/HSuiEdWtB6l/zW81a02/M9qggJR/4Fjp3Q1YxDdCYQbt67iwoeShGEI5tx88wDg92+HRTlKi2+QFo2P5hesqeasd3Xq4BLPO+a8203K37eJsy2S5/7zP2Hy/h6iDuCs+LMIrqWGpkiLJS5l8h4ihKjnUlHkXt+uHlNkytGRJIYg7nqFfcnw1HYNTft7neocD1dv+Jyowj/eDpkQhulCEyFhH292x5WoQ/OjDIxkUM6wzAkQHB+l5HBMJUfbsklp1naO++3s7wea8Vr33rcdApKsyHsDpEeE7m2J8Sj2xPGQVB6+l9Sm8YW1p+pU44pz7iYEHXBCtz8TY3HYa7UFXjxBmLdCiyZocLxV51PKDMeP6bHChsi7NFZoWo/c3yfjyTiI2aLqhYPBX6lTBrZoAcZlExpkWyrAtbwqr2bfbFHfN1SkgtP0GrBfyZmsD82xZaF+hZ0DoT0N+HqS7VD7uRyTGo0eQK0rPZNQgLV482PZX6xnyKHYLsOLFsaUD6xr8WUH+dVnkyi4jUbHhjwqGguxAPAFqvPYrWaIqFwRS5HPQNuU64lhoFC/aX9VtSfguNpBTPG/SJEwJhQyBCSJEi9Xa5ldu/DZsB7QNLKZzYUrbkR9rbmfD85QPnxxsHWwX+hq+D2gMqBm9ytebPVfA91pt+HWJiAtk8pnHmNkn0+xMwofg6XmDAg0imvWbS/eO9/ZIAFb7x5pVHyaeIZ5ubJsmDg4MXrw/a2XnZdj4iC2i5ianw4QROmJaqlQWNiZwNhHTqA1EeL0zYuPpcrQMs74FL7n++F3bcydAG24FDegGuSvY/kNpxl58b/hafbXqCdCDunuc6EonGw6pWAC2HSFA0SWQfv9mv6QH6K4qEprXAAru3fGqJkUgJQ/UwUB8yrYXFs2sHZEi0YsHIRIUHM14aPPh6IuQ3zvOjG41V5BDGKBfx7vuJIxYPuqqr6kEk6Fm1M/SZ6yBEaVjA7oHu+oxEUvHDyE2uOcjSgVTVU9CMiulNZ4TYNLSuVDRRVFN70qIFAKrtJmROLayl++quYbHEO6JXClPVfJ/M1R5gJV4xkXNNcAbcSMEMTLwL9c5symD8H+GaWXMCwZ2W1IQakngkXx4ZtfKU9UxOritjOHLTEo0u8QpC5/9NuwxCKF7vWgfuOMH0UHbadP7KR/KI7mjh/rPQYqgJP2LGX9p8TmvG0ojZl276OIViS3dJVDvGDNKep7Xrmjy1eIczQMleZ4gq274hhwr6b44CGAVUmb3pvyY06EXcJUx1JrSBJ1wfsA8eRxhvqtivdFqNMUvWJrfZXNjeUHHOlrJEJM8YAPUq64qPaHL3u+zEb25zNVmAD1Ym3688iPPdfVjGfBtNmGvCjK7tiqawwKIg717vDvuRMD8sMTxivatM641g+31ZKRUr/kK1NQU7/GijPOThHfXqMqEvaYIYztLejNb+1YaaoZEMmPSoF9W1wCn8Eh4h7AOi3YYkHtoiIQiw3lp8zQIc2bECqWT2RbomAf6kZJF9uSsAma2RAcpaFkpS/PcTfNui2OH1Pgsuqt18Rfv7QQ4ibH1t+R/lShtSqYgo/4U5ZsCEdvQdWPPtep65D1HPam82vsubdervPb2iWW9En7dbwnPi48l6qNfiYKds9atHnZh/PcQrkjJgvyBfwgoQbEqk8i0ztfl/x4t8EHNrhQ5ZRVlv9E1mSscTHqsJrS8Xyxp2/wY+vJbHfc3jhFzKR6+laHKLL4oDD3Z0H3B10T6cdcAmQgBHTolDfSfLNQRpfhQZlFhhv48yhmTC4IJ9Igs2i2/cdgvC4+KftCjFPUCAzRSvDNyqt0fP/IEolwCsrHv/8je7bg2pSrTDCJDyuvJrbVxG3y6wpuhvjFbJOMuDOB2+FfrYaJZPdYi/+RWDPYPskcqNDF/Wi2YDBPY4tkWIsB6+0Cv/Kwga0GBdYOFL/0S95agKyDcuzcIp8L4RlUCi6AyMcDrC+dOEszRegpG73YxDJDyssmNKuOODj41IyGX/BATDVvdc0OfvFGEB9SDPmvNodw7ogSpOoQroJeFb7FEfzNzvaJPZQ+Xh3CrVmafmvhJsy3Q37F/XKfivUCfQUcjLLJRSmwHTqkgIcdp497+D+p+h2OPzB58Jaag4y/HsYjRpi41NupzhRN8e84c/oktAYw35JFojrArOLmmeh5ErgA5ZigivDqlKogJXEFd0IOySaFPch1I36Ca/BshuDeDqBjOGjGjPdcGuPMm0AZ+QGF5DyPCBcSCwSfbwHlaymppbOXxSBgEk+sdiUNeh0gZAxc062yjp73jg1uL2UyTOU9M5H6TWZMZBdnnup7dfK9eaMUm7oN8mny0iM1Mlx++qq0j5m1ylAPdsxfM8YFGna2l3qh5KWvr8g0fi+wP1OF8qyoW5uufNiftXmomHKXM7bh4XWMNq4mKVIJMHleeEdz/Gnz2l0myvZ7J+xGUBPW9vtwA++CAHUg6yqVVFN+6HoJSKFYgFJHS7UG/T7gGAAR6CJuiQr7OgWGm6b/CCuhc46TN1ZJVrKotSmvmeFIiVtQABRZLIcrYCoHfXLuViqgdynR2K7rUYi9o16Aqu883GQ5p36gPa+wuHh+DDwkM8HGbudm6RNYq9iu8d4xjFLFwIS7X2VNFL18oktIC19D2gv9GoUOhsul8I4u3kjR0aUjCqiI6MM0Ty90ivCYws/Pg8LCbHzbtCIHvpJuDD/WvMQ/HWzaLKGIQtuZR+IuW28QFyoF23SaLErOrMCHNZvroAkE2sFcBQIhLzI0QNNZKFYXFTOkMSAd5vHA1Q2SNAmcN6tpGFFSnsxFrYMYWky5XBoeYz79Qw//93RaZg+IuT9PKIN20oLjS8UdF1LiC0rUZAed1sawd6IWnn/iLggypOxoTuHKQR26Z3tIuBTmeEe7sLCWo525iSEMbCPd7r7faj3JkPhSlD/K+NJ++Mefvr85lmbDeXl2yD2hIUiMqjDbpzTnev5bsXuzxfiX4bbDKbuc3YAA56j+yFLeT4jZ6IIXMAU9CV7skWKmWPeu+RYCsDjTO26NkkfbRvA5vZwM9FJ6IVvCBmDoSLCJ9WrPzS4wyvkdUOPMSWSksptVFxWtxjkwsrNUUzQzKQxJ+/jvJmNPJd+MRTOyYiqlySq9P9+4BS3E9H4lqSLnjr9MduG7qw59ZtpTErbTB8xUWSHQT7EGYYbxvmnhYy7MNgOkLOfJd+93gNs/+NFLjj2jycFhEuo+7YsaxKx7JkUGpfr3xjc0ZngRdALhr7RAQbXFLDZejA1Pr3b8U0yxOHv0svmWHlVQpcdcuZ1xrB83thg6hw0W0psaKYtzlNb4Hda/gY2URedwSVSIMu3g6DHynBd3D7dnAoUCIIlvylWd2pffbVj8bxuUZepaM9OUdMM52/Mb6wJtgDdvq9U6hqaFBaRNBW4dPyHQajI6QhWysk3k2dblkoUtZl8fJwJ5fCd/s70ZpGZWaRm9OSvMRkzcRi1+SlXPQiuc6ogSIocCEKLea58wOy3yWgfyRaxTEF1rebPrXmnoIAAlHgQUPKE4rhGd4k60Ij3BCRm4BfrR4zBO5pJ9uI3xMvXJfsenWylQoOGNRDqyH6h6n4RRsVdEfjSu6xGcTDV0HsO/cHPM1pNkyNUzOBtxGOWCJsFA9MUNAXnbAE6sVWb0wzTdtIyNi2wR7a6Dkqv6ObaMAgebRxgkcsG1RnuqgUPYMdIUSMhgMJ/45+RbOwptmeFRbX1ltP1gEH0M7n6ZU6bPeicGbSQYoJAIRqGW0kqiZnj5/8bjRL4YhRvdkP/m9wpUgBxjquKdgn5d6IsEWg6Ryv/jwwQ7d4c5GI2eQvHsSgo5hZgRgPUzS6y0fzq3RnCWKN3+Z91nsZf16+98tHXEaV8uV1O/KmdrwmBJkvAbLE8XCInWhUTOMfjsvaHTloe0mfOAZnkfeEH4aKb/HkL4Haf3tbw4ljfnR9ZSQGfjMskLLcRA6Xw48Q04wQU931rfDORyXM7z3enffdl3BJzuAhcVB/9yJMB1yarSAJzKHDnCdbd0LRhAu1LkXcuf/B5InI/m85BiXigeN/6nXdJI1VxsMMBLo65JXkAHisawpE2g+INaUlZCmySHc+LG/Z9ZcukkTcGgcoh8QyG7QWIh4NqpkDXkunP87Fkqso1eWrZp2nV/w4sVvwxgAeR0JN+KYAVBze3QORChdJ9Xl38zS01dKfwPPPqp+40jxDoFawUUu+UVj4pdxjLiU582S6FCZkrs1zQtzX2Y2owtQpF122qhzOTSp6r2GlSMRRo0Oxq/+vEInHHB6s7nqZtlWq7PLVfp2XtAcswEhc7tThC5ABpzv8NASgKBk5qX9QG42zTIurHU/x/6qKhqY8ACIVMCgl5rgkdGKPrR/HhDXXNPPKiylD2GuiOjOBPhhhiW7BaH2LW4TN+OTVSdAr78TDraJ3Qg95C8RfcqFgu4atOohpVe4hgGoVVjWnLu7N2HRJz+jJu2//7wYAXxnId4X3gah8btfkFJQhugFj2dv7aM0vBDVqF3E3ro6AoI3Z5HsK+JD+WVUFvEzCmeSE7iA2g1wsPCDu2U+U1fCoBmYQG9Em1YIAMz9Te7zXxSuDqRa//PaLOKiLk0dyvsJVthddTWV5kwzhoezvErF1T4ir2XsqCU8pVZDk4JQoCb22/m1+3iDmfECgwGbKBbdyySLxV+yKCA/JW6ZAuTHJVKmSRLd4j6D4v+fkPsq/yQEM12sB3vDeC4QAzIJa6F07Tq/uzqJCgjbBYNhyJprEX4O6o3x0VKOTP2+pUJi5++aPIZU3fqvD7/8YTwhcCldkl657WQLY4qkv9v8h4+w5fbKVFSzVCQTVE04iYQDOIxsOIYRzUw61oOYvkgnGvGxICG0DlqNS443FNuzFw4bJ1bip7tRT6bgAengTaigSfWJuZPaGTqHK+keK2V3yh7PkJih769LEkkR4AOPySU11OYEZIggPmGc48NrKVKBmyjvRE0VtZ3t8q6bGxRR9acwk34TujEBJ4qXtrIf2CJgpRusTJ3lMbhPomGmquxFMivgP0ry7uXe2U78HOn+b83gS1Ts1fIsq0Uo6ArHw+f38ilMCkRc3RbE4kxcjzLWZZntxhlos4Y9ywSho+x1n/w7NSb3bZxp4GtSPtkgvJwh7B3WI332yeLxX4xkpaD54yObEEQx5yTmk6gv2McXKiZK3NUB3ggburOUxmDFHg+raowxPM4T/aanL2aB5VAF4TI8O3hh6sVT0Drf3B9M3r/oW3FbSlOrJiDYZ6ORx3tBT/CUnC5yiaCB4O9wBpq7mqdtLPIxDhp9RvOU/2K1mfNSl8Eas8L4t27UNa+fbOyT2bXhJBuXzZ+xZTRVN3MVGLgWTkFelx+Mxj8LH6drbx9v+fBLUgbHCBP+/Kj4QcgL44dhNfKKoW08tGTlLlbqq20bCrqaaC9pBZqEsuDZ7xepNZYOBrJu3IW/blSSWZ33dhy84uNiVaF55cJV86KouTtjk84zFF6l8ayvn59dOqBm29ixUCoAt8Zk7Dv/JriyYVQPPkNSG5zC1D1LnPmXq0sdRxKdoZFpex5eIutaHxozmqQYiHlLzQZXjCNKbz9lOH6HbiaAFraJNZRCiuJUlPaD54uMx8MWQFo3/njgpMjE8/tCj116NFJ/uOogAxkSZVjza2AzifugJCP94poLr8qDnrAwrKKHLXDE9BQrXGARne+iyiDsxXMWg7csqrjfHGH6csv5BugXhyMYBfYQGISZr1wGI3SE9qhnBoZoNqXLvZGYDM6e8S7C98gkrFfYP9YBwZLRZgGEZhWCFaOM6xutZXxXh2fiZEMtKxslknoO4pkKJ8PUQEgM+RMIeYngSUf66dG1xAXhdjRq3pPq2XhVEBrrQUnEQq5+xtnxBrWOgvHUvMd+htdFqJDM6RZpYg9tw0st5AqGbdml2Tql4WKVQma9TPYXI+hvMCZ4M0QuNiFMTBn4+YGjCzJQY1tOFpsSbq93MXZVooFmXm0jpzcZtbiwBAZthErGx8IptH1cWzRm0maFyxlkgUmudgxypDoFzuw3FFdsFpadTI1JWLVCgRBgTIJhd37Pqab5t9ZCHaAUsoq/5EzO3dG0AAAAAAAA==" alt="MEF Üniversitesi CELT"></div>
-      <p>Kişiselleştirilmiş Öğrenme Deneyimi ve Coursera</p>
-    </div>
-    <div><a href="mailto:celt@mef.edu.tr">celt@mef.edu.tr</a></div>
-  </div>
+  <div class="footer-inner" id="footerInner"></div>
 </footer>
 
 <script>
 (function(){
   "use strict";
 
-  /* ============ CONFIG — CELT ekibi burayı güncelleyebilir ============ */
-  // Süreç rehberinde vurgulanacak aşama. Şu değerlerden biri olmalı:
-  // 'apply' | 'result' | 'bundle' | 'learn' | 'deliver' | 'transcript'
-  var CURRENT_STEP = 'apply';
-
+  /* ============ CONFIG — CELT team can edit here ============ */
+  var CURRENT_STEP = "apply"; // one of: apply | result | bundle | learn | deliver | transcript
   var LINKS = {
-    applicationForm: 'https://forms.gle/QJtmagJb77CvF3P7A',
-    courseList: 'https://docs.google.com/spreadsheets/d/1UMVP2HVuiDOX4zz484hQk3gmw2C7w-qGyOb0diPqci4/edit?gid=0#gid=0',
-    senateTr: 'https://drive.google.com/file/d/1bt_UrSCg0MhVYgrwiip21y4fUv1BtR0i/view'
+    applicationForm: "https://forms.gle/QJtmagJb77CvF3P7A",
+    courseList: "https://docs.google.com/spreadsheets/d/1UMVP2HVuiDOX4zz484hQk3gmw2C7w-qGyOb0diPqci4/edit?gid=0#gid=0",
+    senateTr: "https://drive.google.com/file/d/1bt_UrSCg0MhVYgrwiip21y4fUv1BtR0i/view"
   };
 
-  var STEP_LABELS = {
-    apply: 'Lisans talebi', result: 'Lisans dağıtımı', bundle: 'Ders seçimi',
-    learn: 'Dersler devam ediyor', deliver: 'Sertifika ve sunum teslimi', transcript: 'Transkriptler işleniyor'
-  };
-  var RAIL_LABELS = {
-    apply: 'Lisans talebi', result: 'Lisans dağıtımı', bundle: 'Ders seçimi',
-    learn: 'Dersleri tamamla', deliver: 'Belge teslimi', transcript: 'Transkript'
+  var STATE = {
+    lang: "tr", tab: "home",
+    stepSel: null, checklistOpen: true,
+    openFac: { 0: true }, openCred: 0,
+    faqCat: 0, openFaq: -1
   };
 
-  var STEPS = [
-    { key:'apply', title:"MOOC Lisans Talep Formu'nu doldur", tags:['celt'],
-      linkEmoji:'📝', linkTitle:'MOOC Lisans Talep Formu', linkUrl: LINKS.applicationForm,
-      desc: "<p>MOOC Lisans Talep Formu, her dönem başlamadan önce erişime açılır ve ekle-bırak döneminin sonunda kapanır. Coursera lisans talebini bu süre içinde form üzerinden ilet. Talepler, mevcut kontenjan ve program esasları doğrultusunda değerlendirilir. Lisans dağıtımında mezuniyet aşamasındaki 4. sınıf öğrencilerine öncelik verilir.</p>" },
-    { key:'result', title:'Lisans talebinin sonucunu takip et', tags:['celt'],
-      noteEmoji:'☀️', noteLabel:'Önemli not:', noteType:'red',
-      noteText:"Coursera yaz döneminde de erişime açılır; ancak bölüm kararı gereği Endüstri Mühendisliği Bölümü öğrencilerinin yaz döneminde tamamladıkları Coursera dersleri PLE kapsamında kredilendirilemez.",
-      desc: "<p>CELT, Coursera lisanslarını ders kayıtlarının başladığı tarihten ekle-bırak haftasının sonuna kadar aşamalı olarak tanımlar. Lisansın tanımlandığında MEF mail adresine CELT tarafından bir bilgilendirme maili gönderilir. Bu nedenle ekle-bırak haftası boyunca MEF mailini düzenli olarak kontrol et.</p><p>Bu dönem Coursera lisansı alamazsan bir sonraki dönemde yeniden lisans talebinde bulunabilirsin. Coursera lisans talep süreci Güz, Bahar ve Yaz dönemlerinde yürütülür.</p>" },
-    { key:'bundle', title:'MOOC Koordinatörüne danış', tags:['coord'], hasChecklist:true,
-      linkEmoji:'🎓', linkTitle:'Coursera kurs kataloğunu incele', linkUrl: LINKS.courseList,
-      noteEmoji:'💡', noteLabel:'Not:', noteType:'yellow',
-      noteText:"Bir dersin Coursera sertifikası sunması, tek başına PLE kapsamında kredilendirileceği anlamına gelmez. Bölümünün web sitesinde yayımlanan ders seçimi ve PLE kredilendirme yönergelerini mutlaka incele ve derse başlamadan önce MOOC Koordinatöründen uygunluk teyidi al. PLE kapsamında toplam en fazla 12 AKTS kredilendirebilirsin.",
-      desc: "<p>Coursera kurs kataloğunu inceleyerek hedeflerine ve bölümünün PLE koşullarına uygun dersleri belirle. Seçtiğin dersi PLE kapsamında kredilendirmek istiyorsan derse başlamadan önce bölümünün websitesini ziyaret et ve MOOC Koordinatörüyle iletişime geçerek dersin uygunluğunu teyit et.</p>" },
-    { key:'learn', title:"Derslerini tamamla ve içerik etkileşimini en az %70'te tut", tags:[],
-      noteEmoji:'✨', noteLabel:'İpucu:', noteType:'green',
-      noteText:"Videoları sonuna kadar izle, okuma materyallerini aç ve quizler ile ödevleri eksiksiz tamamla.",
-      desc: "<p>Coursera derslerini dönem boyunca düzenli olarak takip et. İçerik etkileşim oranı; videoları izleme, okuma materyallerini inceleme ve değerlendirme etkinliklerini tamamlama durumuna göre hesaplanır.</p><p>PLE kapsamında kredilendirilecek her ders için içerik etkileşim oranının en az %70 olması gerekir. Etkileşim oranı %70'in altında kalan öğrencilere CELT tarafından her ay bilgilendirme maili gönderilir.</p>" },
-    { key:'deliver', title:'Sertifikanı ve sunum kaydını teslim et', tags:['coord'],
-      desc: "<p>Dönem sonunda, tamamladığın her MOOC dersi için aşağıdaki iki belgeyi bölümünün MOOC Koordinatörüne teslim et:</p><p class=\"bullets\">•&nbsp; Coursera ders sertifikası<br>•&nbsp; Dersin ana fikrini ve öğrendiklerini anlattığın 2–5 dakikalık sunum kaydı</p><p>Coursera sertifikası ve sunum kaydı için teslim tarihleri bölümler tarafından belirlenir ve bölümlere göre farklılık gösterebilir. Belgelerini hangi tarihe kadar ve hangi yöntemle teslim etmen gerektiğini bölümünün duyurularından veya MOOC Koordinatöründen öğrenebilirsin.</p>" },
-    { key:'transcript', title:'PLE kredinin transkriptine işlenmesini takip et', tags:['coord','student'],
-      desc: "<p>Teslim ettiğin belgelerin kontrol edilmesi ve bölümündeki değerlendirme sürecinin tamamlanmasının ardından onaylanan PLE kredin transkriptine işlenir.</p><p>PLE ders kodu \"GE\" olarak dönem sonunda veya takip eden dönemde transkriptinde görünebilir. Eksik ya da hatalı bir bilgi olduğunu düşünüyorsan bölümünün MOOC Koordinatörüyle iletişime geçebilirsin.</p>" }
-  ];
-
-  var CHECKLIST = [
-    { emoji:'🏅', title:'Sertifika uygunluğunu kontrol et', text:"Dersi başarıyla tamamladığında sertifika alıp almayacağını hem Coursera kurs kataloğundan hem de Coursera'daki ders sayfasından kontrol et. Sertifika sunmayan içerikler PLE kapsamında kredilendirilemez." },
-    { emoji:'⏳', title:'Peer review süresini hesaba kat', text:"Dersin peer review ile değerlendirilen ödevler içerip içermediğini incele. Bu ödevlerin değerlendirilmesi genellikle 7–14 gün sürebilir ve değerlendirme tamamlanmadan sertifika oluşturulmaz. Bu nedenle ödevlerini dönem sonuna bırakma." },
-    { emoji:'📅', title:'Ders süresini ve çalışma yükünü incele', text:"Dersin tahminî tamamlanma süresini, haftalık çalışma yükünü ve modül sayısını kontrol et. Coursera'daki esnek teslim tarihleri, MEF tarafından açıklanan dönem sonu teslim tarihlerini değiştirmez." },
-    { emoji:'✅', title:'Zorunlu değerlendirmeleri kontrol et', text:"Ders kapsamında tamamlanması gereken quiz, ödev, proje, sınav veya capstone çalışması bulunup bulunmadığını incele. Sertifika alabilmek için ders sayfasında belirtilen tüm zorunlu değerlendirmeleri başarıyla tamamlaman gerekir." },
-    { emoji:'🌐', title:'Dil ve erişilebilirlik seçeneklerini değerlendir', text:"Dersin anlatım dilinin, altyazı seçeneklerinin ve içerik seviyesinin senin için uygun olduğundan emin ol. Ders için ön koşul, özel bir yazılım veya ek materyal gerekip gerekmediğini de kontrol et." },
-    { emoji:'🧩', title:'Program yapısını incele', text:'Bir Specialization veya Professional Certificate programı seçiyorsan programın kaç dersten oluştuğunu ve seçtiğin dersin tek başına sertifika sunup sunmadığını kontrol et.' }
-  ];
-
-  var CRED_STEPS = [
-    { no:'1', title:'Derse başlamadan önce', hint:'Ders seçimi ve uygunluk kontrolü', rail:'#0056D2', items:[
-      { b:'Bölümünün yönergelerini incele.', t:'Bölümünün web sitesinde yayımlanan MOOC/PLE ders listesini ve kredilendirme yönergelerini kontrol et. Bölümün uygun dersleri yayımlıyorsa seçimini bu listeye göre yap. Ders listesi bulunmuyorsa veya seçtiğin dersin uygunluğundan emin değilsen MOOC Koordinatörüne danış.' },
-      { b:'Dersin özelliklerini kontrol et.', t:"Dersin sertifika sunduğunu hem Coursera kurs kataloğundan hem de ders sayfasından kontrol et. Süresini, haftalık çalışma yükünü, zorunlu değerlendirmelerini ve peer review içerip içermediğini incele." },
-      { b:'12 AKTS sınırını göz önünde bulundur.', t:'Öğrenimin boyunca PLE kapsamında toplam en fazla 12 AKTS kredilendirebilirsin. MOOC derslerinin AKTS karşılıkları bölüm tarafından belirlendiği için bu sınırın karşılık geldiği ders sayısı bölümlere göre değişebilir.' }
-    ], warns: [] },
-    { no:'2', title:'Dersi tamamlarken', hint:'İçerik etkileşimi ve peer review', rail:'#E8432D', items:[
-      { b:"İçerik etkileşimini en az %70'te tut.", t:'Videoları izle, okuma materyallerini incele ve quiz, ödev ve değerlendirme etkinliklerini tamamla.' },
-      { b:'Peer review ödevlerini erkenden tamamla.', t:'Değerlendirme sürecinin sertifikanın oluşmasını geciktirmemesi için peer review içeren ödevleri dönem sonuna bırakma.' }
-    ], warns: [
-      { emoji:'⚠️', title:'Peer review süresine dikkat et', text:"Peer review içeren ödevlerin değerlendirilmesi genellikle 7–14 gün sürebilir ve değerlendirme tamamlanmadan sertifikan oluşturulmayabilir. Coursera'daki esnek teslim tarihleri, bölümünün belirlediği sertifika teslim tarihini değiştirmez." },
-      { emoji:'⚠️', title:'Sertifika tek başına yeterli değildir', text:"Sertifikanı almış olsan bile içerik etkileşim oranın %70'in altındaysa kredilendirme sürecinde sorun yaşayabilirsin. Bu veriyi öğrenciler göremez; MOOC Koordinatörleri takip eder ve %70 altına düşenlere CELT her ay bilgilendirme maili gönderir." }
-    ] },
-    { no:'3', title:'Dönem sonunda', hint:'Sertifika ve sunum kaydı teslimi', rail:'#1D7A46', items:[
-      { b:'Coursera sertifikanı hazırla.', t:'' },
-      { b:'Sunum kaydını hazırla.', t:'Dersin ana fikrini ve öğrendiklerini anlattığın 2–5 dakikalık kaydı çek.' },
-      { b:'Belgelerini teslim et.', t:'Sertifikanı ve sunum kaydını bölümünün belirlediği yöntemle ve son teslim tarihine kadar MOOC Koordinatörüne teslim et. Teslim tarihleri bölümlere göre farklılık gösterebilir.' }
-    ], warns: [] }
-  ];
-
-  var CAL_CATS = {
-    Applications:      { label:'Başvurular',            color:'#E8432D', chipBg:'#FDECE8' },
-    Enrollment:         { label:'Kayıt & Kontenjan',      color:'#0056D2', chipBg:'#E7EEFB' },
-    'Academic Process':  { label:'Akademik Süreç',         color:'#1D7A46', chipBg:'#E5F3EB' },
-    'Engagement Reports':{ label:'Etkileşim Raporları',    color:'#B8860B', chipBg:'#FBF3DE' },
-    'Program Review':    { label:'Program Değerlendirme',  color:'#6B4FA0', chipBg:'#EFEAF7' }
+  var els = {
+    navBrand: document.getElementById("navBrand"),
+    navLinks: document.getElementById("navLinks"),
+    langToggle: document.getElementById("langToggle"),
+    heroInner: document.getElementById("heroInner"),
+    processWrap: document.getElementById("processWrap"),
+    calendarWrap: document.getElementById("calendarWrap"),
+    catalogWrap: document.getElementById("catalogWrap"),
+    rulesWrap: document.getElementById("rulesWrap"),
+    departmentsWrap: document.getElementById("departmentsWrap"),
+    faqWrap: document.getElementById("faqWrap"),
+    footerInner: document.getElementById("footerInner")
   };
-
-  var CALENDAR = [
-    ['01.09.2026', 'Applications', 'Coursera Güz Dönemi başvurularının açılması'],
-    ['07.09.2026', 'Enrollment', 'Yaz Döneminde kullanılan Coursera koltuklarının boşaltılması'],
-    ['27.09.2026', 'Applications', 'Coursera Güz Dönemi başvuruları için son tarih'],
-    ['07.09.2026 – 28.09.2026', 'Enrollment', "Coursera Güz Dönemi kontenjanlarına yerleştirilmesi, 4. sınıflardan başlayarak lisans eklemeleri yapılır, bu dönemde her Cuma yapılacaktır."],
-    ['14.09.2026', 'Academic Process', "Güz Dönemi'nin başlaması"],
-    ['16.11.2026', 'Engagement Reports', 'İçerik etkileşim raporlarının MOOC koordinatörlerine iletilmesi. %70 altındaki öğrencilere uyarı e-postası'],
-    ['07.12.2026', 'Engagement Reports', 'İçerik etkileşim raporlarının MOOC koordinatörlerine iletilmesi. %70 altındaki öğrencilere uyarı e-postası'],
-    ['11.12.2026', 'Academic Process', 'Derslerin son günü'],
-    ['18.12.2026', 'Engagement Reports', 'İçerik etkileşim raporlarının MOOC koordinatörlerine iletilmesi. %70 altındaki öğrencilere uyarı e-postası'],
-    ['25.12.2026', 'Engagement Reports', 'İçerik etkileşim raporlarının MOOC koordinatörlerine iletilmesi. %70 altındaki öğrencilere uyarı e-postası'],
-    ['30.12.2026', 'Engagement Reports', 'İçerik etkileşim raporlarının YALNIZCA MOOC koordinatörlerine iletilmesi'],
-    ['03.01.2027', 'Academic Process', 'Dönem sonu not girişlerinin tamamlanması'],
-    ['TBD', 'Program Review', 'MOOC koordinatörleri ile program değerlendirme toplantısı. Teknolojik gelişmeler ve bölüm ihtiyaçları doğrultusunda müfredatın gözden geçirilmesi']
-  ];
-
-  var FACULTIES = [
-    { name: 'İktisadi, İdari ve Sosyal Bilimler Fakültesi', dot: '#0056D2', departments: [
-      { name: 'İşletme', coordinator: 'Rüya Yüksel', email: 'yukselzeh@mef.edu.tr' },
-      { name: 'İktisat', coordinator: 'Narod Erkol', email: 'erkoln@mef.edu.tr' },
-      { name: 'Siyaset Bilimi ve Uluslararası İlişkiler', coordinator: 'Begüm Uzun Taşkın', email: 'taskinbe@mef.edu.tr' },
-      { name: 'Psikoloji', coordinator: 'Melike Acar', email: 'acarmel@mef.edu.tr' }
-    ]},
-    { name: 'Mühendislik Fakültesi', dot: '#E8432D', departments: [
-      { name: 'Elektrik-Elektronik Mühendisliği', coordinator: 'Ebru Arısoy Saraçlar', email: 'saraclare@mef.edu.tr' },
-      { name: 'Makine Mühendisliği', coordinator: 'Mostafa Khalil Abdou Saleh', email: 'salehm@mef.edu.tr' },
-      { name: 'İnşaat Mühendisliği', coordinator: 'Gökçe Tönük', email: 'gokce.tonuk@mef.edu.tr' },
-      { name: 'Bilgisayar Mühendisliği', coordinator: 'İlker Bekmezci', email: 'bekmezcii@mef.edu.tr' },
-      { name: 'Endüstri Mühendisliği', coordinator: 'Şirin Özlem', email: 'ozlems@mef.edu.tr' }
-    ]},
-    { name: 'Sanat, Tasarım ve Mimarlık Fakültesi', dot: '#0056D2', departments: [
-      { name: 'Mimarlık', coordinator: 'Ayşe Hilal Uğurlu', email: 'ugurlua@mef.edu.tr' },
-      { name: 'İç Mimarlık', coordinator: 'Ayşe Hilal Uğurlu', email: 'ugurlua@mef.edu.tr' }
-    ]},
-    { name: 'Eğitim Fakültesi', dot: '#1D7A46', departments: [
-      { name: 'İngilizce Öğretmenliği', coordinator: 'Derya Altınmakas', email: 'altinmakasd@mef.edu.tr' },
-      { name: 'Rehberlik ve Psikolojik Danışmanlık', coordinator: 'Vincent Henry Sienkiewicz', email: 'sienkiewiczv@mef.edu.tr' },
-      { name: 'Matematik Öğretmenliği', coordinator: 'Bengi Birgili', email: 'birgilib@mef.edu.tr' }
-    ]},
-    { name: 'Hukuk Fakültesi', dot: '#E8432D', departments: [
-      { name: 'Hukuk', coordinator: 'Hülya Dinçer', email: 'dincerhu@mef.edu.tr' }
-    ]}
-  ];
-
-  var FAQ_GROUPS = [
-    { title: 'PLE Programı ve Kredilendirme', color: '#E8432D', items: [
-      { q: "Coursera lisans talebinde nasıl bulunabilirim?", a: "CELT, Coursera sürecine ilişkin takvimi her dönem ilan eder. İlan edilen tarihler arasında <b>MOOC Lisans Talep Formu'nu</b> doldurman gerekir. Talepler, mevcut kontenjanlar ve program esasları doğrultusunda değerlendirilir." },
-      { q: "Kontenjan dağıtımında kimlere öncelik verilir?", a: "Lisans dağıtımında mezuniyet aşamasındaki 4. sınıf öğrencilerine öncelik verilir. Lisans talep formunu doldurmak, Coursera lisansının kesin olarak tahsis edileceği anlamına gelmez." },
-      { q: "Bu dönem Coursera lisansı alamazsam ne yapabilirim?", a: "Bir sonraki dönemde yeniden lisans talebinde bulunabilirsin. Coursera lisans talep süreci Güz, Bahar ve Yaz dönemlerinde yürütülür." },
-      { q: "PLE kapsamında kredilendireceğim dersi nasıl seçmeliyim?", a: "Öncelikle bölümünün web sitesinde yayımlanan <b>MOOC/PLE ders listesini ve kredilendirme yönergelerini</b> incele. Bölümün uygun dersleri web sitesinde yayımlıyorsa seçimini bu listeye göre yap. Ders listesi bulunmuyorsa veya seçtiğin dersin uygunluğundan emin değilsen bölümünün MOOC Koordinatörüne danış.<br><br>Ayrıca dersin sertifika sunduğunu, tahminî tamamlanma süresini, zorunlu değerlendirmelerini ve peer review içerip içermediğini kontrol et." },
-      { q: "Her Coursera dersi PLE kredisine dönüşür mü?", a: "Hayır. Coursera'da bir dersi tamamlamak ve sertifika almak, dersin otomatik olarak PLE kredisine dönüşeceği anlamına gelmez. Dersin bölümünün PLE yönergelerine uygun olması ve ilgili akademik değerlendirme sürecinin tamamlanması gerekir." },
-      { q: "Sertifika sunmayan bir dersi kredilendirebilir miyim?", a: "Hayır. PLE kapsamında kredilendirilecek dersin, başarıyla tamamlandığında Coursera sertifikası sunması gerekir. Sertifika bilgisini hem Coursera kurs kataloğundan hem de Coursera'daki ders sayfasından kontrol edebilirsin.<br><br>Sertifika sunmayan içerikleri kişisel ve mesleki gelişimin için tamamlayabilirsin; ancak bu içerikler PLE kapsamında kredilendirilemez." },
-      { q: "En fazla kaç AKTS kredilendirebilirim?", a: "Öğrenimin boyunca PLE kapsamında toplam en fazla <b>12 AKTS</b> kredilendirebilirsin. Bir MOOC dersinin AKTS karşılığı bölüm tarafından belirlendiği için 12 AKTS'nin karşılık geldiği ders sayısı bölümlere göre değişebilir." },
-      { q: "12 AKTS sınırına ulaştıktan sonra Coursera dersi alabilir miyim?", a: "Evet. Coursera derslerine kişisel ve mesleki gelişimin için devam edebilirsin; ancak 12 AKTS sınırına ulaştıktan sonra tamamladığın yeni dersleri PLE kredisi olarak saydıramazsın." },
-      { q: "Bir dersi tamamlamış sayılmam nasıl belirlenir?", a: "Coursera sertifikasını alabilmek için ders kapsamında zorunlu olan tüm değerlendirmeleri başarıyla tamamlaman gerekir. PLE kredilendirmesi için ayrıca içerik etkileşim oranının <b>en az %70</b> olması, Coursera sertifikanın alınması ve sunum kaydının bölümüne teslim edilmesi gerekir. Coursera, sertifika için gerekli notlandırılmış değerlendirmelerin tamamlanmasını şart koşar. <a href='https://www.coursera.support/s/article/learner-000001563' target='_blank' rel='noopener'>Coursera: Değerlendirmeleri tamamlama ↗</a>" },
-      { q: "%70 içerik etkileşimi ne anlama gelir?", a: "İçerik etkileşimi; ders videolarını izleme, okuma materyallerini inceleme ve quiz, ödev ve değerlendirme etkinliklerini tamamlama durumuna göre hesaplanır. PLE kapsamında kredilendirilecek her ders için içerik etkileşim oranının en az %70 olması gerekir.<br><br>Dersi yalnızca hızlıca geçmek veya bazı içerikleri atlayarak sertifika almak, yeterli içerik etkileşiminin oluşmasını sağlamayabilir." },
-      { q: "Kendi içerik etkileşim verimi görebilir miyim?", a: "Öğrenciler içerik etkileşim verisini doğrudan görüntüleyemez. Bu veri MOOC Koordinatörleri tarafından takip edilir. Etkileşim oranın %70'in altında kalırsa CELT tarafından her ay bilgilendirme maili gönderilir." },
-      { q: "Peer review nedir ve neden önemlidir?", a: "Peer review, yüklediğin bir ödevin diğer Coursera öğrencileri tarafından belirlenen ölçütlere göre değerlendirilmesidir. Bazı derslerde sertifika alabilmek için peer review ödevini teslim etmen, gerekli sayıda öğrenci ödevini değerlendirmen ve kendi çalışman için değerlendirme alman gerekir. <a href='https://www.coursera.support/s/article/learner-000001352' target='_blank' rel='noopener'>Coursera: Peer review ödevleri ↗</a><br><br>Değerlendirme süreci genellikle <b>7–14 gün</b> sürebilir ve yeterli değerlendirme alınamadığında uzayabilir. Bu nedenle peer review ödevlerini bölümünün sertifika teslim tarihine bırakmamalısın." },
-      { q: "Dönem sonunda ne teslim etmem gerekiyor?", a: "Tamamladığın her MOOC dersi için aşağıdaki iki belgeyi bölümünün MOOC Koordinatörüne teslim etmelisin:<br><br>1. Coursera ders sertifikası<br>2. Dersin ana fikrini ve öğrendiklerini anlattığın <b>2–5 dakikalık sunum kaydı</b>" },
-      { q: "Sertifika ve sunum kaydı için son teslim tarihini nereden öğrenebilirim?", a: "Teslim tarihleri ve teslim yöntemi bölümler tarafından belirlenir ve bölümlere göre farklılık gösterebilir. Güncel teslim tarihini bölümünün web sitesinden, bölüm duyurularından veya MOOC Koordinatöründen öğrenmelisin.<br><br>Coursera'daki esnek ders tarihleri, bölümünün belirlediği sertifika teslim tarihini değiştirmez." },
-      { q: "GE kodu transkriptime ne zaman işlenir?", a: "Belgelerinin kontrol edilmesi, bölüm değerlendirmesi ve ilgili akademik onayların tamamlanmasının ardından PLE kredin transkriptine işlenir. <b>“GE”</b> ders kodu dönem sonunda veya takip eden dönemde transkriptinde görünebilir.<br><br>Eksik veya hatalı bir bilgi olduğunu düşünüyorsan bölümünün MOOC Koordinatörüyle iletişime geçebilirsin." },
-      { q: "Endüstri Mühendisliği öğrencileri yaz döneminde PLE yapabilir mi?", a: "Coursera yaz döneminde de erişime açılır; ancak Endüstri Mühendisliği Bölümü öğrencilerinin yaz döneminde tamamladıkları Coursera dersleri PLE kapsamında kredilendirilemez. Yaz döneminde Coursera derslerine kişisel ve mesleki gelişim amacıyla devam edilebilir." },
-      { q: "PLE Programı'nın resmî esaslarına nereden ulaşabilirim?", a: "Kredilendirme sürecinin resmî dayanağına aşağıdaki belgeden ulaşabilirsin:<br><br><b>PLE Programı Esasları – MEF Üniversitesi Senato Kararı (2019)</b> — Kredilendirme sekmesindeki bağlantıdan açabilirsin." },
-      { q: "CELT'e mi, MOOC Koordinatörüme mi yazmalıyım?", a: "<b>CELT:</b> Coursera lisans talebi, lisans dağıtımı, Coursera erişimi ve içerik etkileşim uyarıları için <a href='mailto:celt@mef.edu.tr'>celt@mef.edu.tr</a> adresine yazabilirsin.<br><br><b>Bölüm veya MOOC Koordinatörü:</b> Ders seçimi, PLE uygunluğu, AKTS eşleştirmesi, sertifika ve sunum kaydı teslimi ile kredilendirme süreçleri için bölümüne başvurmalısın.<br><br><b>Coursera Destek:</b> Kilitli değerlendirmeler, eksik sertifika, isim veya kimlik doğrulama ve hesap birleştirme gibi platform kaynaklı teknik sorunlar için <a href='https://www.coursera.support/s/learner-help-center' target='_blank' rel='noopener'>Coursera Learner Help Center ↗</a> üzerinden destek alabilirsin." }
-    ]},
-    { title: 'Coursera Kullanımı ve Teknik Sorular', color: '#0056D2', items: [
-      { q: "Coursera hesabıma nasıl giriş yapmalıyım?", a: "Coursera lisansının tanımlandığı <b>MEF uzantılı mail adresini</b> kullanmalısın. Coursera giriş ekranında <b>“Google ile devam et”</b> seçeneğini seçerek MEF Google hesabınla giriş yapabilirsin.<br><br>Daha önce farklı bir giriş yöntemi kullandıysan doğru Coursera hesabında olduğundan emin ol. Coursera, Google hesabının mevcut Coursera hesabına bağlanmasına izin verir. <a href='https://www.coursera.support/s/article/learner-000001888' target='_blank' rel='noopener'>Coursera: Google hesabıyla giriş ↗</a>" },
-      { q: "Coursera lisansım tanımlandı ancak dersler ücretli görünüyor. Ne yapmalıyım?", a: "Öncelikle MEF uzantılı mail adresinin bağlı olduğu doğru Coursera hesabında bulunduğunu kontrol et. Kişisel Coursera hesabınla giriş yaptıysan MEF lisansına dâhil içerikler ücretli görünebilir.<br><br>Herhangi bir ödeme yapmadan önce hesabından çıkış yaparak <b>“Google ile devam et”</b> seçeneğiyle MEF hesabına yeniden giriş yap. Sorun devam ederse ekran görüntüsüyle birlikte <a href='mailto:celt@mef.edu.tr'>celt@mef.edu.tr</a> adresine yaz." },
-      { q: "Bir dersin sertifika verip vermediğini nasıl kontrol edebilirim?", a: "Sertifika bilgisini Coursera kurs kataloğundan ve Coursera'daki ders sayfasından kontrol edebilirsin. Ders sayfasında sertifika sunulduğuna ilişkin bilgi bulunmuyorsa dersi PLE amacıyla seçmemelisin.<br><br>Bir Specialization veya Professional Certificate programı seçiyorsan programın kaç dersten oluştuğunu ve seçtiğin dersin tek başına sertifika sunup sunmadığını da kontrol et." },
-      { q: "Coursera sertifikası alabilmek için ne yapmalıyım?", a: "Ders kapsamında zorunlu olan tüm notlandırılmış quizleri, ödevleri, projeleri ve sınavları başarıyla tamamlamalısın. Peer review zorunluysa bu değerlendirme de tamamlanmadan sertifikan oluşturulmayabilir. Coursera ayrıca isim doğrulaması; bazı ders ve programlarda ise kimlik doğrulaması isteyebilir. <a href='https://www.coursera.support/s/article/learner-000001268' target='_blank' rel='noopener'>Coursera: Sertifika alma koşulları ↗</a>" },
-      { q: "Sertifikamı nereden indirebilirim?", a: "Coursera hesabına giriş yaptıktan sonra <b>My Learning</b> bölümünü aç ve <b>Certificates</b> sekmesine git. Buradan kazandığın sertifikayı görüntüleyebilir, indirebilir veya paylaşabilirsin. <a href='https://www.coursera.support/s/article/learner-000001329' target='_blank' rel='noopener'>Coursera: Sertifika indirme ve paylaşma ↗</a><br><br>Sertifikanı hangi formatta teslim etmen gerektiğini bölümünün duyurularından veya MOOC Koordinatöründen öğrenmelisin." },
-      { q: "Dersi tamamladım ancak sertifikam oluşmadı. Ne yapmalıyım?", a: "Öncelikle aşağıdakileri kontrol et:<br><br>• Tüm zorunlu ve notlandırılmış değerlendirmeleri geçtin mi?<br>• Bekleyen bir peer review ödevin var mı?<br>• Gerekli sayıda öğrenci ödevini değerlendirdin mi?<br>• İsim veya kimlik doğrulaman tamamlandı mı?<br>• Dersi MEF lisansının tanımlı olduğu doğru Coursera hesabında mı tamamladın?<br><br>Sorun devam ederse <a href='https://www.coursera.support/s/article/learner-000001456' target='_blank' rel='noopener'>Coursera'nın sertifika sorunları rehberini ↗</a> incele ve Coursera Destek ile iletişime geç. Bölümünün teslim tarihi yaklaşıyorsa durumu ekran görüntüleriyle birlikte CELT'e ve MOOC Koordinatörüne bildir." },
-      { q: "Peer review ödevim değerlendirilmiyor. Ne yapabilirim?", a: "Ödevini doğru şekilde gönderdiğini ve sistemin istediği sayıda öğrenci ödevini değerlendirdiğini kontrol et. Değerlendirme beklerken dersin tartışma alanında diğer öğrencilerden çalışmanı değerlendirmelerini isteyebilirsin.<br><br>Sorun devam ederse <a href='https://www.coursera.support/s/article/learner-000001477' target='_blank' rel='noopener'>Coursera'nın peer review sorun giderme adımlarını ↗</a> takip et. Bölümünün sertifika teslim tarihinin değişmediğini unutma." },
-      { q: "Sertifikamda ismim yanlış görünüyor. Nasıl düzeltebilirim?", a: "Coursera sertifikalarında hesabındaki <b>doğrulanmış isim</b> kullanılır. Coursera hesabında <b>Settings</b> bölümüne giderek isim doğrulama alanını kontrol et. Doğrulanmış isminin resmî belgelerindeki adınla eşleşmesi gerekir. <a href='https://www.coursera.support/s/article/learner-000002203' target='_blank' rel='noopener'>Coursera: Doğrulanmış ismi güncelleme ↗</a><br><br>Sertifikanı bölümüne teslim etmeden önce isim bilgisinin doğru olduğundan emin ol." },
-      { q: "Coursera neden isim veya kimlik doğrulaması istiyor?", a: "Coursera, sertifikanın doğru kişiye düzenlenebilmesi için isim doğrulaması ister. Çoğu derste isim doğrulaması yeterliyken bazı ders ve programlarda kimlik doğrulaması da gerekebilir. <a href='https://www.coursera.support/s/article/learner-000001457' target='_blank' rel='noopener'>Coursera: İsim doğrulama ↗</a> ve <a href='https://www.coursera.support/s/article/learner-000001213' target='_blank' rel='noopener'>kimlik doğrulama ↗</a> adımlarını Coursera üzerinden tamamlayabilirsin.<br><br>Doğrulama sırasında teknik bir sorun yaşarsan kimlik belgeni CELT'e göndermek yerine Coursera Destek ile iletişime geç. Sorun bölümünün teslim tarihini etkiliyorsa CELT'i ve MOOC Koordinatörünü ayrıca bilgilendir." },
-      { q: "Coursera'daki ders teslim tarihini kaçırırsam ne olur?", a: "Bazı Coursera derslerinde kaçırılan değerlendirme tarihleri yeniden planlanabilir veya sistem tarafından sıfırlanabilir. Ancak Coursera'daki tarihin değişmesi, bölümünün Coursera sertifikası ve sunum kaydı için belirlediği teslim tarihini uzatmaz. <a href='https://www.coursera.support/s/article/learner-000001570' target='_blank' rel='noopener'>Coursera: Değerlendirme tarihleri ↗</a>" },
-      { q: "Birden fazla Coursera hesabım varsa ne yapmalıyım?", a: "Derslerinin, ilerleme bilgilerinin ve sertifikalarının farklı hesaplara dağılmaması için MEF lisansının tanımlı olduğu hesabı kullanmaya devam et. Coursera, uygun durumlarda birden fazla hesabı birleştirme konusunda destek sağlayabilir. <a href='https://www.coursera.support/s/article/learner-000001500' target='_blank' rel='noopener'>Coursera: Birden fazla hesabı birleştirme ↗</a><br><br>Hesaplarını kendi başına silmeden veya yeni bir hesap oluşturmadan önce Coursera Destek ile iletişime geç." },
-      { q: "Seçtiğim ders Coursera kataloğundan kaldırılırsa ne yapmalıyım?", a: "Coursera kurs kataloğu zaman içinde değişebilir. Derse başlamadan önce dersin güncel katalogda bulunduğunu ve erişilebilir olduğunu kontrol et.<br><br>Ders katalogdan kaldırılmışsa veya erişime kapanmışsa başka bir ders seçmeden önce bölümünün web sitesindeki güncel listeyi incele. Dersin PLE uygunluğu konusunda belirsizlik varsa MOOC Koordinatörüne danış." },
-      { q: "Coursera'da teknik bir sorun yaşarsam nereye başvurmalıyım?", a: "Öncelikle <a href='https://www.coursera.support/s/learner-help-center' target='_blank' rel='noopener'>Coursera Learner Help Center ↗</a> üzerindeki ilgili sorun giderme adımlarını incele. Çözüm bulamazsan Coursera Destek ekibiyle iletişime geçebilirsin.<br><br>Sorun MEF lisansının hesabına tanımlanmaması, Coursera erişimin veya CELT tarafından gönderilen etkileşim uyarısıyla ilgiliyse <a href='mailto:celt@mef.edu.tr'>celt@mef.edu.tr</a> adresine yaz. Ders seçimi, sertifika teslimi veya kredilendirme ile ilgiliyse bölümünün MOOC Koordinatörüne başvur." }
-    ]}
-  ];
-
-  var TAG_LABEL = { celt:'CELT', coord:'MOOC KOORDİNATÖRÜ', student:'ÖĞRENCİ İŞLERİ' };
-  var NOTE_STYLES = {
-    red:    { bg:'#FDECE8', border:'#F6C9BE', color:'#8A2A18' },
-    yellow: { bg:'#FFF9E8', border:'#F0E0B0', color:'#6B5518' },
-    green:  { bg:'#EAF6EF', border:'#BFE3CD', color:'#1D5C38' }
-  };
-  var TAB_DEFS = [
-    { key:'process', label:'Süreç Rehberi' },
-    { key:'calendar', label:'Akademik Takvim' },
-    { key:'catalog', label:'Ders Kataloğu' },
-    { key:'rules', label:'Kredilendirme' },
-    { key:'departments', label:'Koordinatörler' },
-    { key:'faq', label:'SSS' }
-  ];
-
-  /* ============ RENDER: NAV ============ */
-  var navLinks = document.getElementById('navLinks');
-  TAB_DEFS.forEach(function(t){
-    var btn = document.createElement('button');
-    btn.className = 'nav-btn';
-    btn.type = 'button';
-    btn.dataset.tab = t.key;
-    btn.textContent = t.label;
-    navLinks.appendChild(btn);
-  });
-  document.getElementById('applyFormLink').href = LINKS.applicationForm;
-
-  /* ============ TAB SWITCHING ============ */
   var panels = {};
-  document.querySelectorAll('[data-panel]').forEach(function(el){ panels[el.dataset.panel] = el; });
+  document.querySelectorAll("[data-panel]").forEach(function(el){ panels[el.dataset.panel] = el; });
 
-  function showTab(key, opts){
-    opts = opts || {};
-    if (!panels[key]) key = 'home';
-    Object.keys(panels).forEach(function(k){ panels[k].style.display = (k === key) ? '' : 'none'; });
-    document.querySelectorAll('.nav-btn').forEach(function(b){ b.classList.toggle('active', b.dataset.tab === key); });
-    if (!opts.noScroll) { try { window.scrollTo({ top: 0, behavior: 'smooth' }); } catch (e) { window.scrollTo(0, 0); } }
-  }
+  /* ============ RENDER ============ */
+  function render(){
+    var EN = STATE.lang === "en";
+    function L(tr, en){ return EN ? en : tr; }
 
-  document.addEventListener('click', function(e){
-    var el = e.target.closest('[data-tab]');
-    if (!el) return;
-    e.preventDefault();
-    showTab(el.dataset.tab);
-  });
+    var t = {
+      brand: L("Kişiselleştirilmiş Öğrenme Deneyimi ve Coursera", "Personalized Learning Experience & Coursera"),
+      term: L("2026–2027 Güz", "Fall 2026–2027"),
+      heroA: L("Öğrenme yolculuğunu", "Design your own"),
+      heroB: L("sen tasarla.", "learning journey."),
+      card1Title: L("Lisans talep formu", "Licence request form"),
+      card1Desc: L("Coursera kontenjanı için başvurunu yap", "Request a Coursera licence for this term"),
+      card1Cta: L("Formu aç ↗", "Open the form ↗"),
+      card2Title: L("Coursera kurs kataloğu", "Coursera course catalog"),
+      card2Desc: L("Tüm katalog MEF öğrencilerine açık", "The full catalog is open to MEF students"),
+      card2Cta: L("Dersleri gör →", "Browse courses →"),
+      card3Title: L("Süreçte neredeyiz?", "Where are we now?"),
+      card3Desc: L("6 adımlık rehber ve bu dönemin aşaması", "The 6-step guide and this term’s stage"),
+      card3Cta: L("Rehberi aç →", "Open the guide →"),
 
-  /* ============ PROCESS: RAIL + STEP CARD ============ */
-  var currentIdx = Math.max(0, STEPS.findIndex(function(s){ return s.key === CURRENT_STEP; }));
-  var selectedIdx = currentIdx;
-  var checklistOpen = true;
+      processEyebrow: L("Adım Adım Ne Yapmalıyım?", "What Do I Do, Step By Step?"),
+      processTitleA: L("Başvurudan krediye", "From request to credit in"),
+      processTitleB: L("6 adım", "6 steps"),
+      youAreHere: L("Şu an buradayız:", "We are here:"),
+      processIntro: L("CELT, her dönem Coursera takvimini ilan eder. Lisans talebinden derslerinin PLE kapsamında kredilendirilmesine kadar izlemen gereken tüm adımları aşağıda bulabilirsin. Takvimde yer alan önemli tarihleri takip etmeyi unutma.", "CELT announces the Coursera calendar each term. Below you will find every step you need to follow, from requesting a licence to having your courses credited under PLE. Remember to keep track of the key dates in the calendar."),
+      processWho: L("<span class=\"tag-chip celt\">CELT</span>&nbsp;etiketi bulunan adımlara ilişkin sorularını&nbsp;<a href=\"mailto:celt@mef.edu.tr\">celt@mef.edu.tr</a> adresine iletebilirsin. Ders seçimi, kredilendirme ve belge teslimiyle ilgili konularda ise bölümünün&nbsp;<span class=\"tag-chip coord\">MOOC KOORDİNATÖRÜ</span> ile iletişime geçmelisin.", "For questions about steps marked&nbsp;<span class=\"tag-chip celt\">CELT</span>, write to&nbsp;<a href=\"mailto:celt@mef.edu.tr\">celt@mef.edu.tr</a>. For course selection, crediting and document submission, contact your department’s&nbsp;<span class=\"tag-chip coord\">MOOC COORDINATOR</span>."),
+      calLinkTitle: L("2026 - 27 Güz dönemi tarihleri", "Fall 2026–27 key dates"),
+      calLinkDesc: L("Lisans talebi, kayıt ve teslim tarihleri için Akademik Takvim'e bak", "See the Academic Calendar for request, enrollment and submission dates"),
+      stepWord: L("Adım", "Step"),
+      badgeCoord: L("MOOC KOORDİNATÖRÜ", "MOOC COORDINATOR"),
+      badgeSa: L("ÖĞRENCİ İŞLERİ", "STUDENT AFFAIRS"),
+      badgeCurrent: L("ŞU ANKİ AŞAMA", "CURRENT STAGE"),
+      badgeDone: L("TAMAMLANDI", "COMPLETED"),
+      checklistTitle: L("Ders seçerken şunlara dikkat et", "What to check when choosing a course"),
+      checklistCount: L("6 KONTROL", "6 CHECKS"),
 
-  document.getElementById('heroStepLabel').textContent = STEP_LABELS[CURRENT_STEP] || STEP_LABELS.apply;
-  document.getElementById('processStepLabel').textContent = STEP_LABELS[CURRENT_STEP] || STEP_LABELS.apply;
+      calEyebrow: L("Ne Zaman Ne Oluyor?", "What Happens When?"),
+      calTitle: L("2026–2027 Güz Dönemi takvimi", "Fall 2026–2027 term calendar"),
+      calIntro: L("Başvuru, kayıt, etkileşim raporları ve akademik tarihleri tek bakışta gör. Renkler kategoriyi gösterir.", "See applications, enrollment, engagement reports and academic dates at a glance. Colors indicate the category."),
+      calFoot: L("Tarihler CELT tarafından güncellenebilir. Güncel takvim için CELT duyurularını takip et.", "Dates may be updated by CELT. Follow CELT announcements for the current calendar."),
 
-  var railEl = document.getElementById('stepRail');
-  var stepCardEl = document.getElementById('stepCard');
+      catEyebrow: L("Hangi Dersleri Alabilirim?", "Which Courses Can I Take?"),
+      catTitle: L("Güncel Coursera kurs kataloğu", "Current Coursera course catalog"),
+      catChip1: L("Tüm katalog açık", "Full catalog open"),
+      catChip2: L("Dersler Coursera tarafından kapatılabilir", "Courses may be retired by Coursera"),
+      catCta: L("Tam ekranda aç ↗", "Open full screen ↗"),
+      catLive: L("CANLI LİSTE", "LIVE LIST"),
+      catTip: L("Dersin sertifika verip vermediğini ve süresini bu listeden ve Coursera'daki ders sayfasından kontrol edebilirsin. Liste Coursera tarafından düzenli olarak güncellenir; arama ve filtreleme için tam ekranda açman önerilir. Bir dersi PLE kapsamında saydırmadan önce bölümünün <a href=\"#departments\" data-action=\"tab:departments\">MOOC Koordinatörüne</a> danış.", "You can check whether a course offers a certificate and how long it takes from this list and from the course page on Coursera. The list is updated regularly by Coursera; opening it full screen is recommended for search and filtering. Before counting a course under PLE, consult your department’s <a href=\"#departments\" data-action=\"tab:departments\">MOOC Coordinator</a>."),
 
-  function renderRail(){
-    railEl.innerHTML = '';
-    STEPS.forEach(function(s, i){
-      var done = i < currentIdx, isCurrent = i === currentIdx, sel = i === selectedIdx;
-      var btn = document.createElement('button');
-      btn.type = 'button';
-      btn.className = 'rail-btn' + (done ? ' done' : '') + (isCurrent ? ' current' : '') + (sel ? ' selected' : '');
-      var circle = document.createElement('span');
-      circle.className = 'circle';
-      circle.textContent = done ? '✓' : String(i + 1);
-      var label = document.createElement('span');
-      label.className = 'label';
-      label.textContent = RAIL_LABELS[s.key];
-      btn.appendChild(circle);
-      btn.appendChild(label);
-      btn.addEventListener('click', function(){ selectedIdx = i; renderRail(); renderStepCard(); });
-      railEl.appendChild(btn);
-    });
-  }
+      credEyebrow: L("Ders Nasıl Krediye Dönüşür?", "How Does A Course Become Credit?"),
+      credTitleA: L("Kredilendirme koşullarını", "Check the crediting"),
+      credTitleB: L("kontrol et", "requirements"),
+      credIntro: L("Bir dersi tamamlamak ve sertifika almak, dersin otomatik olarak PLE kredisine dönüşeceği anlamına gelmez. Kredilendirme; PLE Programı Esasları, bölüm yönergeleri ve akademik değerlendirme doğrultusunda yapılır.", "Completing a course and earning a certificate does not automatically mean the course will be credited under PLE. Crediting is carried out in line with the PLE Program Principles, departmental guidelines and academic assessment."),
+      credDoc: L("PLE Programı Esasları", "PLE Program Principles"),
+      credWhenTitle: L("Kredilendirme ne zaman tamamlanır?", "When is crediting completed?"),
+      credWhenText: L("Belgelerin ve ders bilgilerin bölümün tarafından değerlendirilir. Akademik onayların ardından PLE kredin <strong style=\"color:#fff\">“GE”</strong> ders koduyla dönem sonunda veya takip eden dönemde transkriptine işlenir. Eksik veya hatalı bir bilgi olduğunu düşünüyorsan MOOC Koordinatörüne yaz.", "Your documents and course details are assessed by your department. After the academic approvals, your PLE credit is recorded on your transcript under the course code <strong style=\"color:#fff\">“GE”</strong>, at the end of the term or in the following term. If you think something is missing or incorrect, write to your MOOC Coordinator."),
+      credIeTitle: L("Endüstri Mühendisliği öğrencileri", "Industrial Engineering students"),
+      credIeText: L("Coursera yaz döneminde de erişime açılır; ancak bölüm kararı gereği yaz döneminde tamamlanan Coursera dersleri PLE kapsamında kredilendirilemez. Yaz döneminde derslere kişisel ve mesleki gelişim amacıyla devam edebilirsin.", "Coursera is also available in the summer term; however, by departmental decision, Coursera courses completed in the summer term cannot be credited under PLE. You may still continue with courses for personal and professional development."),
 
-  function renderStepCard(){
-    var i = selectedIdx, s = STEPS[i];
-    var done = i < currentIdx, isCurrent = i === currentIdx;
-    var card = document.createElement('div');
-    card.className = 'step-card' + (isCurrent ? ' current' : (done ? ' done' : ''));
-    card.id = 'step-' + s.key;
+      depEyebrow: L("Kime Sorayım?", "Who Should I Ask?"),
+      depTitle: L("Bölümünün MOOC Koordinatörünü bul", "Find your department’s MOOC Coordinator"),
+      celtCardTitle: L("CELT'e yaz", "Write to CELT"),
+      celtCardSub: L("Program yönetimi ve teknik destek", "Program management and technical support"),
+      celtChips: [L("Lisans talebi", "Licence request"), L("Coursera erişimi", "Coursera access"), L("Teknik destek", "Technical support")],
+      coordCardTitle: L("MOOC Koordinatörüne sor", "Ask your MOOC Coordinator"),
+      coordCardSub: L("Bölüm bazlı akademik süreçler", "Department-level academic processes"),
+      coordChips: [L("Ders seçimi ve onay", "Course selection and approval"), L("Kredilendirme", "Crediting"), L("Transkript", "Transcript")],
+      coordCardCta: L("Bölümünü aşağıdan seç ↓", "Select your department below ↓"),
 
-    var ghost = document.createElement('div');
-    ghost.className = 'step-ghost';
-    ghost.textContent = String(i + 1);
-    card.appendChild(ghost);
+      faqEyebrow: L("Aklına Takılanlar", "Things You May Wonder"),
+      faqTitle: L("Sık sorulan sorular", "Frequently asked questions")
+    };
 
-    var content = document.createElement('div');
-    content.className = 'step-content';
+    var TAB_DEFS = [
+      { key: "process", label: L("Süreç Rehberi", "Process Guide") },
+      { key: "calendar", label: L("Akademik Takvim", "Academic Calendar") },
+      { key: "catalog", label: L("Ders Kataloğu", "Course Catalog") },
+      { key: "rules", label: L("Kredilendirme", "Crediting") },
+      { key: "departments", label: L("Koordinatörler", "Coordinators") },
+      { key: "faq", label: L("SSS", "FAQ") }
+    ];
 
-    var badges = document.createElement('div');
-    badges.className = 'step-badges';
-    var eyebrow = document.createElement('span');
-    eyebrow.className = 'step-eyebrow';
-    eyebrow.textContent = 'Adım ' + (i + 1);
-    badges.appendChild(eyebrow);
-    (s.tags || []).forEach(function(tag){
-      var chip = document.createElement('span');
-      chip.className = 'tag-chip ' + tag;
-      chip.textContent = TAG_LABEL[tag];
-      badges.appendChild(chip);
-    });
-    if (isCurrent) {
-      var cur = document.createElement('span');
-      cur.className = 'tag-chip current';
-      cur.textContent = 'ŞU ANKİ AŞAMA';
-      badges.appendChild(cur);
-    } else if (done) {
-      var doneChip = document.createElement('span');
-      doneChip.className = 'tag-chip done';
-      doneChip.textContent = 'TAMAMLANDI';
-      badges.appendChild(doneChip);
-    }
-    content.appendChild(badges);
+    var CAT_COLOR = { Applications: "#E8432D", Enrollment: "#0056D2", "Academic Process": "#1D7A46", "Engagement Reports": "#B8860B", "Program Review": "#6B4FA0" };
+    var CAT_LABEL = {
+      Applications: L("Başvurular", "Applications"),
+      Enrollment: L("Kayıt & Kontenjan", "Enrollment"),
+      "Academic Process": L("Akademik Süreç", "Academic Process"),
+      "Engagement Reports": L("Etkileşim Raporları", "Engagement Reports"),
+      "Program Review": L("Program Değerlendirme", "Program Review")
+    };
+    var CHIP_BG = { Applications: "#FDECE8", Enrollment: "#E7EEFB", "Academic Process": "#E5F3EB", "Engagement Reports": "#FBF3DE", "Program Review": "#EFEAF7" };
+    var engagement = L("İçerik etkileşim raporlarının MOOC koordinatörlerine iletilmesi. %70 altındaki öğrencilere uyarı e-postası", "Distribution of content engagement reports to MOOC coordinators. Warning e-mail to students below 70% engagement");
+    var calRaw = [
+      ["01.09.2026", "Applications", L("Coursera Güz Dönemi başvurularının açılması", "Opening of Coursera Fall Term applications")],
+      ["07.09.2026", "Enrollment", L("Yaz Döneminde kullanılan Coursera koltuklarının boşaltılması", "Release of vacant Coursera seats from the Summer Term")],
+      ["27.09.2026", "Applications", L("Coursera Güz Dönemi başvuruları için son tarih", "Deadline for Coursera Fall Term applications")],
+      ["07.09.2026 – 28.09.2026", "Enrollment", L("Coursera Güz Dönemi kontenjanlarına yerleştirme, 4. sınıflardan başlayarak lisans eklemeleri yapılır; bu dönemde her Cuma gerçekleştirilir.", "Allocation of Coursera Fall Term seats, starting with 4th-year students; licences are added every Friday during this period.")],
+      ["14.09.2026", "Academic Process", L("Güz Dönemi'nin başlaması", "Start of the Fall Term")],
+      ["16.11.2026", "Engagement Reports", engagement],
+      ["07.12.2026", "Engagement Reports", engagement],
+      ["11.12.2026", "Academic Process", L("Derslerin son günü", "Final day of classes")],
+      ["18.12.2026", "Engagement Reports", engagement],
+      ["25.12.2026", "Engagement Reports", engagement],
+      ["30.12.2026", "Engagement Reports", L("İçerik etkileşim raporlarının YALNIZCA MOOC koordinatörlerine iletilmesi", "Distribution of content engagement reports to MOOC coordinators ONLY")],
+      ["03.01.2027", "Academic Process", L("Dönem sonu not girişlerinin tamamlanması", "Completion of end-of-term grade submissions")],
+      ["TBD", "Program Review", L("MOOC koordinatörleri ile program değerlendirme toplantısı. Teknolojik gelişmeler ve bölüm ihtiyaçları doğrultusunda müfredatın gözden geçirilmesi", "Program evaluation meeting with MOOC coordinators. Review of curriculum considering technological developments and departmental needs")]
+    ];
+    var calendar = calRaw.map(function(row){ return { date: row[0], event: row[2], category: CAT_LABEL[row[1]], color: CAT_COLOR[row[1]], chipBg: CHIP_BG[row[1]] }; });
+    var calCategories = Object.keys(CAT_COLOR).map(function(k){ return { label: CAT_LABEL[k], color: CAT_COLOR[k] }; });
 
-    var title = document.createElement('div');
-    title.className = 'step-title';
-    title.textContent = s.title;
-    content.appendChild(title);
+    var stepDefs = [
+      { key: "apply", isCelt: true,
+        title: L("MOOC Lisans Talep Formu’nu doldur", "Fill in the MOOC Licence Request Form"),
+        linkEmoji: "📝", linkTitle: L("MOOC Lisans Talep Formu", "MOOC Licence Request Form"), linkUrl: LINKS.applicationForm,
+        desc: "<p>" + L("MOOC Lisans Talep Formu, her dönem başlamadan önce erişime açılır ve ekle-bırak döneminin sonunda kapanır. Coursera lisans talebini bu süre içinde form üzerinden ilet. Talepler, mevcut kontenjan ve program esasları doğrultusunda değerlendirilir. Lisans dağıtımında mezuniyet aşamasındaki 4. sınıf öğrencilerine öncelik verilir.", "The MOOC Licence Request Form opens before each term begins and closes at the end of the add-drop period. Submit your Coursera licence request through the form within this window. Requests are assessed according to available seats and the program principles. Priority in licence distribution is given to graduating 4th-year students.") + "</p>" },
+      { key: "result", isCelt: true,
+        title: L("Lisans talebinin sonucunu takip et", "Follow up on your licence request"),
+        noteEmoji: "☀️", noteLabel: L("Önemli not:", "Important note:"), noteType: "red",
+        noteText: L("Coursera yaz döneminde de erişime açılır; ancak bölüm kararı gereği Endüstri Mühendisliği Bölümü öğrencilerinin yaz döneminde tamamladıkları Coursera dersleri PLE kapsamında kredilendirilemez.", "Coursera is also available in the summer term; however, by departmental decision, Coursera courses completed in the summer term by Industrial Engineering students cannot be credited under PLE."),
+        desc: "<p>" + L("CELT, Coursera lisanslarını ders kayıtlarının başladığı tarihten ekle-bırak haftasının sonuna kadar aşamalı olarak tanımlar. Lisansın tanımlandığında MEF mail adresine CELT tarafından bir bilgilendirme maili gönderilir. Bu nedenle ekle-bırak haftası boyunca MEF mailini düzenli olarak kontrol et.", "CELT assigns Coursera licences gradually, from the start of course registration until the end of the add-drop week. When your licence is assigned, CELT sends an information e-mail to your MEF address. For this reason, check your MEF mail regularly throughout the add-drop week.") + "</p><p>" + L("Bu dönem Coursera lisansı alamazsan bir sonraki dönemde yeniden lisans talebinde bulunabilirsin. Coursera lisans talep süreci Güz, Bahar ve Yaz dönemlerinde yürütülür.", "If you do not receive a Coursera licence this term, you can submit a new request next term. The Coursera licence request process runs in the Fall, Spring and Summer terms.") + "</p>" },
+      { key: "bundle", isCoord: true, hasChecklist: true,
+        title: L("MOOC Koordinatörüne danış", "Consult your MOOC Coordinator"),
+        linkEmoji: "🎓", linkTitle: L("Coursera kurs kataloğunu incele", "Browse the Coursera course catalog"), linkUrl: LINKS.courseList,
+        noteEmoji: "💡", noteLabel: L("Not:", "Note:"), noteType: "yellow",
+        noteText: L("Bir dersin Coursera sertifikası sunması, tek başına PLE kapsamında kredilendirileceği anlamına gelmez. Bölümünün web sitesinde yayımlanan ders seçimi ve PLE kredilendirme yönergelerini mutlaka incele ve derse başlamadan önce MOOC Koordinatöründen uygunluk teyidi al. PLE kapsamında toplam en fazla 12 AKTS kredilendirebilirsin.", "The fact that a course offers a Coursera certificate does not on its own mean it will be credited under PLE. Be sure to review the course selection and PLE crediting guidelines published on your department’s website, and confirm eligibility with your MOOC Coordinator before starting the course. A maximum of 12 ECTS in total can be credited under PLE."),
+        desc: "<p>" + L("Coursera kurs kataloğunu inceleyerek hedeflerine ve bölümünün PLE koşullarına uygun dersleri belirle. Seçtiğin dersi PLE kapsamında kredilendirmek istiyorsan derse başlamadan önce bölümünün web sitesini ziyaret et ve MOOC Koordinatörüyle iletişime geçerek dersin uygunluğunu teyit et.", "Review the Coursera course catalog and identify courses that match your goals and your department’s PLE requirements. If you want a course credited under PLE, visit your department’s website before starting it and contact your MOOC Coordinator to confirm the course is eligible.") + "</p>" },
+      { key: "learn",
+        title: L("Derslerini tamamla ve içerik etkileşimini en az %70’te tut", "Complete your courses and keep engagement at 70% or above"),
+        noteEmoji: "✨", noteLabel: L("İpucu:", "Tip:"), noteType: "green",
+        noteText: L("Videoları sonuna kadar izle, okuma materyallerini aç ve quizler ile ödevleri eksiksiz tamamla.", "Watch the videos to the end, open the reading materials and complete all quizzes and assignments."),
+        desc: "<p>" + L("Coursera derslerini dönem boyunca düzenli olarak takip et. İçerik etkileşim oranı; videoları izleme, okuma materyallerini inceleme ve değerlendirme etkinliklerini tamamlama durumuna göre hesaplanır.", "Follow your Coursera courses regularly throughout the term. The content engagement rate is calculated from watching videos, reviewing reading materials and completing assessment activities.") + "</p><p>" + L("PLE kapsamında kredilendirilecek her ders için içerik etkileşim oranının en az %70 olması gerekir. Etkileşim oranı %70’in altında kalan öğrencilere CELT tarafından her ay bilgilendirme maili gönderilir.", "For every course to be credited under PLE, the content engagement rate must be at least 70%. Students whose engagement falls below 70% receive a monthly information e-mail from CELT.") + "</p>" },
+      { key: "deliver", isCoord: true,
+        title: L("Sertifikanı ve sunum kaydını teslim et", "Submit your certificate and presentation recording"),
+        desc: "<p>" + L("Dönem sonunda, tamamladığın her MOOC dersi için aşağıdaki iki belgeyi bölümünün MOOC Koordinatörüne teslim et:", "At the end of the term, submit the following two documents to your department’s MOOC Coordinator for each MOOC course you complete:") + "</p><p class=\"bullets\">" + L("•&nbsp; Coursera ders sertifikası<br>•&nbsp; Dersin ana fikrini ve öğrendiklerini anlattığın 2–5 dakikalık sunum kaydı", "•&nbsp; Your Coursera course certificate<br>•&nbsp; A 2–5 minute presentation recording explaining the main idea of the course and what you learned") + "</p><p>" + L("Coursera sertifikası ve sunum kaydı için teslim tarihleri bölümler tarafından belirlenir ve bölümlere göre farklılık gösterebilir. Belgelerini hangi tarihe kadar ve hangi yöntemle teslim etmen gerektiğini bölümünün duyurularından veya MOOC Koordinatöründen öğrenebilirsin.", "Submission dates for the Coursera certificate and the presentation recording are set by departments and may vary. Find out the deadline and the submission method from your department’s announcements or your MOOC Coordinator.") + "</p>" },
+      { key: "transcript", isCoord: true, isStudentAffairs: true,
+        title: L("PLE kredinin transkriptine işlenmesini takip et", "Track your PLE credit on your transcript"),
+        desc: "<p>" + L("Teslim ettiğin belgelerin kontrol edilmesi ve bölümündeki değerlendirme sürecinin tamamlanmasının ardından onaylanan PLE kredin transkriptine işlenir.", "Once your submitted documents have been checked and your department’s assessment process is complete, your approved PLE credit is recorded on your transcript.") + "</p><p>" + L("PLE ders kodu “GE” olarak dönem sonunda veya takip eden dönemde transkriptinde görünebilir. Eksik ya da hatalı bir bilgi olduğunu düşünüyorsan bölümünün MOOC Koordinatörüyle iletişime geçebilirsin.", "The PLE course code “GE” may appear on your transcript at the end of the term or in the following term. If you think something is missing or incorrect, contact your department’s MOOC Coordinator.") + "</p>" }
+    ];
 
-    var body = document.createElement('div');
-    body.className = 'step-body';
-
-    if (s.hasChecklist) {
-      var panel = document.createElement('div');
-      panel.className = 'checklist-panel ' + (checklistOpen ? 'open' : 'closed');
-      var toggle = document.createElement('button');
-      toggle.type = 'button';
-      toggle.className = 'checklist-toggle';
-      toggle.innerHTML = '<span class="title">Ders seçerken şunlara dikkat et</span><span class="meta"><span class="count">6 KONTROL</span><span class="icon">' + (checklistOpen ? '−' : '+') + '</span></span>';
-      toggle.addEventListener('click', function(){ checklistOpen = !checklistOpen; renderStepCard(); });
-      panel.appendChild(toggle);
-      var items = document.createElement('div');
-      items.className = 'checklist-items';
-      CHECKLIST.forEach(function(c, ci){
-        var row = document.createElement('div');
-        row.className = 'checklist-item';
-        row.innerHTML = '<span class="no">' + String(ci + 1).padStart(2, '0') + '</span><span><span class="ctitle">' + c.emoji + ' ' + c.title + '</span><span class="ctext">' + c.text + '</span></span>';
-        items.appendChild(row);
+    var RAIL_LABELS = {
+      apply: L("Lisans talebi", "Licence request"), result: L("Lisans dağıtımı", "Licence assignment"),
+      bundle: L("Ders seçimi", "Course selection"), learn: L("Dersleri tamamla", "Complete courses"),
+      deliver: L("Belge teslimi", "Document submission"), transcript: L("Transkript", "Transcript")
+    };
+    var STAGE_LABELS = {
+      apply: L("Lisans talebi", "Licence request"), result: L("Lisans dağıtımı", "Licence assignment"),
+      bundle: L("Ders seçimi", "Course selection"), learn: L("Dersler devam ediyor", "Courses in progress"),
+      deliver: L("Sertifika ve sunum teslimi", "Certificate & presentation submission"),
+      transcript: L("Transkriptler işleniyor", "Transcripts being processed")
+    };
+    var currentIdx = Math.max(0, stepDefs.findIndex(function(s){ return s.key === CURRENT_STEP; }));
+    var currentStepLabel = STAGE_LABELS[CURRENT_STEP] || STAGE_LABELS.apply;
+    var stepSel = STATE.stepSel == null ? currentIdx : STATE.stepSel;
+    var steps = stepDefs.map(function(s, i){
+      var done = i < currentIdx, isCurrent = i === currentIdx;
+      return Object.assign({}, s, {
+        idx: i, done: done, isCurrent: isCurrent,
+        railLabel: RAIL_LABELS[s.key]
       });
-      panel.appendChild(items);
-      body.appendChild(panel);
+    });
+
+    var checklistRaw = [
+      { emoji: "🏅", title: L("Sertifika uygunluğunu kontrol et", "Check certificate eligibility"), text: L("Dersi başarıyla tamamladığında sertifika alıp almayacağını hem Coursera kurs kataloğundan hem de Coursera’daki ders sayfasından kontrol et. Sertifika sunmayan içerikler PLE kapsamında kredilendirilemez.", "Check whether you will receive a certificate upon successful completion, both in the Coursera course catalog and on the course page on Coursera. Content that does not offer a certificate cannot be credited under PLE.") },
+      { emoji: "⏳", title: L("Peer review süresini hesaba kat", "Account for peer review time"), text: L("Dersin peer review ile değerlendirilen ödevler içerip içermediğini incele. Bu ödevlerin değerlendirilmesi genellikle 7–14 gün sürebilir ve değerlendirme tamamlanmadan sertifika oluşturulmaz. Bu nedenle ödevlerini dönem sonuna bırakma.", "Check whether the course includes peer-reviewed assignments. Reviewing these usually takes 7–14 days and the certificate is not issued until the review is complete, so do not leave assignments until the end of the term.") },
+      { emoji: "📅", title: L("Ders süresini ve çalışma yükünü incele", "Review course length and workload"), text: L("Dersin tahminî tamamlanma süresini, haftalık çalışma yükünü ve modül sayısını kontrol et. Coursera’daki esnek teslim tarihleri, MEF tarafından açıklanan dönem sonu teslim tarihlerini değiştirmez.", "Check the estimated completion time, weekly workload and number of modules. Flexible deadlines on Coursera do not change the end-of-term submission dates announced by MEF.") },
+      { emoji: "✅", title: L("Zorunlu değerlendirmeleri kontrol et", "Check the required assessments"), text: L("Ders kapsamında tamamlanması gereken quiz, ödev, proje, sınav veya capstone çalışması bulunup bulunmadığını incele. Sertifika alabilmek için ders sayfasında belirtilen tüm zorunlu değerlendirmeleri başarıyla tamamlaman gerekir.", "Check whether the course requires quizzes, assignments, projects, exams or a capstone. To earn the certificate you must successfully complete every required assessment listed on the course page.") },
+      { emoji: "🌐", title: L("Dil ve erişilebilirlik seçeneklerini değerlendir", "Consider language and accessibility"), text: L("Dersin anlatım dilinin, altyazı seçeneklerinin ve içerik seviyesinin senin için uygun olduğundan emin ol. Ders için ön koşul, özel bir yazılım veya ek materyal gerekip gerekmediğini de kontrol et.", "Make sure the language of instruction, subtitle options and content level suit you. Also check whether the course requires prerequisites, special software or extra materials.") },
+      { emoji: "🧩", title: L("Program yapısını incele", "Review the program structure"), text: L("Bir Specialization veya Professional Certificate programı seçiyorsan programın kaç dersten oluştuğunu ve seçtiğin dersin tek başına sertifika sunup sunmadığını kontrol et.", "If you are choosing a Specialization or Professional Certificate, check how many courses it contains and whether the course you pick offers a certificate on its own.") }
+    ];
+    var checklist = checklistRaw.map(function(c, i){ return Object.assign({}, c, { no: String(i + 1).padStart(2, "0") }); });
+
+    var CRED_DEFS = [
+      { no: "1", rail: "#0056D2",
+        title: L("Derse başlamadan önce", "Before you start the course"),
+        hint: L("Ders seçimi ve uygunluk kontrolü", "Course selection and eligibility check"),
+        items: [
+          { b: L("Bölümünün yönergelerini incele.", "Review your department’s guidelines."), t: L("Bölümünün web sitesinde yayımlanan MOOC/PLE ders listesini ve kredilendirme yönergelerini kontrol et. Bölümün uygun dersleri yayımlıyorsa seçimini bu listeye göre yap. Ders listesi bulunmuyorsa veya seçtiğin dersin uygunluğundan emin değilsen MOOC Koordinatörüne danış.", "Check the MOOC/PLE course list and crediting guidelines published on your department’s website. If your department publishes eligible courses, choose from that list. If there is no list, or you are unsure whether your course is eligible, consult your MOOC Coordinator.") },
+          { b: L("Dersin özelliklerini kontrol et.", "Check the course details."), t: L("Dersin sertifika sunduğunu hem Coursera kurs kataloğundan hem de ders sayfasından kontrol et. Süresini, haftalık çalışma yükünü, zorunlu değerlendirmelerini ve peer review içerip içermediğini incele.", "Confirm the course offers a certificate, both in the Coursera catalog and on the course page. Review its length, weekly workload, required assessments and whether it includes peer review.") },
+          { b: L("12 AKTS sınırını göz önünde bulundur.", "Keep the 12 ECTS limit in mind."), t: L("Öğrenimin boyunca PLE kapsamında toplam en fazla 12 AKTS kredilendirebilirsin. MOOC derslerinin AKTS karşılıkları bölüm tarafından belirlendiği için bu sınırın karşılık geldiği ders sayısı bölümlere göre değişebilir.", "Over the course of your studies, a maximum of 12 ECTS in total can be credited under PLE. Because the ECTS value of MOOC courses is set by departments, the number of courses this limit corresponds to may vary.") }
+        ], warns: [] },
+      { no: "2", rail: "#E8432D",
+        title: L("Dersi tamamlarken", "While completing the course"),
+        hint: L("İçerik etkileşimi ve peer review", "Content engagement and peer review"),
+        items: [
+          { b: L("İçerik etkileşimini en az %70’te tut.", "Keep content engagement at 70% or above."), t: L("Videoları izle, okuma materyallerini incele ve quiz, ödev ve değerlendirme etkinliklerini tamamla.", "Watch the videos, review the reading materials and complete quizzes, assignments and assessment activities.") },
+          { b: L("Peer review ödevlerini erkenden tamamla.", "Complete peer review assignments early."), t: L("Değerlendirme sürecinin sertifikanın oluşmasını geciktirmemesi için peer review içeren ödevleri dönem sonuna bırakma.", "Do not leave peer-reviewed assignments until the end of the term, so the review process does not delay your certificate.") }
+        ], warns: [
+          { emoji: "⚠️", title: L("Peer review süresine dikkat et", "Mind the peer review timeline"), text: L("Peer review içeren ödevlerin değerlendirilmesi genellikle 7–14 gün sürebilir ve değerlendirme tamamlanmadan sertifikan oluşturulmayabilir. Coursera’daki esnek teslim tarihleri, bölümünün belirlediği sertifika teslim tarihini değiştirmez.", "Reviewing peer-reviewed assignments usually takes 7–14 days, and your certificate may not be issued until the review is complete. Flexible deadlines on Coursera do not change the certificate submission date set by your department.") },
+          { emoji: "⚠️", title: L("Sertifika tek başına yeterli değildir", "A certificate alone is not enough"), text: L("Sertifikanı almış olsan bile içerik etkileşim oranın %70’in altındaysa kredilendirme sürecinde sorun yaşayabilirsin. Bu veriyi öğrenciler göremez; MOOC Koordinatörleri takip eder ve %70 altına düşenlere CELT her ay bilgilendirme maili gönderir.", "Even if you have earned the certificate, you may run into problems during crediting if your content engagement is below 70%. Students cannot see this data; MOOC Coordinators track it, and CELT sends a monthly information e-mail to students below 70%.") }
+        ] },
+      { no: "3", rail: "#1D7A46",
+        title: L("Dönem sonunda", "At the end of the term"),
+        hint: L("Sertifika ve sunum kaydı teslimi", "Certificate and presentation submission"),
+        items: [
+          { b: L("Coursera sertifikanı hazırla.", "Prepare your Coursera certificate."), t: "" },
+          { b: L("Sunum kaydını hazırla.", "Prepare your presentation recording."), t: L("Dersin ana fikrini ve öğrendiklerini anlattığın 2–5 dakikalık kaydı çek.", "Record a 2–5 minute video explaining the main idea of the course and what you learned.") },
+          { b: L("Belgelerini teslim et.", "Submit your documents."), t: L("Sertifikanı ve sunum kaydını bölümünün belirlediği yöntemle ve son teslim tarihine kadar MOOC Koordinatörüne teslim et. Teslim tarihleri bölümlere göre farklılık gösterebilir.", "Submit your certificate and presentation recording to your MOOC Coordinator using the method and deadline set by your department. Deadlines may vary between departments.") }
+        ], warns: [] }
+    ];
+    var credSteps = CRED_DEFS.map(function(c, i){
+      var open = STATE.openCred === i;
+      return Object.assign({}, c, {
+        open: open,
+        count: c.items.length + " " + L("adım", "steps"),
+        hasWarn: open && c.warns.length > 0
+      });
+    });
+
+    var FACULTY_DEFS = [
+      { name: L("İktisadi, İdari ve Sosyal Bilimler Fakültesi", "Faculty of Economics, Administrative and Social Sciences"), dot: "#0056D2", departments: [
+        { name: L("İşletme", "Business Administration"), coordinator: "Rüya Yüksel", email: "yukselzeh@mef.edu.tr" },
+        { name: L("İktisat", "Economics"), coordinator: "Narod Erkol", email: "erkoln@mef.edu.tr" },
+        { name: L("Siyaset Bilimi ve Uluslararası İlişkiler", "Political Science and International Relations"), coordinator: "Begüm Uzun Taşkın", email: "taskinbe@mef.edu.tr" },
+        { name: L("Psikoloji", "Psychology"), coordinator: "Melike Acar", email: "acarmel@mef.edu.tr" }
+      ]},
+      { name: L("Mühendislik Fakültesi", "Faculty of Engineering"), dot: "#E8432D", departments: [
+        { name: L("Elektrik-Elektronik Mühendisliği", "Electrical and Electronics Engineering"), coordinator: "Ebru Arısoy Saraçlar", email: "saraclare@mef.edu.tr" },
+        { name: L("Makine Mühendisliği", "Mechanical Engineering"), coordinator: "Mostafa Khalil Abdou Saleh", email: "salehm@mef.edu.tr" },
+        { name: L("İnşaat Mühendisliği", "Civil Engineering"), coordinator: "Gökçe Tönük", email: "gokce.tonuk@mef.edu.tr" },
+        { name: L("Bilgisayar Mühendisliği", "Computer Engineering"), coordinator: "İlker Bekmezci", email: "bekmezcii@mef.edu.tr" },
+        { name: L("Endüstri Mühendisliği", "Industrial Engineering"), coordinator: "Şirin Özlem", email: "ozlems@mef.edu.tr" }
+      ]},
+      { name: L("Sanat, Tasarım ve Mimarlık Fakültesi", "Faculty of Arts, Design and Architecture"), dot: "#0056D2", departments: [
+        { name: L("Mimarlık", "Architecture"), coordinator: "Ayşe Hilal Uğurlu", email: "ugurlua@mef.edu.tr" },
+        { name: L("İç Mimarlık", "Interior Architecture"), coordinator: "Ayşe Hilal Uğurlu", email: "ugurlua@mef.edu.tr" }
+      ]},
+      { name: L("Eğitim Fakültesi", "Faculty of Education"), dot: "#1D7A46", departments: [
+        { name: L("İngilizce Öğretmenliği", "English Language Teaching"), coordinator: "Derya Altınmakas", email: "altinmakasd@mef.edu.tr" },
+        { name: L("Rehberlik ve Psikolojik Danışmanlık", "Guidance and Psychological Counseling"), coordinator: "Vincent Henry Sienkiewicz", email: "sienkiewiczv@mef.edu.tr" },
+        { name: L("Matematik Öğretmenliği", "Mathematics Teaching"), coordinator: "Bengi Birgili", email: "birgilib@mef.edu.tr" }
+      ]},
+      { name: L("Hukuk Fakültesi", "Faculty of Law"), dot: "#E8432D", departments: [
+        { name: L("Hukuk", "Law"), coordinator: "Hülya Dinçer", email: "dincerhu@mef.edu.tr" }
+      ]}
+    ];
+    var faculties = FACULTY_DEFS.map(function(f, i){
+      var open = !!STATE.openFac[i];
+      var n = f.departments.length;
+      return Object.assign({}, f, {
+        open: open,
+        countLabel: n + " " + L("bölüm", n === 1 ? "department" : "departments")
+      });
+    });
+
+    var FAQ_GROUP_DEFS = [
+      { title: L("PLE Programı ve Kredilendirme", "PLE Program and Crediting"), items: [
+        { q: L("Coursera lisans talebinde nasıl bulunabilirim?", "How do I request a Coursera licence?"), a: L("CELT, Coursera sürecine ilişkin takvimi her dönem ilan eder. İlan edilen tarihler arasında <b>MOOC Lisans Talep Formu'nu</b> doldurman gerekir. Talepler, mevcut kontenjanlar ve program esasları doğrultusunda değerlendirilir.", "CELT announces the calendar for the Coursera process each term. You need to fill in the <b>MOOC Licence Request Form</b> within the announced dates. Requests are assessed according to available seats and the program principles.") },
+        { q: L("Kontenjan dağıtımında kimlere öncelik verilir?", "Who has priority in seat allocation?"), a: L("Lisans dağıtımında mezuniyet aşamasındaki 4. sınıf öğrencilerine öncelik verilir. Lisans talep formunu doldurmak, Coursera lisansının kesin olarak tahsis edileceği anlamına gelmez.", "Priority in licence distribution is given to graduating 4th-year students. Filling in the request form does not guarantee that a Coursera licence will be allocated to you.") },
+        { q: L("Bu dönem Coursera lisansı alamazsam ne yapabilirim?", "What if I do not receive a licence this term?"), a: L("Bir sonraki dönemde yeniden lisans talebinde bulunabilirsin. Coursera lisans talep süreci Güz, Bahar ve Yaz dönemlerinde yürütülür.", "You can submit a new licence request next term. The Coursera licence request process runs in the Fall, Spring and Summer terms.") },
+        { q: L("PLE kapsamında kredilendireceğim dersi nasıl seçmeliyim?", "How should I choose a course to be credited under PLE?"), a: L("Öncelikle bölümünün web sitesinde yayımlanan <b>MOOC/PLE ders listesini ve kredilendirme yönergelerini</b> incele. Bölümün uygun dersleri web sitesinde yayımlıyorsa seçimini bu listeye göre yap. Ders listesi bulunmuyorsa veya seçtiğin dersin uygunluğundan emin değilsen bölümünün MOOC Koordinatörüne danış.<br><br>Ayrıca dersin sertifika sunduğunu, tahminî tamamlanma süresini, zorunlu değerlendirmelerini ve peer review içerip içermediğini kontrol et.", "First review the <b>MOOC/PLE course list and crediting guidelines</b> published on your department’s website. If your department publishes eligible courses there, choose from that list. If there is no list, or you are unsure about eligibility, consult your department’s MOOC Coordinator.<br><br>Also check that the course offers a certificate, and review its estimated duration, required assessments and whether it includes peer review.") },
+        { q: L("Her Coursera dersi PLE kredisine dönüşür mü?", "Does every Coursera course become PLE credit?"), a: L("Hayır. Coursera'da bir dersi tamamlamak ve sertifika almak, dersin otomatik olarak PLE kredisine dönüşeceği anlamına gelmez. Dersin bölümünün PLE yönergelerine uygun olması ve ilgili akademik değerlendirme sürecinin tamamlanması gerekir.", "No. Completing a course on Coursera and earning a certificate does not automatically turn it into PLE credit. The course must comply with your department’s PLE guidelines and the relevant academic assessment must be completed.") },
+        { q: L("Sertifika sunmayan bir dersi kredilendirebilir miyim?", "Can a course without a certificate be credited?"), a: L("Hayır. PLE kapsamında kredilendirilecek dersin, başarıyla tamamlandığında Coursera sertifikası sunması gerekir. Sertifika bilgisini hem Coursera kurs kataloğundan hem de Coursera'daki ders sayfasından kontrol edebilirsin.<br><br>Sertifika sunmayan içerikleri kişisel ve mesleki gelişimin için tamamlayabilirsin; ancak bu içerikler PLE kapsamında kredilendirilemez.", "No. A course to be credited under PLE must provide a Coursera certificate upon successful completion. You can check this in the Coursera course catalog and on the course page on Coursera.<br><br>You may complete content without a certificate for personal and professional development, but it cannot be credited under PLE.") },
+        { q: L("En fazla kaç AKTS kredilendirebilirim?", "What is the maximum ECTS I can have credited?"), a: L("Öğrenimin boyunca PLE kapsamında toplam en fazla <b>12 AKTS</b> kredilendirebilirsin. Bir MOOC dersinin AKTS karşılığı bölüm tarafından belirlendiği için 12 AKTS'nin karşılık geldiği ders sayısı bölümlere göre değişebilir.", "Over the course of your studies, a maximum of <b>12 ECTS</b> in total can be credited under PLE. Because the ECTS value of a MOOC course is set by the department, the number of courses 12 ECTS corresponds to may vary.") },
+        { q: L("12 AKTS sınırına ulaştıktan sonra Coursera dersi alabilir miyim?", "Can I keep taking Coursera courses after reaching 12 ECTS?"), a: L("Evet. Coursera derslerine kişisel ve mesleki gelişimin için devam edebilirsin; ancak 12 AKTS sınırına ulaştıktan sonra tamamladığın yeni dersleri PLE kredisi olarak saydıramazsın.", "Yes. You can continue taking Coursera courses for personal and professional development; however, once you reach the 12 ECTS limit, new courses cannot be counted as PLE credit.") },
+        { q: L("Bir dersi tamamlamış sayılmam nasıl belirlenir?", "How is course completion determined?"), a: L("Coursera sertifikasını alabilmek için ders kapsamında zorunlu olan tüm değerlendirmeleri başarıyla tamamlaman gerekir. PLE kredilendirmesi için ayrıca içerik etkileşim oranının <b>en az %70</b> olması, Coursera sertifikanın alınması ve sunum kaydının bölümüne teslim edilmesi gerekir. <a href=\"https://www.coursera.support/s/article/learner-000001563\" target=\"_blank\" rel=\"noopener\">Coursera: Değerlendirmeleri tamamlama ↗</a>", "To earn the Coursera certificate you must successfully complete all required assessments. For PLE crediting, your content engagement must also be <b>at least 70%</b>, you must obtain the Coursera certificate, and you must submit the presentation recording to your department. <a href=\"https://www.coursera.support/s/article/learner-000001563\" target=\"_blank\" rel=\"noopener\">Coursera: Completing assessments ↗</a>") },
+        { q: L("%70 içerik etkileşimi ne anlama gelir?", "What does 70% content engagement mean?"), a: L("İçerik etkileşimi; ders videolarını izleme, okuma materyallerini inceleme ve quiz, ödev ve değerlendirme etkinliklerini tamamlama durumuna göre hesaplanır. PLE kapsamında kredilendirilecek her ders için içerik etkileşim oranının en az %70 olması gerekir.<br><br>Dersi yalnızca hızlıca geçmek veya bazı içerikleri atlayarak sertifika almak, yeterli içerik etkileşiminin oluşmasını sağlamayabilir.", "Content engagement is calculated from watching course videos, reviewing reading materials and completing quizzes, assignments and assessment activities. For every course to be credited under PLE, engagement must be at least 70%.<br><br>Rushing through a course or earning the certificate while skipping content may not produce sufficient engagement.") },
+        { q: L("Kendi içerik etkileşim verimi görebilir miyim?", "Can I see my own engagement data?"), a: L("Öğrenciler içerik etkileşim verisini doğrudan görüntüleyemez. Bu veri MOOC Koordinatörleri tarafından takip edilir. Etkileşim oranın %70'in altında kalırsa CELT tarafından her ay bilgilendirme maili gönderilir.", "Students cannot view content engagement data directly. It is tracked by MOOC Coordinators. If your engagement falls below 70%, CELT sends a monthly information e-mail.") },
+        { q: L("Peer review nedir ve neden önemlidir?", "What is peer review and why does it matter?"), a: L("Peer review, yüklediğin bir ödevin diğer Coursera öğrencileri tarafından belirlenen ölçütlere göre değerlendirilmesidir. Bazı derslerde sertifika alabilmek için peer review ödevini teslim etmen, gerekli sayıda öğrenci ödevini değerlendirmen ve kendi çalışman için değerlendirme alman gerekir. <a href=\"https://www.coursera.support/s/article/learner-000001352\" target=\"_blank\" rel=\"noopener\">Coursera: Peer review ödevleri ↗</a><br><br>Değerlendirme süreci genellikle <b>7–14 gün</b> sürebilir ve yeterli değerlendirme alınamadığında uzayabilir. Bu nedenle peer review ödevlerini bölümünün sertifika teslim tarihine bırakmamalısın.", "Peer review means an assignment you submit is graded by other Coursera learners against set criteria. In some courses, to earn the certificate you must submit the peer-reviewed assignment, review the required number of other learners’ submissions, and receive reviews for your own. <a href=\"https://www.coursera.support/s/article/learner-000001352\" target=\"_blank\" rel=\"noopener\">Coursera: Peer-reviewed assignments ↗</a><br><br>The review process usually takes <b>7–14 days</b> and can take longer if not enough reviews come in. For this reason, do not leave peer review assignments until your department’s certificate deadline.") },
+        { q: L("Dönem sonunda ne teslim etmem gerekiyor?", "What do I submit at the end of the term?"), a: L("Tamamladığın her MOOC dersi için aşağıdaki iki belgeyi bölümünün MOOC Koordinatörüne teslim etmelisin:<br><br>1. Coursera ders sertifikası<br>2. Dersin ana fikrini ve öğrendiklerini anlattığın <b>2–5 dakikalık sunum kaydı</b>", "For each MOOC course you complete, submit the following two documents to your department’s MOOC Coordinator:<br><br>1. The Coursera course certificate<br>2. A <b>2–5 minute presentation recording</b> explaining the main idea of the course and what you learned") },
+        { q: L("Sertifika ve sunum kaydı için son teslim tarihini nereden öğrenebilirim?", "Where do I find the submission deadline?"), a: L("Teslim tarihleri ve teslim yöntemi bölümler tarafından belirlenir ve bölümlere göre farklılık gösterebilir. Güncel teslim tarihini bölümünün web sitesinden, bölüm duyurularından veya MOOC Koordinatöründen öğrenmelisin.<br><br>Coursera'daki esnek ders tarihleri, bölümünün belirlediği sertifika teslim tarihini değiştirmez.", "Deadlines and submission methods are set by departments and may vary. Find the current deadline on your department’s website, in departmental announcements, or from your MOOC Coordinator.<br><br>Flexible course dates on Coursera do not change the certificate deadline set by your department.") },
+        { q: L("GE kodu transkriptime ne zaman işlenir?", "When does the GE code appear on my transcript?"), a: L("Belgelerinin kontrol edilmesi, bölüm değerlendirmesi ve ilgili akademik onayların tamamlanmasının ardından PLE kredin transkriptine işlenir. <b>“GE”</b> ders kodu dönem sonunda veya takip eden dönemde transkriptinde görünebilir.<br><br>Eksik veya hatalı bir bilgi olduğunu düşünüyorsan bölümünün MOOC Koordinatörüyle iletişime geçebilirsin.", "After your documents have been checked and the departmental assessment and academic approvals are complete, your PLE credit is recorded on your transcript. The <b>“GE”</b> course code may appear at the end of the term or in the following term.<br><br>If you think something is missing or incorrect, contact your department’s MOOC Coordinator.") },
+        { q: L("Endüstri Mühendisliği öğrencileri yaz döneminde PLE yapabilir mi?", "Can Industrial Engineering students do PLE in the summer?"), a: L("Coursera yaz döneminde de erişime açılır; ancak Endüstri Mühendisliği Bölümü öğrencilerinin yaz döneminde tamamladıkları Coursera dersleri PLE kapsamında kredilendirilemez. Yaz döneminde Coursera derslerine kişisel ve mesleki gelişim amacıyla devam edilebilir.", "Coursera is also available in the summer term; however, Coursera courses completed in the summer term by Industrial Engineering students cannot be credited under PLE. You may still continue with Coursera courses for personal and professional development.") },
+        { q: L("PLE Programı’nın resmî esaslarına nereden ulaşabilirim?", "Where can I find the official PLE principles?"), a: L("Kredilendirme sürecinin resmî dayanağına aşağıdaki belgeden ulaşabilirsin:<br><br><b>PLE Programı Esasları – MEF Üniversitesi Senato Kararı (2019)</b> — Kredilendirme sekmesindeki bağlantıdan açabilirsin.", "You can find the official basis of the crediting process in the following document:<br><br><b>PLE Program Principles – MEF University Senate Resolution (2019)</b> — open it from the link in the Crediting tab.") },
+        { q: L("CELT'e mi, MOOC Koordinatörüme mi yazmalıyım?", "Should I write to CELT or my MOOC Coordinator?"), a: L("<b>CELT:</b> Coursera lisans talebi, lisans dağıtımı, Coursera erişimi ve içerik etkileşim uyarıları için <a href='mailto:celt@mef.edu.tr'>celt@mef.edu.tr</a> adresine yazabilirsin.<br><br><b>Bölüm veya MOOC Koordinatörü:</b> Ders seçimi, PLE uygunluğu, AKTS eşleştirmesi, sertifika ve sunum kaydı teslimi ile kredilendirme süreçleri için bölümüne başvurmalısın.<br><br><b>Coursera Destek:</b> Kilitli değerlendirmeler, eksik sertifika, isim veya kimlik doğrulama ve hesap birleştirme gibi platform kaynaklı teknik sorunlar için <a href='https://www.coursera.support/s/learner-help-center' target='_blank' rel='noopener'>Coursera Learner Help Center ↗</a> üzerinden destek alabilirsin.", "<b>CELT:</b> For Coursera licence requests, licence assignment, Coursera access and content engagement warnings, write to <a href='mailto:celt@mef.edu.tr'>celt@mef.edu.tr</a>.<br><br><b>Your department or MOOC Coordinator:</b> For course selection, PLE eligibility, ECTS matching, certificate and presentation submission, and crediting, contact your department.<br><br><b>Coursera Support:</b> For platform issues such as locked assessments, missing certificates, name or ID verification and account merging, get help via the <a href='https://www.coursera.support/s/learner-help-center' target='_blank' rel='noopener'>Coursera Learner Help Center ↗</a>.") }
+      ]},
+      { title: L("Coursera Kullanımı ve Teknik Sorular", "Using Coursera and Technical Questions"), items: [
+        { q: L("Coursera hesabıma nasıl giriş yapmalıyım?", "How do I sign in to my Coursera account?"), a: L("Coursera lisansının tanımlandığı <b>MEF uzantılı mail adresini</b> kullanmalısın. Coursera giriş ekranında <b>“Google ile devam et”</b> seçeneğini seçerek MEF Google hesabınla giriş yapabilirsin.<br><br>Daha önce farklı bir giriş yöntemi kullandıysan doğru Coursera hesabında olduğundan emin ol. Coursera, Google hesabının mevcut Coursera hesabına bağlanmasına izin verir. <a href='https://www.coursera.support/s/article/learner-000001888' target='_blank' rel='noopener'>Coursera: Google hesabıyla giriş ↗</a>", "Use the <b>MEF e-mail address</b> your Coursera licence was assigned to. On the Coursera sign-in screen, choose <b>“Continue with Google”</b> to sign in with your MEF Google account.<br><br>If you previously used a different sign-in method, make sure you are in the correct Coursera account. Coursera allows linking your Google account to an existing Coursera account. <a href='https://www.coursera.support/s/article/learner-000001888' target='_blank' rel='noopener'>Coursera: Signing in with Google ↗</a>") },
+        { q: L("Coursera lisansım tanımlandı ancak dersler ücretli görünüyor. Ne yapmalıyım?", "My licence is assigned but courses still show as paid. What now?"), a: L("Öncelikle MEF uzantılı mail adresinin bağlı olduğu doğru Coursera hesabında bulunduğunu kontrol et. Kişisel Coursera hesabınla giriş yaptıysan MEF lisansına dâhil içerikler ücretli görünebilir.<br><br>Herhangi bir ödeme yapmadan önce hesabından çıkış yaparak <b>“Google ile devam et”</b> seçeneğiyle MEF hesabına yeniden giriş yap. Sorun devam ederse ekran görüntüsüyle birlikte <a href='mailto:celt@mef.edu.tr'>celt@mef.edu.tr</a> adresine yaz.", "First check that you are in the correct Coursera account linked to your MEF e-mail address. If you signed in with a personal Coursera account, content covered by the MEF licence may appear as paid.<br><br>Before making any payment, sign out and sign back in to your MEF account using <b>“Continue with Google”</b>. If the problem persists, write to <a href='mailto:celt@mef.edu.tr'>celt@mef.edu.tr</a> with a screenshot.") },
+        { q: L("Bir dersin sertifika verip vermediğini nasıl kontrol edebilirim?", "How do I check whether a course offers a certificate?"), a: L("Sertifika bilgisini Coursera kurs kataloğundan ve Coursera'daki ders sayfasından kontrol edebilirsin. Ders sayfasında sertifika sunulduğuna ilişkin bilgi bulunmuyorsa dersi PLE amacıyla seçmemelisin.<br><br>Bir Specialization veya Professional Certificate programı seçiyorsan programın kaç dersten oluştuğunu ve seçtiğin dersin tek başına sertifika sunup sunmadığını da kontrol et.", "Check the certificate information in the Coursera course catalog and on the course page on Coursera. If the course page does not indicate a certificate, do not choose it for PLE purposes.<br><br>If you are choosing a Specialization or Professional Certificate, also check how many courses it contains and whether your chosen course offers a certificate on its own.") },
+        { q: L("Coursera sertifikası alabilmek için ne yapmalıyım?", "What do I need to do to earn a Coursera certificate?"), a: L("Ders kapsamında zorunlu olan tüm notlandırılmış quizleri, ödevleri, projeleri ve sınavları başarıyla tamamlamalısın. Peer review zorunluysa bu değerlendirme de tamamlanmadan sertifikan oluşturulmayabilir. Coursera ayrıca isim doğrulaması; bazı ders ve programlarda ise kimlik doğrulaması isteyebilir. <a href='https://www.coursera.support/s/article/learner-000001268' target='_blank' rel='noopener'>Coursera: Sertifika alma koşulları ↗</a>", "You must successfully complete all required graded quizzes, assignments, projects and exams. If peer review is required, your certificate may not be issued until that review is complete. Coursera may also require name verification, and ID verification for some courses and programs. <a href='https://www.coursera.support/s/article/learner-000001268' target='_blank' rel='noopener'>Coursera: Certificate requirements ↗</a>") },
+        { q: L("Sertifikamı nereden indirebilirim?", "Where can I download my certificate?"), a: L("Coursera hesabına giriş yaptıktan sonra <b>My Learning</b> bölümünü aç ve <b>Certificates</b> sekmesine git. Buradan kazandığın sertifikayı görüntüleyebilir, indirebilir veya paylaşabilirsin. <a href='https://www.coursera.support/s/article/learner-000001329' target='_blank' rel='noopener'>Coursera: Sertifika indirme ve paylaşma ↗</a><br><br>Sertifikanı hangi formatta teslim etmen gerektiğini bölümünün duyurularından veya MOOC Koordinatöründen öğrenmelisin.", "After signing in to Coursera, open <b>My Learning</b> and go to the <b>Certificates</b> tab. From there you can view, download or share your certificate. <a href='https://www.coursera.support/s/article/learner-000001329' target='_blank' rel='noopener'>Coursera: Downloading and sharing certificates ↗</a><br><br>Find out the required submission format from your department’s announcements or your MOOC Coordinator.") },
+        { q: L("Dersi tamamladım ancak sertifikam oluşmadı. Ne yapmalıyım?", "I finished the course but no certificate was issued. What should I do?"), a: L("Öncelikle aşağıdakileri kontrol et:<br><br>• Tüm zorunlu ve notlandırılmış değerlendirmeleri geçtin mi?<br>• Bekleyen bir peer review ödevin var mı?<br>• Gerekli sayıda öğrenci ödevini değerlendirdin mi?<br>• İsim veya kimlik doğrulaman tamamlandı mı?<br>• Dersi MEF lisansının tanımlı olduğu doğru Coursera hesabında mı tamamladın?<br><br>Sorun devam ederse <a href='https://www.coursera.support/s/article/learner-000001456' target='_blank' rel='noopener'>Coursera'nın sertifika sorunları rehberini ↗</a> incele ve Coursera Destek ile iletişime geç. Bölümünün teslim tarihi yaklaşıyorsa durumu ekran görüntüleriyle birlikte CELT'e ve MOOC Koordinatörüne bildir.", "First check the following:<br><br>• Have you passed all required graded assessments?<br>• Is a peer review assignment still pending?<br>• Have you reviewed the required number of other learners’ submissions?<br>• Is your name or ID verification complete?<br>• Did you complete the course in the Coursera account your MEF licence is assigned to?<br><br>If the problem persists, review <a href='https://www.coursera.support/s/article/learner-000001456' target='_blank' rel='noopener'>Coursera’s certificate troubleshooting guide ↗</a> and contact Coursera Support. If your department’s deadline is approaching, inform CELT and your MOOC Coordinator with screenshots.") },
+        { q: L("Peer review ödevim değerlendirilmiyor. Ne yapabilirim?", "My peer review assignment is not being graded. What can I do?"), a: L("Ödevini doğru şekilde gönderdiğini ve sistemin istediği sayıda öğrenci ödevini değerlendirdiğini kontrol et. Değerlendirme beklerken dersin tartışma alanında diğer öğrencilerden çalışmanı değerlendirmelerini isteyebilirsin.<br><br>Sorun devam ederse <a href='https://www.coursera.support/s/article/learner-000001477' target='_blank' rel='noopener'>Coursera'nın peer review sorun giderme adımlarını ↗</a> takip et. Bölümünün sertifika teslim tarihinin değişmediğini unutma.", "Check that you submitted your assignment correctly and reviewed the required number of other learners’ submissions. While waiting, you can ask other learners in the course discussion forum to review your work.<br><br>If the problem persists, follow <a href='https://www.coursera.support/s/article/learner-000001477' target='_blank' rel='noopener'>Coursera’s peer review troubleshooting steps ↗</a>. Remember that your department’s certificate deadline does not change.") },
+        { q: L("Sertifikamda ismim yanlış görünüyor. Nasıl düzeltebilirim?", "My name is wrong on the certificate. How do I fix it?"), a: L("Coursera sertifikalarında hesabındaki <b>doğrulanmış isim</b> kullanılır. Coursera hesabında <b>Settings</b> bölümüne giderek isim doğrulama alanını kontrol et. Doğrulanmış isminin resmî belgelerindeki adınla eşleşmesi gerekir. <a href='https://www.coursera.support/s/article/learner-000002203' target='_blank' rel='noopener'>Coursera: Doğrulanmış ismi güncelleme ↗</a><br><br>Sertifikanı bölümüne teslim etmeden önce isim bilgisinin doğru olduğundan emin ol.", "Coursera certificates use the <b>verified name</b> on your account. Go to <b>Settings</b> in your Coursera account and check the name verification field. Your verified name must match the name on your official documents. <a href='https://www.coursera.support/s/article/learner-000002203' target='_blank' rel='noopener'>Coursera: Updating your verified name ↗</a><br><br>Make sure the name is correct before submitting your certificate to your department.") },
+        { q: L("Coursera neden isim veya kimlik doğrulaması istiyor?", "Why does Coursera ask for name or ID verification?"), a: L("Coursera, sertifikanın doğru kişiye düzenlenebilmesi için isim doğrulaması ister. Çoğu derste isim doğrulaması yeterliyken bazı ders ve programlarda kimlik doğrulaması da gerekebilir. <a href='https://www.coursera.support/s/article/learner-000001457' target='_blank' rel='noopener'>Coursera: İsim doğrulama ↗</a> ve <a href='https://www.coursera.support/s/article/learner-000001213' target='_blank' rel='noopener'>kimlik doğrulama ↗</a> adımlarını Coursera üzerinden tamamlayabilirsin.<br><br>Doğrulama sırasında teknik bir sorun yaşarsan kimlik belgeni CELT'e göndermek yerine Coursera Destek ile iletişime geç. Sorun bölümünün teslim tarihini etkiliyorsa CELT'i ve MOOC Koordinatörünü ayrıca bilgilendir.", "Coursera requires name verification so the certificate is issued to the right person. Name verification is enough for most courses, while some courses and programs also require ID verification. You can complete <a href='https://www.coursera.support/s/article/learner-000001457' target='_blank' rel='noopener'>name verification ↗</a> and <a href='https://www.coursera.support/s/article/learner-000001213' target='_blank' rel='noopener'>ID verification ↗</a> through Coursera.<br><br>If you hit a technical problem during verification, contact Coursera Support rather than sending your ID document to CELT. If the issue affects your department’s deadline, also inform CELT and your MOOC Coordinator.") },
+        { q: L("Coursera’daki ders teslim tarihini kaçırırsam ne olur?", "What if I miss a deadline on Coursera?"), a: L("Bazı Coursera derslerinde kaçırılan değerlendirme tarihleri yeniden planlanabilir veya sistem tarafından sıfırlanabilir. Ancak Coursera'daki tarihin değişmesi, bölümünün Coursera sertifikası ve sunum kaydı için belirlediği teslim tarihini uzatmaz. <a href='https://www.coursera.support/s/article/learner-000001570' target='_blank' rel='noopener'>Coursera: Değerlendirme tarihleri ↗</a>", "In some Coursera courses, missed assessment deadlines can be rescheduled or reset by the system. However, a change on Coursera does not extend the deadline your department has set for the certificate and presentation recording. <a href='https://www.coursera.support/s/article/learner-000001570' target='_blank' rel='noopener'>Coursera: Assessment deadlines ↗</a>") },
+        { q: L("Birden fazla Coursera hesabım varsa ne yapmalıyım?", "What if I have more than one Coursera account?"), a: L("Derslerinin, ilerleme bilgilerinin ve sertifikalarının farklı hesaplara dağılmaması için MEF lisansının tanımlı olduğu hesabı kullanmaya devam et. Coursera, uygun durumlarda birden fazla hesabı birleştirme konusunda destek sağlayabilir. <a href='https://www.coursera.support/s/article/learner-000001500' target='_blank' rel='noopener'>Coursera: Birden fazla hesabı birleştirme ↗</a><br><br>Hesaplarını kendi başına silmeden veya yeni bir hesap oluşturmadan önce Coursera Destek ile iletişime geç.", "Keep using the account your MEF licence is assigned to, so your courses, progress and certificates are not spread across accounts. Where applicable, Coursera can help merge multiple accounts. <a href='https://www.coursera.support/s/article/learner-000001500' target='_blank' rel='noopener'>Coursera: Merging multiple accounts ↗</a><br><br>Contact Coursera Support before deleting accounts or creating a new one on your own.") },
+        { q: L("Seçtiğim ders Coursera kataloğundan kaldırılırsa ne yapmalıyım?", "What if my course is removed from the Coursera catalog?"), a: L("Coursera kurs kataloğu zaman içinde değişebilir. Derse başlamadan önce dersin güncel katalogda bulunduğunu ve erişilebilir olduğunu kontrol et.<br><br>Ders katalogdan kaldırılmışsa veya erişime kapanmışsa başka bir ders seçmeden önce bölümünün web sitesindeki güncel listeyi incele. Dersin PLE uygunluğu konusunda belirsizlik varsa MOOC Koordinatörüne danış.", "The Coursera course catalog can change over time. Before starting a course, check that it is in the current catalog and accessible.<br><br>If the course has been removed or closed, review the current list on your department’s website before choosing another. If PLE eligibility is unclear, consult your MOOC Coordinator.") },
+        { q: L("Coursera’da teknik bir sorun yaşarsam nereye başvurmalıyım?", "Where do I go for technical problems on Coursera?"), a: L("Öncelikle <a href='https://www.coursera.support/s/learner-help-center' target='_blank' rel='noopener'>Coursera Learner Help Center ↗</a> üzerindeki ilgili sorun giderme adımlarını incele. Çözüm bulamazsan Coursera Destek ekibiyle iletişime geçebilirsin.<br><br>Sorun MEF lisansının hesabına tanımlanmaması, Coursera erişimin veya CELT tarafından gönderilen etkileşim uyarısıyla ilgiliyse <a href='mailto:celt@mef.edu.tr'>celt@mef.edu.tr</a> adresine yaz. Ders seçimi, sertifika teslimi veya kredilendirme ile ilgiliyse bölümünün MOOC Koordinatörüne başvur.", "First review the relevant troubleshooting steps in the <a href='https://www.coursera.support/s/learner-help-center' target='_blank' rel='noopener'>Coursera Learner Help Center ↗</a>. If that does not resolve it, contact Coursera Support.<br><br>If the issue concerns your MEF licence not being assigned to your account, your Coursera access, or an engagement warning sent by CELT, write to <a href='mailto:celt@mef.edu.tr'>celt@mef.edu.tr</a>. If it concerns course selection, certificate submission or crediting, contact your department’s MOOC Coordinator.") }
+      ]}
+    ];
+    var faqCat = STATE.faqCat;
+    var faqTabs = FAQ_GROUP_DEFS.map(function(g, gi){ return { title: g.title, count: g.items.length, active: faqCat === gi }; });
+    var faqItems = (FAQ_GROUP_DEFS[faqCat] || FAQ_GROUP_DEFS[0]).items.map(function(item, i){
+      return { q: item.q, a: item.a, open: STATE.openFaq === i };
+    });
+
+    /* ---- apply to DOM ---- */
+    renderNav(t, TAB_DEFS);
+    renderHero(t, currentStepLabel);
+    renderProcess(t, steps, stepSel, currentStepLabel, checklist);
+    renderCalendar(t, calCategories, calendar);
+    renderCatalog(t);
+    renderRules(t, credSteps);
+    renderDepartments(t, faculties);
+    renderFaq(t, faqTabs, faqItems);
+    renderFooter(t);
+    applyTab();
+  }
+
+  function applyTab(){
+    var key = panels[STATE.tab] ? STATE.tab : "home";
+    Object.keys(panels).forEach(function(k){ panels[k].style.display = (k === key) ? "" : "none"; });
+    document.querySelectorAll(".nav-btn").forEach(function(b){ b.classList.toggle("active", b.dataset.tabKey === key); });
+    document.documentElement.lang = STATE.lang;
+  }
+
+  function renderNav(t, TAB_DEFS){
+    els.navBrand.textContent = t.brand;
+    els.navLinks.innerHTML = TAB_DEFS.map(function(d){
+      return "<button type=\"button\" class=\"nav-btn\" data-tab-key=\"" + d.key + "\" data-action=\"tab:" + d.key + "\">" + d.label + "</button>";
+    }).join("");
+    els.langToggle.innerHTML =
+      "<button type=\"button\" class=\"lang-btn" + (STATE.lang === "tr" ? " active" : "") + "\" data-action=\"lang:tr\">TR</button>" +
+      "<button type=\"button\" class=\"lang-btn" + (STATE.lang === "en" ? " active" : "") + "\" data-action=\"lang:en\">EN</button>";
+  }
+
+  function renderHero(t, currentStepLabel){
+    els.heroInner.innerHTML =
+      "<div class=\"hero-badge\"><span class=\"dot\"></span>" + t.term + " · " + currentStepLabel + "</div>" +
+      "<h1>" + t.heroA + " <span class=\"accent\">" + t.heroB + "<span class=\"underline\"></span></span></h1>" +
+      "<div class=\"hero-cards\">" +
+        "<a href=\"" + LINKS.applicationForm + "\" target=\"_blank\" rel=\"noopener\" class=\"hero-card red\">" +
+          "<span class=\"emoji\">📝</span><span class=\"title\">" + t.card1Title + "</span><span class=\"desc\">" + t.card1Desc + "</span><span class=\"cta\">" + t.card1Cta + "</span></a>" +
+        "<a href=\"#catalog\" data-action=\"tab:catalog\" class=\"hero-card white\">" +
+          "<span class=\"emoji\">🎓</span><span class=\"title\">" + t.card2Title + "</span><span class=\"desc\">" + t.card2Desc + "</span><span class=\"cta\">" + t.card2Cta + "</span></a>" +
+        "<a href=\"#process\" data-action=\"tab:process\" class=\"hero-card navy\">" +
+          "<span class=\"emoji\">🧭</span><span class=\"title\">" + t.card3Title + "</span><span class=\"desc\">" + t.card3Desc + "</span><span class=\"cta\">" + t.card3Cta + "</span></a>" +
+      "</div>";
+  }
+
+  var NOTE_STYLES = {
+    red: { bg: "#FDECE8", border: "#F6C9BE", color: "#8A2A18" },
+    yellow: { bg: "#FFF9E8", border: "#F0E0B0", color: "#6B5518" },
+    green: { bg: "#EAF6EF", border: "#BFE3CD", color: "#1D5C38" }
+  };
+
+  function renderProcess(t, steps, stepSel, currentStepLabel, checklist){
+    var railHtml = steps.map(function(s, i){
+      var sel = i === stepSel;
+      var cls = "rail-btn" + (s.done ? " done" : "") + (s.isCurrent ? " current" : "") + (sel ? " selected" : "");
+      return "<button type=\"button\" class=\"" + cls + "\" data-action=\"rail:" + i + "\">" +
+        "<span class=\"circle\">" + (s.done ? "✓" : String(i + 1)) + "</span>" +
+        "<span class=\"label\">" + s.railLabel + "</span></button>";
+    }).join("");
+
+    var s = steps[stepSel];
+    var cardCls = "step-card" + (s.isCurrent ? " current" : (s.done ? " done" : ""));
+    var badges = "<span class=\"step-eyebrow\">" + t.stepWord + " " + (s.idx + 1) + "</span>";
+    if (s.isCelt) badges += "<span class=\"tag-chip celt\">CELT</span>";
+    if (s.isCoord) badges += "<span class=\"tag-chip coord\">" + t.badgeCoord + "</span>";
+    if (s.isStudentAffairs) badges += "<span class=\"tag-chip student\">" + t.badgeSa + "</span>";
+    if (s.isCurrent) badges += "<span class=\"tag-chip current\">" + t.badgeCurrent + "</span>";
+    else if (s.done) badges += "<span class=\"tag-chip done\">" + t.badgeDone + "</span>";
+
+    var body = "";
+    if (s.hasChecklist) {
+      var open = STATE.checklistOpen;
+      body += "<div class=\"checklist-panel " + (open ? "open" : "closed") + "\">" +
+        "<button type=\"button\" class=\"checklist-toggle\" data-action=\"checklist:toggle\">" +
+          "<span class=\"title\">" + t.checklistTitle + "</span>" +
+          "<span class=\"meta\"><span class=\"count\">" + t.checklistCount + "</span><span class=\"icon\">" + (open ? "−" : "+") + "</span></span></button>" +
+        "<div class=\"checklist-items\">" +
+          checklist.map(function(c){
+            return "<div class=\"checklist-item\"><span class=\"no\">" + c.no + "</span><span><span class=\"ctitle\">" + c.emoji + " " + c.title + "</span><span class=\"ctext\">" + c.text + "</span></span></div>";
+          }).join("") +
+        "</div></div>";
     }
+    body += "<div class=\"step-desc\">" + s.desc + "</div>";
 
-    var desc = document.createElement('div');
-    desc.className = 'step-desc';
-    desc.innerHTML = s.desc;
-    body.appendChild(desc);
-    content.appendChild(body);
-
+    var note = "";
     if (s.noteText) {
       var ns = NOTE_STYLES[s.noteType];
-      var note = document.createElement('div');
-      note.className = 'step-note';
-      note.style.background = ns.bg;
-      note.style.borderColor = ns.border;
-      note.style.color = ns.color;
-      note.innerHTML = '<span class="emoji">' + s.noteEmoji + '</span><span class="text"><strong>' + s.noteLabel + '</strong> ' + s.noteText + '</span>';
-      content.appendChild(note);
+      note = "<div class=\"step-note\" style=\"background:" + ns.bg + "; border-color:" + ns.border + "; color:" + ns.color + "\">" +
+        "<span class=\"emoji\">" + s.noteEmoji + "</span><span class=\"text\"><strong>" + s.noteLabel + "</strong> " + s.noteText + "</span></div>";
     }
-
+    var link = "";
     if (s.linkUrl) {
-      var link = document.createElement('a');
-      link.className = 'step-link';
-      link.href = s.linkUrl;
-      link.target = '_blank';
-      link.rel = 'noopener';
-      link.innerHTML = '<span class="emoji">' + s.linkEmoji + '</span><span class="title">' + s.linkTitle + '</span><span class="arrow">↗</span>';
-      content.appendChild(link);
+      link = "<a class=\"step-link\" href=\"" + s.linkUrl + "\" target=\"_blank\" rel=\"noopener\">" +
+        "<span class=\"emoji\">" + s.linkEmoji + "</span><span class=\"title\">" + s.linkTitle + "</span><span class=\"arrow\">↗</span></a>";
     }
 
-    card.appendChild(content);
-    stepCardEl.innerHTML = '';
-    stepCardEl.appendChild(card);
+    els.processWrap.innerHTML =
+      "<div class=\"eyebrow\">" + t.processEyebrow + "</div>" +
+      "<div class=\"process-heading-row\"><h2 class=\"h2\">" + t.processTitleA + " <span class=\"accent\">" + t.processTitleB + "</span></h2>" +
+        "<div class=\"current-pill\"><span class=\"dot\"></span>" + t.youAreHere + " " + currentStepLabel + "</div></div>" +
+      "<p class=\"process-intro\">" + t.processIntro + "</p>" +
+      "<p class=\"process-legend\">" + t.processWho + "</p>" +
+      "<a href=\"#calendar\" data-action=\"tab:calendar\" class=\"resource-link\">" +
+        "<span class=\"emoji\">🗓️</span><span><span class=\"title\">" + t.calLinkTitle + "</span><span class=\"sub\">" + t.calLinkDesc + "</span></span><span class=\"arrow\">→</span></a>" +
+      "<div class=\"rail\">" + railHtml + "</div>" +
+      "<div id=\"step-" + s.key + "\" class=\"" + cardCls + "\">" +
+        "<div class=\"step-ghost\">" + (s.idx + 1) + "</div>" +
+        "<div class=\"step-content\">" +
+          "<div class=\"step-badges\">" + badges + "</div>" +
+          "<div class=\"step-title\">" + s.title + "</div>" +
+          "<div class=\"step-body\">" + body + "</div>" +
+          note + link +
+        "</div></div>";
   }
 
-  renderRail();
-  renderStepCard();
+  function renderCalendar(t, calCategories, calendar){
+    els.calendarWrap.innerHTML =
+      "<div class=\"eyebrow\">" + t.calEyebrow + "</div>" +
+      "<h2 class=\"h2\">" + t.calTitle + "</h2>" +
+      "<p class=\"catalog-intro\" style=\"margin-bottom:32px\">" + t.calIntro + "</p>" +
+      "<div class=\"cal-legend\">" + calCategories.map(function(c){
+        return "<div class=\"cal-legend-item\"><span class=\"sw\" style=\"background:" + c.color + "\"></span>" + c.label + "</div>";
+      }).join("") + "</div>" +
+      "<div class=\"cal-list\">" + calendar.map(function(ev){
+        return "<div class=\"cal-row\" style=\"border-left-color:" + ev.color + "\"><div class=\"date\">" + ev.date + "</div>" +
+          "<div><span class=\"chip\" style=\"background:" + ev.chipBg + "; color:" + ev.color + "\">" + ev.category + "</span></div>" +
+          "<div class=\"event\">" + ev.event + "</div></div>";
+      }).join("") + "</div>" +
+      "<p class=\"footnote\">" + t.calFoot + "</p>";
+  }
 
-  /* ============ RULES: CREDIT ACCORDION ============ */
-  var credAccordionEl = document.getElementById('credAccordion');
-  var openCred = 0;
+  function renderCatalog(t){
+    els.catalogWrap.innerHTML =
+      "<div class=\"eyebrow\" style=\"margin-bottom:14px\">" + t.catEyebrow + "</div>" +
+      "<div class=\"catalog-head\" style=\"align-items:flex-end; margin-bottom:22px\">" +
+        "<div><h2 class=\"h2\" style=\"margin:0 0 10px\">" + t.catTitle + "</h2>" +
+        "<div style=\"display:flex; flex-wrap:wrap; gap:8px\">" +
+          "<span class=\"catalog-pill\"><span class=\"dot\"></span>" + t.catChip1 + "</span>" +
+          "<span class=\"catalog-pill\">" + t.catChip2 + "</span>" +
+        "</div></div>" +
+        "<a href=\"" + LINKS.courseList + "\" target=\"_blank\" rel=\"noopener\" class=\"btn-red\">" + t.catCta + "</a>" +
+      "</div>" +
+      "<div class=\"catalog-browser\">" +
+        "<div class=\"catalog-toolbar\">" +
+          "<span class=\"catalog-dots\"><span style=\"background:#E8432D\"></span><span style=\"background:#F0A028\"></span><span style=\"background:#5CDB95\"></span></span>" +
+          "<span class=\"catalog-address\">coursera-course-catalog · MEF CELT</span>" +
+          "<span class=\"catalog-live\">" + t.catLive + "</span>" +
+        "</div>" +
+        "<div class=\"catalog-frame-inner\"><iframe src=\"https://docs.google.com/spreadsheets/d/1UMVP2HVuiDOX4zz484hQk3gmw2C7w-qGyOb0diPqci4/preview?gid=0&widget=true&headers=false&rm=minimal\" title=\"Coursera course catalog\" loading=\"lazy\"></iframe></div>" +
+      "</div>" +
+      "<div class=\"catalog-tip\"><span class=\"emoji\">💡</span><div>" + t.catTip + "</div></div>";
+  }
 
-  function renderCredAccordion(){
-    credAccordionEl.innerHTML = '';
-    CRED_STEPS.forEach(function(c, i){
-      var open = openCred === i;
-      var item = document.createElement('div');
-      item.className = 'cred-item' + (open ? ' open' : '');
-
-      var rail = document.createElement('div');
-      rail.className = 'cred-rail';
-      rail.style.background = c.rail;
-      item.appendChild(rail);
-
-      var toggle = document.createElement('button');
-      toggle.type = 'button';
-      toggle.className = 'cred-toggle';
-      var numEl = document.createElement('span');
-      numEl.className = 'cred-num';
-      numEl.textContent = c.no;
-      if (open) numEl.style.background = c.rail;
-      var heading = document.createElement('span');
-      heading.className = 'cred-heading';
-      heading.innerHTML = '<span class="title">' + c.title + '</span><span class="hint">' + c.hint + '</span>';
-      var count = document.createElement('span');
-      count.className = 'cred-count';
-      count.textContent = c.items.length + ' adım';
-      var icon = document.createElement('span');
-      icon.className = 'cred-icon';
-      icon.textContent = open ? '−' : '+';
-      if (open) icon.style.background = c.rail;
-      toggle.appendChild(numEl);
-      toggle.appendChild(heading);
-      toggle.appendChild(count);
-      toggle.appendChild(icon);
-      toggle.addEventListener('click', function(){ openCred = open ? -1 : i; renderCredAccordion(); });
-      item.appendChild(toggle);
-
-      if (open) {
-        var body = document.createElement('div');
-        body.className = 'cred-body';
-        body.innerHTML = '<div class="cred-divider"></div>';
-        var checklist = document.createElement('div');
-        checklist.className = 'cred-checklist';
-        c.items.forEach(function(it){
-          var row = document.createElement('div');
-          row.className = 'cred-check-row';
-          row.innerHTML = '<span class="cred-check-mark" style="background:' + c.rail + '">✓</span><span class="cred-check-text"><strong>' + it.b + '</strong> ' + it.t + '</span>';
-          checklist.appendChild(row);
-        });
-        body.appendChild(checklist);
-        if (c.warns.length) {
-          var warns = document.createElement('div');
-          warns.className = 'cred-warns';
-          c.warns.forEach(function(w){
-            var box = document.createElement('div');
-            box.className = 'cred-warn-box';
-            box.innerHTML = '<div class="head"><span class="emoji">' + w.emoji + '</span><span class="title">' + w.title + '</span></div><div class="body">' + w.text + '</div>';
-            warns.appendChild(box);
-          });
-          body.appendChild(warns);
-        }
-        item.appendChild(body);
+  function renderRules(t, credSteps){
+    var accHtml = credSteps.map(function(c, i){
+      var itemsHtml = c.items.map(function(it){
+        return "<div class=\"cred-check-row\"><span class=\"cred-check-mark\" style=\"background:" + c.rail + "\">✓</span>" +
+          "<span class=\"cred-check-text\"><strong>" + it.b + "</strong> " + it.t + "</span></div>";
+      }).join("");
+      var warnsHtml = "";
+      if (c.hasWarn) {
+        warnsHtml = "<div class=\"cred-warns\">" + c.warns.map(function(w){
+          return "<div class=\"cred-warn-box\"><div class=\"head\"><span class=\"emoji\">" + w.emoji + "</span><span class=\"title\">" + w.title + "</span></div><div class=\"body\">" + w.text + "</div></div>";
+        }).join("") + "</div>";
       }
+      var bodyHtml = c.open ? ("<div class=\"cred-body\"><div class=\"cred-divider\"></div><div class=\"cred-checklist\">" + itemsHtml + "</div>" + warnsHtml + "</div>") : "";
+      return "<div class=\"cred-item" + (c.open ? " open" : "") + "\">" +
+        "<div class=\"cred-rail\" style=\"background:" + c.rail + "\"></div>" +
+        "<button type=\"button\" class=\"cred-toggle\" data-action=\"cred:" + i + "\">" +
+          "<span class=\"cred-num\"" + (c.open ? " style=\"background:" + c.rail + "\"" : "") + ">" + c.no + "</span>" +
+          "<span class=\"cred-heading\"><span class=\"title\">" + c.title + "</span><span class=\"hint\">" + c.hint + "</span></span>" +
+          "<span class=\"cred-count\">" + c.count + "</span>" +
+          "<span class=\"cred-icon\"" + (c.open ? " style=\"background:" + c.rail + "\"" : "") + ">" + (c.open ? "−" : "+") + "</span>" +
+        "</button>" + bodyHtml +
+      "</div>";
+    }).join("");
 
-      credAccordionEl.appendChild(item);
-    });
+    els.rulesWrap.innerHTML =
+      "<div class=\"eyebrow\">" + t.credEyebrow + "</div>" +
+      "<h2 class=\"h2\">" + t.credTitleA + " <span style=\"color:var(--red)\">" + t.credTitleB + "</span></h2>" +
+      "<div class=\"rules-head-row\"><p>" + t.credIntro + "</p>" +
+        "<a href=\"" + LINKS.senateTr + "\" target=\"_blank\" rel=\"noopener\" class=\"btn-navy-pill\">📘 " + t.credDoc + " ↗</a></div>" +
+      "<div class=\"cred-accordion\">" + accHtml + "</div>" +
+      "<div class=\"cred-summary-grid\">" +
+        "<div class=\"cred-summary-box navy\"><div class=\"head\"><span class=\"emoji\">📋</span><span class=\"title\">" + t.credWhenTitle + "</span></div><div class=\"body\">" + t.credWhenText + "</div></div>" +
+        "<div class=\"cred-summary-box pink\"><div class=\"head\"><span class=\"emoji\">☀️</span><span class=\"title\">" + t.credIeTitle + "</span></div><div class=\"body\">" + t.credIeText + "</div></div>" +
+      "</div>";
   }
 
-  renderCredAccordion();
+  function renderDepartments(t, faculties){
+    var chips1 = t.celtChips.map(function(c){ return "<span>" + c + "</span>"; }).join("");
+    var chips2 = t.coordChips.map(function(c){ return "<span>" + c + "</span>"; }).join("");
+    var facHtml = faculties.map(function(f, fi){
+      var deptsHtml = f.departments.map(function(d){
+        return "<div class=\"fac-dept-row\"><span class=\"dname\">" + d.name + "</span><span class=\"dcoord\">" + d.coordinator + "</span>" +
+          "<span><a href=\"mailto:" + d.email + "\">" + d.email + "</a></span></div>";
+      }).join("");
+      return "<div class=\"fac-item" + (f.open ? " open" : "") + "\">" +
+        "<button type=\"button\" class=\"fac-toggle\" data-action=\"fac:" + fi + "\">" +
+          "<span class=\"left\"><span class=\"fac-dot\" style=\"background:" + f.dot + "\"></span><span class=\"fac-name\">" + f.name + "</span><span class=\"fac-count\">" + f.countLabel + "</span></span>" +
+          "<span class=\"fac-icon\">" + (f.open ? "−" : "+") + "</span></button>" +
+        "<div class=\"fac-body\"><div class=\"fac-depts\">" + deptsHtml + "</div></div>" +
+      "</div>";
+    }).join("");
 
-  /* ============ CALENDAR ============ */
-  var calLegend = document.getElementById('calLegend');
-  Object.keys(CAL_CATS).forEach(function(k){
-    var cat = CAL_CATS[k];
-    var item = document.createElement('div');
-    item.className = 'cal-legend-item';
-    item.innerHTML = '<span class="sw" style="background:' + cat.color + '"></span>' + cat.label;
-    calLegend.appendChild(item);
-  });
-
-  var calList = document.getElementById('calList');
-  CALENDAR.forEach(function(row){
-    var date = row[0], catKey = row[1], event = row[2];
-    var cat = CAL_CATS[catKey];
-    var el = document.createElement('div');
-    el.className = 'cal-row';
-    el.style.borderLeftColor = cat.color;
-    el.innerHTML = '<div class="date">' + date + '</div>' +
-      '<div><span class="chip" style="background:' + cat.chipBg + '; color:' + cat.color + '">' + cat.label + '</span></div>' +
-      '<div class="event">' + event + '</div>';
-    calList.appendChild(el);
-  });
-
-  /* ============ DEPARTMENTS ============ */
-  var facultyList = document.getElementById('facultyList');
-  FACULTIES.forEach(function(f, fi){
-    var item = document.createElement('div');
-    item.className = 'fac-item' + (fi === 0 ? ' open' : '');
-
-    var toggle = document.createElement('button');
-    toggle.type = 'button';
-    toggle.className = 'fac-toggle';
-    toggle.innerHTML = '<span class="left"><span class="fac-dot" style="background:' + f.dot + '"></span><span class="fac-name">' + f.name + '</span><span class="fac-count">' + f.departments.length + ' bölüm</span></span><span class="fac-icon">' + (fi === 0 ? '−' : '+') + '</span>';
-    toggle.addEventListener('click', function(){
-      var willOpen = !item.classList.contains('open');
-      item.classList.toggle('open', willOpen);
-      toggle.querySelector('.fac-icon').textContent = willOpen ? '−' : '+';
-    });
-    item.appendChild(toggle);
-
-    var body = document.createElement('div');
-    body.className = 'fac-body';
-    var depts = document.createElement('div');
-    depts.className = 'fac-depts';
-    f.departments.forEach(function(d){
-      var row = document.createElement('div');
-      row.className = 'fac-dept-row';
-      row.innerHTML = '<span class="dname">' + d.name + '</span><span class="dcoord">' + d.coordinator + '</span><span><a href="mailto:' + d.email + '">' + d.email + '</a></span>';
-      depts.appendChild(row);
-    });
-    body.appendChild(depts);
-    item.appendChild(body);
-
-    facultyList.appendChild(item);
-  });
-
-  /* ============ FAQ ============ */
-  var faqTabsEl = document.getElementById('faqTabs');
-  var faqListEl = document.getElementById('faqList');
-  var faqCat = 0;
-
-  function renderFaqTabs(){
-    faqTabsEl.innerHTML = '';
-    FAQ_GROUPS.forEach(function(g, gi){
-      var btn = document.createElement('button');
-      btn.type = 'button';
-      btn.className = 'faq-tab' + (gi === faqCat ? ' active' : '');
-      btn.innerHTML = g.title + ' <span class="pill">' + g.items.length + '</span>';
-      btn.addEventListener('click', function(){ faqCat = gi; renderFaqTabs(); renderFaqList(); });
-      faqTabsEl.appendChild(btn);
-    });
+    els.departmentsWrap.innerHTML =
+      "<div class=\"eyebrow\">" + t.depEyebrow + "</div>" +
+      "<h2 class=\"h2\">" + t.depTitle + "</h2>" +
+      "<div style=\"display:grid; grid-template-columns:repeat(auto-fit, minmax(280px,1fr)); gap:18px; align-items:stretch; margin-bottom:32px\">" +
+        "<div class=\"contact-panel red\"><div class=\"contact-head\"><span class=\"contact-icon\">✉️</span><span><span class=\"title\">" + t.celtCardTitle + "</span><span class=\"sub\">" + t.celtCardSub + "</span></span></div>" +
+          "<div class=\"contact-tags\">" + chips1 + "</div><a href=\"mailto:celt@mef.edu.tr\" class=\"contact-btn\">celt@mef.edu.tr</a></div>" +
+        "<div class=\"contact-panel blue\"><div class=\"contact-head\"><span class=\"contact-icon\">🎓</span><span><span class=\"title\">" + t.coordCardTitle + "</span><span class=\"sub\">" + t.coordCardSub + "</span></span></div>" +
+          "<div class=\"contact-tags\">" + chips2 + "</div><span class=\"contact-hint\">" + t.coordCardCta + "</span></div>" +
+      "</div>" +
+      "<div style=\"display:grid; gap:10px\">" + facHtml + "</div>";
   }
 
-  function renderFaqList(){
-    faqListEl.innerHTML = '';
-    FAQ_GROUPS[faqCat].items.forEach(function(item){
-      var el = document.createElement('div');
-      el.className = 'faq-item';
-      var btn = document.createElement('button');
-      btn.type = 'button';
-      btn.className = 'faq-toggle';
-      btn.innerHTML = '<span>' + item.q + '</span><span class="icon">+</span>';
-      var bodyEl = document.createElement('div');
-      bodyEl.className = 'faq-body';
-      bodyEl.innerHTML = item.a;
-      btn.addEventListener('click', function(){
-        var willOpen = !el.classList.contains('open');
-        faqListEl.querySelectorAll('.faq-item.open').forEach(function(o){
-          o.classList.remove('open');
-          o.querySelector('.faq-toggle .icon').textContent = '+';
-        });
-        if (willOpen) {
-          el.classList.add('open');
-          btn.querySelector('.icon').textContent = '−';
-        }
-      });
-      el.appendChild(btn);
-      el.appendChild(bodyEl);
-      faqListEl.appendChild(el);
-    });
+  function renderFaq(t, faqTabs, faqItems){
+    var tabsHtml = faqTabs.map(function(tb, gi){
+      return "<button type=\"button\" class=\"faq-tab" + (tb.active ? " active" : "") + "\" data-action=\"faqcat:" + gi + "\">" + tb.title + " <span class=\"pill\">" + tb.count + "</span></button>";
+    }).join("");
+    var listHtml = faqItems.map(function(item, i){
+      return "<div class=\"faq-item" + (item.open ? " open" : "") + "\">" +
+        "<button type=\"button\" class=\"faq-toggle\" data-action=\"faq:" + i + "\"><span>" + item.q + "</span><span class=\"icon\">" + (item.open ? "−" : "+") + "</span></button>" +
+        "<div class=\"faq-body\">" + item.a + "</div></div>";
+    }).join("");
+    els.faqWrap.innerHTML =
+      "<div class=\"eyebrow\">" + t.faqEyebrow + "</div>" +
+      "<h2 class=\"h2\" style=\"margin-bottom:36px\">" + t.faqTitle + "</h2>" +
+      "<div class=\"faq-tabs\">" + tabsHtml + "</div>" +
+      "<div class=\"faq-list\">" + listHtml + "</div>";
   }
 
-  renderFaqTabs();
-  renderFaqList();
+  function renderFooter(t){
+    els.footerInner.innerHTML =
+      "<div class=\"footer-left\"><div class=\"footer-logo\"><img src=\"data:image/webp;base64,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\" alt=\"MEF University CELT\"></div><p>" + t.brand + "</p></div>" +
+      "<div><a href=\"mailto:celt@mef.edu.tr\">celt@mef.edu.tr</a></div>";
+  }
 
-  /* ============ INITIAL VIEW ============ */
-  showTab('home', { noScroll: true });
+  /* ============ EVENTS ============ */
+  document.addEventListener("click", function(e){
+    var el = e.target.closest("[data-action]");
+    if (!el) return;
+    e.preventDefault();
+    var parts = el.getAttribute("data-action").split(":");
+    var cmd = parts[0], arg = parts[1];
+    if (cmd === "tab") { STATE.tab = arg; try { window.scrollTo({ top: 0, behavior: "smooth" }); } catch (err) { window.scrollTo(0, 0); } }
+    else if (cmd === "lang") { STATE.lang = arg; }
+    else if (cmd === "rail") { STATE.stepSel = parseInt(arg, 10); }
+    else if (cmd === "checklist") { STATE.checklistOpen = !STATE.checklistOpen; }
+    else if (cmd === "fac") { var fi = parseInt(arg, 10); STATE.openFac[fi] = !STATE.openFac[fi]; }
+    else if (cmd === "cred") { var ci = parseInt(arg, 10); STATE.openCred = (STATE.openCred === ci) ? -1 : ci; }
+    else if (cmd === "faqcat") { STATE.faqCat = parseInt(arg, 10); STATE.openFaq = -1; }
+    else if (cmd === "faq") { var qi = parseInt(arg, 10); STATE.openFaq = (STATE.openFaq === qi) ? -1 : qi; }
+    render();
+  });
+
+  render();
 })();
 </script>
 </body>
