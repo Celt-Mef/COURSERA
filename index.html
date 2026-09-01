@@ -228,26 +228,64 @@
   .btn-red{background:var(--red); color:#fff; font-weight:700; font-size:15px; padding:13px 26px; border-radius:999px; text-decoration:none; box-shadow:0 8px 22px rgba(232,67,45,.28); white-space:nowrap; display:inline-block}
   .btn-red:hover{background:var(--red-dark); color:#fff; text-decoration:none}
   .catalog-intro{font-size:16px; color:var(--muted3); margin:0 0 28px; max-width:820px; line-height:1.6}
-  .catalog-frame{background:#fff; border:1px solid var(--border); border-radius:18px; padding:10px; box-shadow:0 8px 26px rgba(31,45,92,.08)}
-  .catalog-frame iframe{width:100%; height:640px; border:0; border-radius:12px; display:block}
+  .catalog-pill{display:inline-flex; align-items:center; gap:7px; background:#fff; border:1px solid var(--border4); border-radius:999px; padding:7px 15px; font-size:13px; font-weight:600; color:var(--muted2)}
+  .catalog-pill .dot{width:7px; height:7px; border-radius:50%; background:#2E9E5B}
+  .catalog-browser{background:var(--navy); border-radius:20px; overflow:hidden; box-shadow:0 18px 40px rgba(31,45,92,.22)}
+  .catalog-toolbar{display:flex; align-items:center; gap:14px; padding:14px 20px}
+  .catalog-dots{display:flex; gap:6px; flex-shrink:0}
+  .catalog-dots span{width:11px; height:11px; border-radius:50%; display:inline-block}
+  .catalog-address{flex:1; background:rgba(255,255,255,.10); border-radius:8px; padding:7px 14px; font-size:12.5px; color:#B9C4E2; overflow:hidden; text-overflow:ellipsis; white-space:nowrap}
+  .catalog-live{font-family:'Bricolage Grotesque',sans-serif; font-weight:700; font-size:11px; letter-spacing:1.1px; color:#7FA8EE; white-space:nowrap; flex-shrink:0}
+  .catalog-frame-inner{background:#fff}
+  .catalog-frame-inner iframe{width:100%; height:620px; border:0; display:block}
+  .catalog-tip{display:flex; align-items:flex-start; gap:12px; margin-top:16px; background:#fff; border:1px solid var(--border); border-radius:14px; padding:16px 20px; font-size:14px; line-height:1.65; color:var(--muted4)}
+  .catalog-tip .emoji{font-size:17px; flex-shrink:0}
 
   /* RULES */
   .rules-head-row{display:flex; flex-wrap:wrap; align-items:center; justify-content:space-between; gap:16px; margin:0 0 24px}
   .rules-head-row p{font-size:15.5px; line-height:1.6; color:var(--muted2); margin:0; max-width:640px}
   .btn-navy-pill{display:inline-flex; align-items:center; gap:10px; background:var(--navy); color:#fff; font-weight:700; font-size:14px; padding:11px 22px; border-radius:999px; text-decoration:none; white-space:nowrap}
   .btn-navy-pill:hover{background:var(--red); color:#fff; text-decoration:none}
-  .rules-cards{display:grid; grid-template-columns:repeat(auto-fit,minmax(300px,1fr)); gap:20px; align-items:start}
-  .rules-cards .card > div{display:grid; gap:11px}
-  .rules-cards .card .note-below{margin-top:14px; font-size:13.5px; line-height:1.6; color:var(--muted4)}
-  .rules-cards .card .note-below strong{color:var(--navy)}
-  .warn-grid{display:grid; grid-template-columns:repeat(auto-fit,minmax(320px,1fr)); gap:16px; margin-top:16px}
-  .completion-block{margin-top:16px; background:var(--navy); border-radius:20px; padding:clamp(22px,3vw,32px) clamp(20px,3vw,36px)}
-  .completion-block .title{font-family:'Bricolage Grotesque',sans-serif; font-weight:800; font-size:19px; color:#fff; margin-bottom:10px}
-  .completion-block .body{font-size:14.5px; line-height:1.7; color:#D7DDF0}
-  .completion-block .body strong{color:#fff}
-  .ie-note{margin-top:16px; background:#FDECE8; border:1px solid #F6C9BE; border-radius:16px; padding:18px 24px; display:flex; gap:16px; align-items:flex-start}
-  .ie-note .emoji{font-size:20px; flex-shrink:0}
-  .ie-note .body{font-size:14px; line-height:1.6; color:#8A2A18}
+  .cred-accordion{display:grid; gap:14px}
+  .cred-item{position:relative; background:#FCFDFF; border:1.5px solid var(--border2); border-radius:18px; overflow:hidden; transition:box-shadow .2s ease, background .2s ease, border-color .2s ease; box-shadow:0 3px 12px rgba(31,45,92,.05)}
+  .cred-item.open{background:#fff; border-color:#C6D6EF; box-shadow:0 14px 34px rgba(31,45,92,.13)}
+  .cred-rail{position:absolute; left:0; top:0; bottom:0; width:6px}
+  .cred-toggle{all:unset; box-sizing:border-box; display:flex; align-items:center; gap:20px; width:100%; padding:22px 26px 22px 32px; cursor:pointer}
+  .cred-toggle:hover{background:rgba(0,86,210,.04)}
+  .cred-num{width:48px; height:48px; border-radius:14px; display:grid; place-items:center; font-family:'Bricolage Grotesque',sans-serif; font-weight:800; font-size:20px; flex-shrink:0; background:#EDF2F9; color:var(--muted)}
+  .cred-item.open .cred-num{color:#fff}
+  .cred-heading{flex:1}
+  .cred-heading .title{display:block; font-family:'Bricolage Grotesque',sans-serif; font-weight:800; font-size:21px; color:var(--navy); line-height:1.2}
+  .cred-heading .hint{display:block; font-size:13.5px; color:var(--muted); margin-top:3px}
+  .cred-count{font-family:'Bricolage Grotesque',sans-serif; font-weight:800; font-size:12px; letter-spacing:1.2px; color:var(--muted5); white-space:nowrap; flex-shrink:0}
+  .cred-icon{width:32px; height:32px; border-radius:50%; display:grid; place-items:center; font-size:18px; font-weight:700; flex-shrink:0; background:#EDF2F9; color:var(--muted)}
+  .cred-item.open .cred-icon{color:#fff}
+  .cred-body{padding:0 26px 24px 32px; animation:stepIn .3s ease both}
+  .cred-divider{height:1px; background:var(--border2); margin-bottom:20px}
+  .cred-checklist{display:grid; gap:14px}
+  .cred-check-row{display:grid; grid-template-columns:26px 1fr; gap:14px; align-items:start}
+  .cred-check-mark{width:22px; height:22px; border-radius:7px; color:#fff; display:grid; place-items:center; font-size:12px; font-weight:800; margin-top:2px; flex-shrink:0}
+  .cred-check-text{font-size:15px; line-height:1.7; color:var(--muted2)}
+  .cred-check-text strong{color:var(--navy)}
+  .cred-warns{margin-top:20px; display:grid; grid-template-columns:repeat(auto-fit,minmax(300px,1fr)); gap:14px}
+  .cred-warn-box{background:#FFF9E8; border:1px solid #F0E0B0; border-radius:14px; padding:16px 20px}
+  .cred-warn-box .head{display:flex; align-items:center; gap:10px; margin-bottom:7px}
+  .cred-warn-box .head .emoji{font-size:16px}
+  .cred-warn-box .head .title{font-family:'Bricolage Grotesque',sans-serif; font-weight:700; font-size:15px; color:#6B5518}
+  .cred-warn-box .body{font-size:13.5px; line-height:1.65; color:#6B5518}
+  .cred-summary-grid{margin-top:20px; display:grid; grid-template-columns:repeat(auto-fit,minmax(320px,1fr)); gap:16px}
+  .cred-summary-box{border-radius:18px; padding:26px 30px}
+  .cred-summary-box .head{display:flex; align-items:center; gap:10px; margin-bottom:10px}
+  .cred-summary-box .head .emoji{font-size:18px}
+  .cred-summary-box .head .title{font-family:'Bricolage Grotesque',sans-serif; font-weight:800; font-size:18px}
+  .cred-summary-box .body{font-size:14.5px; line-height:1.7}
+  .cred-summary-box.navy{background:var(--navy)}
+  .cred-summary-box.navy .head .title{color:#fff}
+  .cred-summary-box.navy .body{color:#D7DDF0}
+  .cred-summary-box.navy .body strong{color:#fff}
+  .cred-summary-box.pink{background:#FDECE8; border:1px solid #F6C9BE}
+  .cred-summary-box.pink .head .title{color:#8A2A18}
+  .cred-summary-box.pink .body{color:#8A2A18}
 
   /* FAQ */
   .faq-tabs{display:flex; gap:10px; flex-wrap:wrap; margin-bottom:26px}
@@ -358,17 +396,31 @@
 
 <!-- 3. CATALOG -->
 <section id="catalog" class="tab-section section-bg-4" data-panel="catalog">
-  <div class="wrap">
-    <div class="eyebrow">Hangi Dersleri Alabilirim?</div>
-    <div class="catalog-head">
-      <h2 class="h2">Güncel Coursera kurs kataloğu</h2>
+  <div class="wrap" style="max-width:1120px">
+    <div class="eyebrow" style="margin-bottom:14px">Hangi Dersleri Alabilirim?</div>
+    <div class="catalog-head" style="align-items:flex-end; margin-bottom:22px">
+      <div>
+        <h2 class="h2" style="margin:0 0 10px">Güncel Coursera kurs kataloğu</h2>
+        <div style="display:flex; flex-wrap:wrap; gap:8px">
+          <span class="catalog-pill"><span class="dot"></span>Tüm katalog açık</span>
+        </div>
+      </div>
       <a href="https://docs.google.com/spreadsheets/d/1UMVP2HVuiDOX4zz484hQk3gmw2C7w-qGyOb0diPqci4/edit?gid=0#gid=0" target="_blank" rel="noopener" class="btn-red">Tam ekranda aç ↗</a>
     </div>
-    <p class="catalog-intro">2025–2026 Güz Dönemi itibarıyla Coursera'nın <strong>tüm kataloğu</strong> açıktır. Aşağıdaki listede ders adı, sağlayıcı, seviye, süre ve dersin bağlantısını bulabilirsin. Arama ve filtreleme için sağ üstten tam ekranda açman önerilir.</p>
-    <div class="catalog-frame">
-      <iframe src="https://docs.google.com/spreadsheets/d/1UMVP2HVuiDOX4zz484hQk3gmw2C7w-qGyOb0diPqci4/preview?gid=0&widget=true&headers=false&rm=minimal" title="Coursera kurs kataloğu" loading="lazy"></iframe>
+    <div class="catalog-browser">
+      <div class="catalog-toolbar">
+        <span class="catalog-dots"><span style="background:#E8432D"></span><span style="background:#F0A028"></span><span style="background:#5CDB95"></span></span>
+        <span class="catalog-address">coursera-kurs-katalogu · MEF CELT</span>
+        <span class="catalog-live">CANLI LİSTE</span>
+      </div>
+      <div class="catalog-frame-inner">
+        <iframe src="https://docs.google.com/spreadsheets/d/1UMVP2HVuiDOX4zz484hQk3gmw2C7w-qGyOb0diPqci4/preview?gid=0&widget=true&headers=false&rm=minimal" title="Coursera kurs kataloğu" loading="lazy"></iframe>
+      </div>
     </div>
-    <p class="footnote">Liste Coursera tarafından düzenli olarak güncellenir. Bir dersi PLE kapsamında saydırmadan önce bölümünün MOOC Koordinatörüne danış.</p>
+    <div class="catalog-tip">
+      <span class="emoji">💡</span>
+      <div>Dersin sertifika verip vermediğini ve süresini bu listeden ve Coursera'daki ders sayfasından kontrol edebilirsin. Liste Coursera tarafından düzenli olarak güncellenir; arama ve filtreleme için tam ekranda açman önerilir. Bir dersi PLE kapsamında saydırmadan önce bölümünün <a href="#departments" data-tab="departments">MOOC Koordinatörüne</a> danış.</div>
+    </div>
   </div>
 </section>
 
@@ -382,54 +434,17 @@
       <a href="https://drive.google.com/file/d/1bt_UrSCg0MhVYgrwiip21y4fUv1BtR0i/view" target="_blank" rel="noopener" class="btn-navy-pill">📘 PLE Programı Esasları ↗</a>
     </div>
 
-    <div class="rules-cards">
-      <div class="card">
-        <div class="card-head"><span class="card-num">1</span><span class="title">Derse başlamadan önce</span></div>
-        <div>
-          <div class="check-row"><span class="check-box"></span><span class="check-text"><strong>Bölümünün yönergelerini incele.</strong> Öncelikle bölümünün web sitesinde yayımlanan MOOC/PLE ders listesini ve kredilendirme yönergelerini kontrol et. Bölümün uygun dersleri web sitesinde yayımlıyorsa seçimini bu listeye göre yap. Ders listesi bulunmuyorsa veya seçtiğin dersin uygunluğundan emin değilsen MOOC Koordinatörüne danış.</span></div>
-          <div class="check-row"><span class="check-box"></span><span class="check-text"><strong>Dersin özelliklerini kontrol et.</strong> Dersin sertifika sunduğunu hem Coursera kurs kataloğundan hem de Coursera'daki ders sayfasından kontrol et. Ayrıca dersin süresini, haftalık çalışma yükünü, zorunlu değerlendirmelerini ve peer review içerip içermediğini incele. Peer review bulunan derslerde değerlendirme süresini dikkate alarak çalışmalarını bölümünün teslim tarihinden önce tamamlayabileceğinden emin ol.</span></div>
-          <div class="check-row"><span class="check-box"></span><span class="check-text"><strong>12 AKTS sınırını göz önünde bulundur.</strong> Öğrenimin boyunca PLE kapsamında toplam en fazla 12 AKTS kredilendirebilirsin. MOOC derslerinin AKTS karşılıkları bölüm tarafından belirlendiği için bu sınırın karşılık geldiği ders sayısı bölümlere göre değişebilir.</span></div>
-        </div>
-      </div>
+    <div id="credAccordion" class="cred-accordion"></div>
 
-      <div class="card">
-        <div class="card-head"><span class="card-num">2</span><span class="title">Dersi tamamlarken</span></div>
-        <div>
-          <div class="check-row"><span class="check-box"></span><span class="check-text"><strong>İçerik etkileşimini en az %70'te tut.</strong> Videoları izle, okuma materyallerini incele ve quiz, ödev ve değerlendirme etkinliklerini tamamla.</span></div>
-          <div class="check-row"><span class="check-box"></span><span class="check-text"><strong>Peer review ödevlerini erkenden tamamla.</strong> Değerlendirme sürecinin sertifikanın oluşmasını geciktirmemesi için peer review içeren ödevleri dönem sonuna bırakma.</span></div>
-        </div>
+    <div class="cred-summary-grid">
+      <div class="cred-summary-box navy">
+        <div class="head"><span class="emoji">📋</span><span class="title">Kredilendirme ne zaman tamamlanır?</span></div>
+        <div class="body">Belgelerin ve ders bilgilerin bölümün tarafından değerlendirilir. Akademik onayların ardından PLE kredin <strong>"GE"</strong> ders koduyla dönem sonunda veya takip eden dönemde transkriptine işlenir. Eksik veya hatalı bir bilgi olduğunu düşünüyorsan MOOC Koordinatörüne yaz.</div>
       </div>
-
-      <div class="card">
-        <div class="card-head"><span class="card-num">3</span><span class="title">Dönem sonunda</span></div>
-        <div>
-          <div class="check-row"><span class="check-box"></span><span class="check-text"><strong>Coursera sertifikanı hazırla.</strong></span></div>
-          <div class="check-row"><span class="check-box"></span><span class="check-text"><strong>Sunum kaydını hazırla.</strong> Dersin ana fikrini ve öğrendiklerini anlattığın 2–5 dakikalık kaydı çek.</span></div>
-          <div class="check-row"><span class="check-box"></span><span class="check-text"><strong>Belgelerini teslim et.</strong> Sertifikanı ve sunum kaydını bölümünün belirlediği yöntemle ve son teslim tarihine kadar teslim et.</span></div>
-        </div>
-        <div class="note-below">Sertifika ve sunum kaydı için <strong>teslim tarihleri bölümler tarafından belirlenir</strong> ve bölümlere göre farklılık gösterebilir. Belgelerini hangi tarihe kadar ve nasıl teslim etmen gerektiğini bölümünün web sitesinden, bölüm duyurularından veya MOOC Koordinatöründen öğrenebilirsin.</div>
+      <div class="cred-summary-box pink">
+        <div class="head"><span class="emoji">☀️</span><span class="title">Endüstri Mühendisliği öğrencileri</span></div>
+        <div class="body">Coursera yaz döneminde de erişime açılır; ancak bölüm kararı gereği yaz döneminde tamamlanan Coursera dersleri PLE kapsamında kredilendirilemez. Yaz döneminde derslere kişisel ve mesleki gelişim amacıyla devam edebilirsin.</div>
       </div>
-    </div>
-
-    <div class="warn-grid">
-      <div class="warn-box">
-        <div class="head"><span class="emoji">⚠️</span><span class="title">Peer review süresine dikkat et</span></div>
-        <div class="body">Peer review içeren ödevlerin değerlendirilmesi genellikle <strong>7–14 gün</strong> sürebilir. Yeterli sayıda değerlendirme alınmaması durumunda bu süre uzayabilir ve değerlendirme tamamlanmadan sertifikan oluşturulmayabilir.<br><br>Coursera'daki esnek teslim tarihleri, bölümünün belirlediği sertifika teslim tarihini değiştirmez. Bu nedenle peer review ödevlerini teslim tarihinden yeterince önce tamamla.</div>
-      </div>
-      <div class="warn-box">
-        <div class="head"><span class="emoji">⚠️</span><span class="title">Sertifika almak tek başına yeterli değildir</span></div>
-        <div class="body">PLE kapsamında kredilendirilecek her ders için içerik etkileşim oranının <strong>en az %70</strong> olması gerekir. Ders sertifikasını almış olsan bile içerik etkileşim oranın %70'in altındaysa PLE kredilendirme sürecinde sorun yaşayabilirsin.<br><br>Öğrenciler içerik etkileşim verisini doğrudan görüntüleyemez; bu veri MOOC Koordinatörleri tarafından takip edilir. Etkileşim oranın %70'in altında kalırsa CELT tarafından her ay bilgilendirme maili gönderilir.</div>
-      </div>
-    </div>
-
-    <div class="completion-block">
-      <div class="title">Kredilendirme ne zaman tamamlanır?</div>
-      <div class="body">Gerekli koşulları yerine getirmen ve belgelerini teslim etmen, dersin doğrudan krediye dönüşmesini sağlamaz. Belgelerin ve ders bilgilerin bölümün tarafından değerlendirilir. İlgili akademik onayların tamamlanmasının ardından PLE kredin <strong>"GE"</strong> ders koduyla dönem sonunda veya takip eden dönemde transkriptine işlenebilir.<br><br>Eksik veya hatalı bir bilgi olduğunu düşünüyorsan bölümünün MOOC Koordinatörüyle iletişime geçebilirsin.</div>
-    </div>
-
-    <div class="ie-note">
-      <span class="emoji">☀️</span>
-      <div class="body"><strong>Endüstri Mühendisliği öğrencileri için önemli not:</strong> Coursera yaz döneminde de erişime açılır; ancak yaz döneminde tamamlanan Coursera dersleri Endüstri Mühendisliği Bölümünde PLE kapsamında kredilendirilemez. Yaz döneminde Coursera derslerine kişisel ve mesleki gelişim amacıyla devam edebilirsin.</div>
     </div>
   </div>
 </section>
@@ -540,6 +555,26 @@
     { emoji:'🧩', title:'Program yapısını incele', text:'Bir Specialization veya Professional Certificate programı seçiyorsan programın kaç dersten oluştuğunu ve seçtiğin dersin tek başına sertifika sunup sunmadığını kontrol et.' }
   ];
 
+  var CRED_STEPS = [
+    { no:'1', title:'Derse başlamadan önce', hint:'Ders seçimi ve uygunluk kontrolü', rail:'#0056D2', items:[
+      { b:'Bölümünün yönergelerini incele.', t:'Bölümünün web sitesinde yayımlanan MOOC/PLE ders listesini ve kredilendirme yönergelerini kontrol et. Bölümün uygun dersleri yayımlıyorsa seçimini bu listeye göre yap. Ders listesi bulunmuyorsa veya seçtiğin dersin uygunluğundan emin değilsen MOOC Koordinatörüne danış.' },
+      { b:'Dersin özelliklerini kontrol et.', t:"Dersin sertifika sunduğunu hem Coursera kurs kataloğundan hem de ders sayfasından kontrol et. Süresini, haftalık çalışma yükünü, zorunlu değerlendirmelerini ve peer review içerip içermediğini incele." },
+      { b:'12 AKTS sınırını göz önünde bulundur.', t:'Öğrenimin boyunca PLE kapsamında toplam en fazla 12 AKTS kredilendirebilirsin. MOOC derslerinin AKTS karşılıkları bölüm tarafından belirlendiği için bu sınırın karşılık geldiği ders sayısı bölümlere göre değişebilir.' }
+    ], warns: [] },
+    { no:'2', title:'Dersi tamamlarken', hint:'İçerik etkileşimi ve peer review', rail:'#E8432D', items:[
+      { b:"İçerik etkileşimini en az %70'te tut.", t:'Videoları izle, okuma materyallerini incele ve quiz, ödev ve değerlendirme etkinliklerini tamamla.' },
+      { b:'Peer review ödevlerini erkenden tamamla.', t:'Değerlendirme sürecinin sertifikanın oluşmasını geciktirmemesi için peer review içeren ödevleri dönem sonuna bırakma.' }
+    ], warns: [
+      { emoji:'⚠️', title:'Peer review süresine dikkat et', text:"Peer review içeren ödevlerin değerlendirilmesi genellikle 7–14 gün sürebilir ve değerlendirme tamamlanmadan sertifikan oluşturulmayabilir. Coursera'daki esnek teslim tarihleri, bölümünün belirlediği sertifika teslim tarihini değiştirmez." },
+      { emoji:'⚠️', title:'Sertifika tek başına yeterli değildir', text:"Sertifikanı almış olsan bile içerik etkileşim oranın %70'in altındaysa kredilendirme sürecinde sorun yaşayabilirsin. Bu veriyi öğrenciler göremez; MOOC Koordinatörleri takip eder ve %70 altına düşenlere CELT her ay bilgilendirme maili gönderir." }
+    ] },
+    { no:'3', title:'Dönem sonunda', hint:'Sertifika ve sunum kaydı teslimi', rail:'#1D7A46', items:[
+      { b:'Coursera sertifikanı hazırla.', t:'' },
+      { b:'Sunum kaydını hazırla.', t:'Dersin ana fikrini ve öğrendiklerini anlattığın 2–5 dakikalık kaydı çek.' },
+      { b:'Belgelerini teslim et.', t:'Sertifikanı ve sunum kaydını bölümünün belirlediği yöntemle ve son teslim tarihine kadar MOOC Koordinatörüne teslim et. Teslim tarihleri bölümlere göre farklılık gösterebilir.' }
+    ], warns: [] }
+  ];
+
   var CAL_CATS = {
     Applications:      { label:'Başvurular',            color:'#E8432D', chipBg:'#FDECE8' },
     Enrollment:         { label:'Kayıt & Kontenjan',      color:'#0056D2', chipBg:'#E7EEFB' },
@@ -552,7 +587,7 @@
     ['01.09.2026', 'Applications', 'Coursera Güz Dönemi başvurularının açılması'],
     ['07.09.2026', 'Enrollment', 'Yaz Döneminde kullanılan Coursera koltuklarının boşaltılması'],
     ['27.09.2026', 'Applications', 'Coursera Güz Dönemi başvuruları için son tarih'],
-    ['07.09.2026 – 28.09.2026', 'Enrollment', "Yeni kabul edilen öğrencilerin Coursera Güz Dönemi kontenjanlarına yerleştirilmesi, 4. sınıflardan başlayarak lisans eklemeleri yapılır, bu dönemde her Cuma yapılacaktır."],
+    ['07.09.2026 – 28.09.2026', 'Enrollment', "Coursera Güz Dönemi kontenjanlarına yerleştirilmesi, 4. sınıflardan başlayarak lisans eklemeleri yapılır, bu dönemde her Cuma yapılacaktır."],
     ['14.09.2026', 'Academic Process', "Güz Dönemi'nin başlaması"],
     ['16.11.2026', 'Engagement Reports', 'İçerik etkileşim raporlarının MOOC koordinatörlerine iletilmesi. %70 altındaki öğrencilere uyarı e-postası'],
     ['07.12.2026', 'Engagement Reports', 'İçerik etkileşim raporlarının MOOC koordinatörlerine iletilmesi. %70 altındaki öğrencilere uyarı e-postası'],
@@ -810,6 +845,79 @@
 
   renderRail();
   renderStepCard();
+
+  /* ============ RULES: CREDIT ACCORDION ============ */
+  var credAccordionEl = document.getElementById('credAccordion');
+  var openCred = 0;
+
+  function renderCredAccordion(){
+    credAccordionEl.innerHTML = '';
+    CRED_STEPS.forEach(function(c, i){
+      var open = openCred === i;
+      var item = document.createElement('div');
+      item.className = 'cred-item' + (open ? ' open' : '');
+
+      var rail = document.createElement('div');
+      rail.className = 'cred-rail';
+      rail.style.background = c.rail;
+      item.appendChild(rail);
+
+      var toggle = document.createElement('button');
+      toggle.type = 'button';
+      toggle.className = 'cred-toggle';
+      var numEl = document.createElement('span');
+      numEl.className = 'cred-num';
+      numEl.textContent = c.no;
+      if (open) numEl.style.background = c.rail;
+      var heading = document.createElement('span');
+      heading.className = 'cred-heading';
+      heading.innerHTML = '<span class="title">' + c.title + '</span><span class="hint">' + c.hint + '</span>';
+      var count = document.createElement('span');
+      count.className = 'cred-count';
+      count.textContent = c.items.length + ' adım';
+      var icon = document.createElement('span');
+      icon.className = 'cred-icon';
+      icon.textContent = open ? '−' : '+';
+      if (open) icon.style.background = c.rail;
+      toggle.appendChild(numEl);
+      toggle.appendChild(heading);
+      toggle.appendChild(count);
+      toggle.appendChild(icon);
+      toggle.addEventListener('click', function(){ openCred = open ? -1 : i; renderCredAccordion(); });
+      item.appendChild(toggle);
+
+      if (open) {
+        var body = document.createElement('div');
+        body.className = 'cred-body';
+        body.innerHTML = '<div class="cred-divider"></div>';
+        var checklist = document.createElement('div');
+        checklist.className = 'cred-checklist';
+        c.items.forEach(function(it){
+          var row = document.createElement('div');
+          row.className = 'cred-check-row';
+          row.innerHTML = '<span class="cred-check-mark" style="background:' + c.rail + '">✓</span><span class="cred-check-text"><strong>' + it.b + '</strong> ' + it.t + '</span>';
+          checklist.appendChild(row);
+        });
+        body.appendChild(checklist);
+        if (c.warns.length) {
+          var warns = document.createElement('div');
+          warns.className = 'cred-warns';
+          c.warns.forEach(function(w){
+            var box = document.createElement('div');
+            box.className = 'cred-warn-box';
+            box.innerHTML = '<div class="head"><span class="emoji">' + w.emoji + '</span><span class="title">' + w.title + '</span></div><div class="body">' + w.text + '</div>';
+            warns.appendChild(box);
+          });
+          body.appendChild(warns);
+        }
+        item.appendChild(body);
+      }
+
+      credAccordionEl.appendChild(item);
+    });
+  }
+
+  renderCredAccordion();
 
   /* ============ CALENDAR ============ */
   var calLegend = document.getElementById('calLegend');
