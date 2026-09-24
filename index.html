@@ -104,6 +104,7 @@
   .tag-chip.celt{background:var(--red)}
   .tag-chip.coord{background:var(--blue)}
   .tag-chip.student{background:var(--purple)}
+  .tag-chip.learner{background:var(--green)}
   .tag-chip.current{background:var(--green); animation:pulseRing 2.4s ease-out infinite}
   .tag-chip.done{background:#E7EEFB; color:var(--navy)}
   .resource-link{display:inline-flex; align-items:center; gap:12px; background:#fff; border:1.5px solid var(--border3); border-radius:14px; padding:14px 22px; text-decoration:none; margin:0 0 44px; box-shadow:0 3px 10px rgba(31,45,92,.06); cursor:pointer}
@@ -148,8 +149,11 @@
   .step-note{margin-top:18px; border-radius:14px; padding:16px 20px; display:flex; gap:14px; align-items:flex-start; max-width:700px; border:1px solid}
   .step-note .emoji{font-size:18px; flex-shrink:0}
   .step-note .text{font-size:14.5px; line-height:1.65}
-  .step-link{margin-top:20px; display:inline-flex; align-items:center; gap:10px; background:var(--navy); border:1.5px solid var(--navy); border-radius:12px; padding:13px 22px; text-decoration:none; box-shadow:0 6px 16px rgba(31,45,92,.18); transition:transform .18s ease}
+  .step-links{display:flex; flex-wrap:wrap; gap:12px; align-items:center; margin-top:16px}
+  .step-link{display:inline-flex; align-items:center; gap:10px; border-radius:12px; padding:13px 22px; text-decoration:none; transition:transform .18s ease}
   .step-link:hover{background:var(--red); border-color:var(--red); text-decoration:none; transform:translateY(-2px)}
+  .step-link.navy{background:var(--navy); border:1.5px solid var(--navy); box-shadow:0 6px 16px rgba(31,45,92,.18)}
+  .step-link.blue{background:var(--blue); border:1.5px solid var(--blue); box-shadow:0 6px 16px rgba(0,86,210,.22)}
   .step-link .emoji{font-size:18px}
   .step-link .title{font-family:'Bricolage Grotesque',sans-serif; font-weight:700; font-size:14.5px; color:#fff}
   .step-link .arrow{color:#fff; font-weight:700}
@@ -215,6 +219,52 @@
   .fac-dept-row .dname{font-weight:700; color:var(--navy); line-height:1.35}
   .fac-dept-row .dcoord{color:var(--muted2)}
   .fac-dept-row a{font-size:13px}
+  .dept-email-row{display:flex; flex-wrap:wrap; align-items:center; gap:8px 12px}
+  .dept-rules-pill{display:inline-flex; align-items:center; gap:6px; background:var(--navy); color:#fff; font-size:12px; font-weight:700; padding:5px 12px; border-radius:999px; text-decoration:none; white-space:nowrap}
+  .dept-rules-pill:hover{background:var(--red); color:#fff; text-decoration:none}
+
+  /* SIGNUP */
+  .signup-card{background:#fff; border:1.5px solid var(--border4); border-radius:22px; padding:clamp(24px,3vw,38px) clamp(20px,3vw,40px); box-shadow:0 10px 30px rgba(31,45,92,.09)}
+  .signup-head{display:flex; align-items:center; gap:14px; flex-wrap:wrap; margin-bottom:8px}
+  .signup-head-icon{width:44px; height:44px; border-radius:13px; background:#E7EEFB; display:grid; place-items:center; font-size:21px; flex-shrink:0}
+  .signup-head .title{display:block; font-family:'Bricolage Grotesque',sans-serif; font-weight:800; font-size:clamp(20px,3vw,26px); color:var(--navy); line-height:1.2}
+  .signup-head .sub{display:block; font-size:14px; color:var(--muted); margin-top:3px}
+  .lic-box{margin-top:22px; background:linear-gradient(135deg,var(--navy) 0%,var(--blue) 100%); border-radius:18px; padding:22px 26px; display:grid; grid-template-columns:auto 1fr; gap:18px; align-items:start; box-shadow:0 10px 26px rgba(31,45,92,.20)}
+  .lic-icon{width:46px; height:46px; border-radius:13px; background:rgba(255,255,255,.16); display:grid; place-items:center; font-size:22px}
+  .lic-title{display:block; font-family:'Bricolage Grotesque',sans-serif; font-weight:800; font-size:18px; color:#fff; line-height:1.25}
+  .lic-text{display:block; font-size:14.5px; line-height:1.65; color:#D3E3FA; margin-top:6px}
+  .lic-chips{display:flex; flex-wrap:wrap; gap:8px; margin-top:14px}
+  .lic-chips span{background:rgba(255,255,255,.14); border:1px solid rgba(255,255,255,.22); color:#fff; font-size:12.5px; font-weight:600; padding:6px 13px; border-radius:999px}
+  .signup-steps-grid{display:grid; grid-template-columns:repeat(auto-fit,minmax(210px,1fr)); gap:14px; margin-top:24px}
+  .signup-step{position:relative; border:1.5px solid; border-radius:16px; padding:22px 20px 20px; overflow:hidden}
+  .signup-step-ghost{position:absolute; right:12px; top:-10px; font-family:'Bricolage Grotesque',sans-serif; font-weight:800; font-size:64px; line-height:1; pointer-events:none; user-select:none}
+  .signup-step-content{position:relative}
+  .signup-step-emoji{font-size:24px; margin-bottom:12px}
+  .signup-step-title{font-family:'Bricolage Grotesque',sans-serif; font-weight:800; font-size:16px; line-height:1.25}
+  .signup-step-text{font-size:13.5px; line-height:1.6; margin-top:7px}
+  .signup-bottom-grid{margin-top:22px; display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:14px; align-items:stretch}
+  .signup-mock{background:var(--navy); border-radius:16px; padding:22px 24px}
+  .signup-mock-label{font-family:'Bricolage Grotesque',sans-serif; font-weight:700; font-size:12px; letter-spacing:1.3px; color:#7FA8EE; margin-bottom:14px}
+  .signup-mock-card{background:#fff; border-radius:12px; padding:18px 18px 16px}
+  .signup-mock-title{font-family:'Bricolage Grotesque',sans-serif; font-weight:800; font-size:15px; color:var(--navy); margin-bottom:14px}
+  .signup-mock-google{display:flex; align-items:center; justify-content:center; gap:10px; border:1.5px solid var(--navy); border-radius:10px; padding:11px 14px; font-weight:700; font-size:13.5px; color:var(--navy); background:#F7FAFE}
+  .signup-mock-divider{display:flex; align-items:center; gap:10px; margin:12px 0}
+  .signup-mock-divider span:not(.or){flex:1; height:1px; background:var(--border2)}
+  .signup-mock-divider .or{font-size:11px; font-weight:700; color:var(--muted5)}
+  .signup-mock-email{border:1.5px dashed var(--border3); border-radius:10px; padding:10px 14px; font-size:13px; color:var(--muted5)}
+  .signup-mock-note{display:flex; align-items:flex-start; gap:10px; margin-top:16px}
+  .signup-mock-note .check{color:var(--green-light); font-weight:800; flex-shrink:0}
+  .signup-mock-note span:last-child{font-size:13.5px; line-height:1.6; color:#C3D5F5}
+  .signup-side{display:grid; gap:14px; align-content:start}
+  .signup-note-box{border-radius:16px; padding:20px 22px}
+  .signup-note-box .head{display:flex; align-items:center; gap:10px; margin-bottom:7px}
+  .signup-note-box .head .emoji{font-size:17px}
+  .signup-note-box .head .title{font-family:'Bricolage Grotesque',sans-serif; font-weight:700; font-size:15px}
+  .signup-note-box .body{font-size:13.5px; line-height:1.65}
+  .signup-note-box.warn{background:#FDECE8; border:1px solid #F6C9BE}
+  .signup-note-box.warn .head .title, .signup-note-box.warn .body{color:#8A2A18}
+  .signup-note-box.help{background:#EAF6EF; border:1px solid #BFE3CD}
+  .signup-note-box.help .head .title, .signup-note-box.help .body{color:#1D5C38}
 
   /* CALENDAR */
   .cal-legend{display:flex; flex-wrap:wrap; gap:12px; margin-bottom:28px}
@@ -346,6 +396,10 @@
   <div class="wrap" id="processWrap"></div>
 </section>
 
+<section id="signup" class="tab-section section-bg-6" data-panel="signup">
+  <div class="wrap" id="signupWrap"></div>
+</section>
+
 <section id="calendar" class="tab-section section-bg-5" data-panel="calendar">
   <div class="wrap" id="calendarWrap"></div>
 </section>
@@ -395,6 +449,7 @@
     langToggle: document.getElementById("langToggle"),
     heroInner: document.getElementById("heroInner"),
     processWrap: document.getElementById("processWrap"),
+    signupWrap: document.getElementById("signupWrap"),
     calendarWrap: document.getElementById("calendarWrap"),
     catalogWrap: document.getElementById("catalogWrap"),
     rulesWrap: document.getElementById("rulesWrap"),
@@ -436,6 +491,7 @@
       stepWord: L("Adım", "Step"),
       badgeCoord: L("MOOC KOORDİNATÖRÜ", "MOOC COORDINATOR"),
       badgeSa: L("ÖĞRENCİ İŞLERİ", "STUDENT AFFAIRS"),
+      badgeStudent: L("ÖĞRENCİ", "STUDENT"),
       badgeCurrent: L("ŞU ANKİ AŞAMA", "CURRENT STAGE"),
       badgeDone: L("TAMAMLANDI", "COMPLETED"),
       checklistTitle: L("Ders seçerken şunlara dikkat et", "What to check when choosing a course"),
@@ -473,6 +529,24 @@
       coordCardSub: L("Bölüm bazlı akademik süreçler", "Department-level academic processes"),
       coordChips: [L("Ders seçimi ve onay", "Course selection and approval"), L("Kredilendirme", "Crediting"), L("Transkript", "Transcript")],
       coordCardCta: L("Bölümünü aşağıdan seç ↓", "Select your department below ↓"),
+      deptRules: L("Bölüm kuralları", "Department rules"),
+
+      signupEyebrow: L("İlk Adım: Hesabını Aç", "First Step: Set Up Your Account"),
+      signupTitle: L("Coursera’ya nasıl kayıt olmalıyım?", "How do I sign up for Coursera?"),
+      signupSub: L("MEF lisansının tanınması için hesabını doğru şekilde açman gerekir.", "Your account must be created correctly for the MEF licence to be recognized."),
+      licTitle: L("Önce lisansının tanımlanmasını bekle", "First, wait for your licence to be assigned"),
+      licText: L("Coursera lisansları CELT tarafından ders kayıtlarının başladığı tarihten ekle-bırak haftasının sonuna kadar aşamalı olarak tanımlanır. Lisansın tanımlandığında MEF mail adresine CELT’ten bir bilgilendirme maili gelir. Bu maili aldıktan sonra aşağıdaki adımlarla Coursera’ya giriş yap.", "Coursera licences are assigned by CELT gradually, from the start of course registration until the end of the add-drop week. When your licence is assigned, you will receive an information e-mail from CELT at your MEF address. After receiving it, sign in to Coursera by following the steps below."),
+      licChips: [L("1. Lisans talep formu", "1. Licence request form"), L("2. CELT lisansı tanımlar", "2. CELT assigns the licence"), L("3. MEF mailine bilgilendirme", "3. Notice to your MEF mail"), L("4. Coursera’ya giriş", "4. Sign in to Coursera")],
+      signupScreenLabel: L("COURSERA GİRİŞ EKRANI", "COURSERA SIGN-IN SCREEN"),
+      signupScreenTitle: L("Coursera’ya giriş yap", "Log in to Coursera"),
+      signupGoogleBtn: L("Google ile devam et", "Continue with Google"),
+      signupOr: L("VEYA", "OR"),
+      signupEmailField: L("E-posta ve şifre ile giriş", "Sign in with e-mail and password"),
+      signupScreenNote: L("Her zaman “Google ile devam et” seçeneğini kullan ve MEF hesabını seç. Kişisel Gmail hesabıyla giriş yaparsan dersler ücretli görünür.", "Always use “Continue with Google” and choose your MEF account. If you sign in with a personal Gmail account, courses will appear as paid."),
+      signupWarnTitle: L("Ödeme yapma", "Do not pay"),
+      signupWarnText: L("Dersler ücretli görünüyorsa yanlış hesapta olabilirsin. Çıkış yap ve MEF hesabınla yeniden giriş yap. Sorun sürerse ekran görüntüsüyle CELT’e yaz.", "If courses appear as paid, you may be in the wrong account. Sign out and sign back in with your MEF account. If the problem persists, write to CELT with a screenshot."),
+      signupHelpTitle: L("Yardıma mı ihtiyacın var?", "Need help?"),
+      signupHelpText: L("Giriş veya erişim sorunları için <a href=\"mailto:celt@mef.edu.tr\">celt@mef.edu.tr</a> adresine yaz. Platform kaynaklı teknik sorunlar için Coursera Learner Help Center’ı kullan.", "For sign-in or access issues, write to <a href=\"mailto:celt@mef.edu.tr\">celt@mef.edu.tr</a>. For platform-related technical problems, use the Coursera Learner Help Center."),
 
       faqEyebrow: L("Aklına Takılanlar", "Things You May Wonder"),
       faqTitle: L("Sık sorulan sorular", "Frequently asked questions")
@@ -480,10 +554,11 @@
 
     var TAB_DEFS = [
       { key: "process", label: L("Süreç Rehberi", "Process Guide") },
+      { key: "signup", label: L("Coursera’ya Kayıt", "Coursera Sign-up") },
+      { key: "departments", label: L("Koordinatörler", "Coordinators") },
       { key: "calendar", label: L("Akademik Takvim", "Academic Calendar") },
       { key: "catalog", label: L("Ders Kataloğu", "Course Catalog") },
       { key: "rules", label: L("Kredilendirme", "Crediting") },
-      { key: "departments", label: L("Koordinatörler", "Coordinators") },
       { key: "faq", label: L("SSS", "FAQ") }
     ];
 
@@ -522,16 +597,18 @@
         desc: "<p>" + L("MOOC Lisans Talep Formu, her dönem başlamadan önce erişime açılır ve ekle-bırak döneminin sonunda kapanır. Coursera lisans talebini bu süre içinde form üzerinden ilet. Talepler, mevcut kontenjan ve program esasları doğrultusunda değerlendirilir. Lisans dağıtımında mezuniyet aşamasındaki 4. sınıf öğrencilerine öncelik verilir.", "The MOOC Licence Request Form opens before each term begins and closes at the end of the add-drop period. Submit your Coursera licence request through the form within this window. Requests are assessed according to available seats and the program principles. Priority in licence distribution is given to graduating 4th-year students.") + "</p>" },
       { key: "result", isCelt: true,
         title: L("Lisans talebinin sonucunu takip et", "Follow up on your licence request"),
+        linkEmoji: "🔑", linkTitle: L("Coursera’ya nasıl kayıt olmalıyım?", "How do I sign up for Coursera?"), linkUrl: "#signup",
         noteEmoji: "☀️", noteLabel: L("Önemli not:", "Important note:"), noteType: "red",
         noteText: L("Coursera yaz döneminde de erişime açılır; ancak bölüm kararı gereği Endüstri Mühendisliği Bölümü öğrencilerinin yaz döneminde tamamladıkları Coursera dersleri PLE kapsamında kredilendirilemez.", "Coursera is also available in the summer term; however, by departmental decision, Coursera courses completed in the summer term by Industrial Engineering students cannot be credited under PLE."),
         desc: "<p>" + L("CELT, Coursera lisanslarını ders kayıtlarının başladığı tarihten ekle-bırak haftasının sonuna kadar aşamalı olarak tanımlar. Lisansın tanımlandığında MEF mail adresine CELT tarafından bir bilgilendirme maili gönderilir. Bu nedenle ekle-bırak haftası boyunca MEF mailini düzenli olarak kontrol et.", "CELT assigns Coursera licences gradually, from the start of course registration until the end of the add-drop week. When your licence is assigned, CELT sends an information e-mail to your MEF address. For this reason, check your MEF mail regularly throughout the add-drop week.") + "</p><p>" + L("Bu dönem Coursera lisansı alamazsan bir sonraki dönemde yeniden lisans talebinde bulunabilirsin. Coursera lisans talep süreci Güz, Bahar ve Yaz dönemlerinde yürütülür.", "If you do not receive a Coursera licence this term, you can submit a new request next term. The Coursera licence request process runs in the Fall, Spring and Summer terms.") + "</p>" },
       { key: "bundle", isCoord: true, hasChecklist: true,
         title: L("MOOC Koordinatörüne danış", "Consult your MOOC Coordinator"),
+        link2Emoji: "🧑‍🏫", link2Title: L("Bölümünün MOOC Koordinatörünü bul", "Find your department’s MOOC Coordinator"), link2Url: "#departments",
         linkEmoji: "🎓", linkTitle: L("Coursera kurs kataloğunu incele", "Browse the Coursera course catalog"), linkUrl: LINKS.courseList,
         noteEmoji: "💡", noteLabel: L("Not:", "Note:"), noteType: "yellow",
         noteText: L("Bir dersin Coursera sertifikası sunması, tek başına PLE kapsamında kredilendirileceği anlamına gelmez. Bölümünün web sitesinde yayımlanan ders seçimi ve PLE kredilendirme yönergelerini mutlaka incele ve derse başlamadan önce MOOC Koordinatöründen uygunluk teyidi al. PLE kapsamında toplam en fazla 12 AKTS kredilendirebilirsin.", "The fact that a course offers a Coursera certificate does not on its own mean it will be credited under PLE. Be sure to review the course selection and PLE crediting guidelines published on your department’s website, and confirm eligibility with your MOOC Coordinator before starting the course. A maximum of 12 ECTS in total can be credited under PLE."),
         desc: "<p>" + L("Coursera kurs kataloğunu inceleyerek hedeflerine ve bölümünün PLE koşullarına uygun dersleri belirle. Seçtiğin dersi PLE kapsamında kredilendirmek istiyorsan derse başlamadan önce bölümünün web sitesini ziyaret et ve MOOC Koordinatörüyle iletişime geçerek dersin uygunluğunu teyit et.", "Review the Coursera course catalog and identify courses that match your goals and your department’s PLE requirements. If you want a course credited under PLE, visit your department’s website before starting it and contact your MOOC Coordinator to confirm the course is eligible.") + "</p>" },
-      { key: "learn",
+      { key: "learn", isStudent: true,
         title: L("Derslerini tamamla ve içerik etkileşimini en az %70’te tut", "Complete your courses and keep engagement at 70% or above"),
         noteEmoji: "✨", noteLabel: L("İpucu:", "Tip:"), noteType: "green",
         noteText: L("Videoları sonuna kadar izle, okuma materyallerini aç ve quizler ile ödevleri eksiksiz tamamla.", "Watch the videos to the end, open the reading materials and complete all quizzes and assignments."),
@@ -576,6 +653,23 @@
     ];
     var checklist = checklistRaw.map(function(c, i){ return Object.assign({}, c, { no: String(i + 1).padStart(2, "0") }); });
 
+    var SIGNUP_RAW = [
+      { emoji: "📧", dark: false, title: L("MEF mail adresini hazırla", "Have your MEF e-mail ready"), text: L("Coursera lisansı yalnızca MEF uzantılı mail adresine tanımlanır. Kişisel mail adresi kullanma.", "The Coursera licence is assigned only to your MEF e-mail address. Do not use a personal address.") },
+      { emoji: "🌐", dark: false, title: L("coursera.org adresine git", "Go to coursera.org"), text: L("Tarayıcıdan Coursera’yı aç ve giriş / kayıt ekranına gel.", "Open Coursera in your browser and go to the sign-in / sign-up screen.") },
+      { emoji: "🔵", dark: true, title: L("“Google ile devam et”i seç", "Choose “Continue with Google”"), text: L("E-posta ve şifre ile kayıt olma. Google seçeneğinden MEF hesabını seç.", "Do not register with e-mail and password. Pick your MEF account via the Google option.") },
+      { emoji: "✅", dark: false, title: L("Erişimi doğrula", "Verify your access"), text: L("Bir dersi açtığında “Enroll for Free” görüyorsan lisansın tanımlıdır. Ücret görüyorsan yanlış hesaptasın.", "If a course shows “Enroll for Free”, your licence is active. If you see a price, you are in the wrong account.") }
+    ];
+    var signupSteps = SIGNUP_RAW.map(function(s, i){
+      return Object.assign({}, s, {
+        no: String(i + 1),
+        bg: s.dark ? "#0056D2" : "#F7FAFE",
+        border: s.dark ? "#0056D2" : "#E4EBF6",
+        ghost: s.dark ? "rgba(255,255,255,0.16)" : "rgba(0,86,210,0.09)",
+        titleColor: s.dark ? "#ffffff" : "#1F2D5C",
+        textColor: s.dark ? "#D3E3FA" : "#565E7C"
+      });
+    });
+
     var CRED_DEFS = [
       { no: "1", rail: "#0056D2",
         title: L("Derse başlamadan önce", "Before you start the course"),
@@ -618,7 +712,7 @@
         { name: L("İşletme", "Business Administration"), coordinator: "Rüya Yüksel", email: "yukselzeh@mef.edu.tr" },
         { name: L("İktisat", "Economics"), coordinator: "Narod Erkol", email: "erkoln@mef.edu.tr" },
         { name: L("Siyaset Bilimi ve Uluslararası İlişkiler", "Political Science and International Relations"), coordinator: "Begüm Uzun Taşkın", email: "taskinbe@mef.edu.tr" },
-        { name: L("Psikoloji", "Psychology"), coordinator: "Melike Acar", email: "acarmel@mef.edu.tr" }
+        { name: L("Psikoloji", "Psychology"), coordinator: "Melike Acar", email: "acarmel@mef.edu.tr", rulesUrl: "https://docs.google.com/presentation/d/1qWtnbc6V4EgLi86BZVeBIiDFi5yJMnT_/edit?slide=id.p1#slide=id.p1" }
       ]},
       { name: L("Mühendislik Fakültesi", "Faculty of Engineering"), dot: "#E8432D", departments: [
         { name: L("Elektrik-Elektronik Mühendisliği", "Electrical and Electronics Engineering"), coordinator: "Ebru Arısoy Saraçlar", email: "saraclare@mef.edu.tr" },
@@ -645,7 +739,8 @@
       var n = f.departments.length;
       return Object.assign({}, f, {
         open: open,
-        countLabel: n + " " + L("bölüm", n === 1 ? "department" : "departments")
+        countLabel: n + " " + L("bölüm", n === 1 ? "department" : "departments"),
+        departments: f.departments.map(function(d){ return Object.assign({}, d, { hasRules: !!d.rulesUrl }); })
       });
     });
 
@@ -696,6 +791,7 @@
     renderNav(t, TAB_DEFS);
     renderHero(t, currentStepLabel);
     renderProcess(t, steps, stepSel, currentStepLabel, checklist);
+    renderSignup(t, signupSteps);
     renderCalendar(t, calCategories, calendar);
     renderCatalog(t);
     renderRules(t, credSteps);
@@ -756,9 +852,25 @@
     var badges = "<span class=\"step-eyebrow\">" + t.stepWord + " " + (s.idx + 1) + "</span>";
     if (s.isCelt) badges += "<span class=\"tag-chip celt\">CELT</span>";
     if (s.isCoord) badges += "<span class=\"tag-chip coord\">" + t.badgeCoord + "</span>";
+    if (s.isStudent) badges += "<span class=\"tag-chip learner\">" + t.badgeStudent + "</span>";
     if (s.isStudentAffairs) badges += "<span class=\"tag-chip student\">" + t.badgeSa + "</span>";
     if (s.isCurrent) badges += "<span class=\"tag-chip current\">" + t.badgeCurrent + "</span>";
     else if (s.done) badges += "<span class=\"tag-chip done\">" + t.badgeDone + "</span>";
+
+    function stepLinkHtml(url, emoji, title, cls){
+      var internal = url.charAt(0) === "#";
+      var attrs = internal ? " data-action=\"tab:" + url.slice(1) + "\"" : " target=\"_blank\" rel=\"noopener\"";
+      var arrow = internal ? "→" : "↗";
+      return "<a class=\"step-link " + cls + "\" href=\"" + url + "\"" + attrs + ">" +
+        "<span class=\"emoji\">" + emoji + "</span><span class=\"title\">" + title + "</span><span class=\"arrow\">" + arrow + "</span></a>";
+    }
+    var links = "";
+    if (s.link2Url || s.linkUrl) {
+      links = "<div class=\"step-links\">" +
+        (s.link2Url ? stepLinkHtml(s.link2Url, s.link2Emoji, s.link2Title, "blue") : "") +
+        (s.linkUrl ? stepLinkHtml(s.linkUrl, s.linkEmoji, s.linkTitle, "navy") : "") +
+        "</div>";
+    }
 
     var body = "";
     if (s.hasChecklist) {
@@ -781,11 +893,6 @@
       note = "<div class=\"step-note\" style=\"background:" + ns.bg + "; border-color:" + ns.border + "; color:" + ns.color + "\">" +
         "<span class=\"emoji\">" + s.noteEmoji + "</span><span class=\"text\"><strong>" + s.noteLabel + "</strong> " + s.noteText + "</span></div>";
     }
-    var link = "";
-    if (s.linkUrl) {
-      link = "<a class=\"step-link\" href=\"" + s.linkUrl + "\" target=\"_blank\" rel=\"noopener\">" +
-        "<span class=\"emoji\">" + s.linkEmoji + "</span><span class=\"title\">" + s.linkTitle + "</span><span class=\"arrow\">↗</span></a>";
-    }
 
     els.processWrap.innerHTML =
       "<div class=\"eyebrow\">" + t.processEyebrow + "</div>" +
@@ -801,9 +908,52 @@
         "<div class=\"step-content\">" +
           "<div class=\"step-badges\">" + badges + "</div>" +
           "<div class=\"step-title\">" + s.title + "</div>" +
+          links +
           "<div class=\"step-body\">" + body + "</div>" +
-          note + link +
+          note +
         "</div></div>";
+  }
+
+  function renderSignup(t, signupSteps){
+    var stepsHtml = signupSteps.map(function(s){
+      return "<div class=\"signup-step\" style=\"background:" + s.bg + "; border-color:" + s.border + "\">" +
+        "<div class=\"signup-step-ghost\" style=\"color:" + s.ghost + "\">" + s.no + "</div>" +
+        "<div class=\"signup-step-content\">" +
+          "<div class=\"signup-step-emoji\">" + s.emoji + "</div>" +
+          "<div class=\"signup-step-title\" style=\"color:" + s.titleColor + "\">" + s.title + "</div>" +
+          "<div class=\"signup-step-text\" style=\"color:" + s.textColor + "\">" + s.text + "</div>" +
+        "</div></div>";
+    }).join("");
+    var licChipsHtml = t.licChips.map(function(c){ return "<span>" + c + "</span>"; }).join("");
+
+    els.signupWrap.innerHTML =
+      "<div class=\"eyebrow\">" + t.signupEyebrow + "</div>" +
+      "<div class=\"signup-card\">" +
+        "<div class=\"signup-head\"><span class=\"signup-head-icon\">🔑</span>" +
+          "<span><span class=\"title\">" + t.signupTitle + "</span><span class=\"sub\">" + t.signupSub + "</span></span></div>" +
+        "<div class=\"lic-box\">" +
+          "<span class=\"lic-icon\">📬</span>" +
+          "<span><span class=\"lic-title\">" + t.licTitle + "</span><span class=\"lic-text\">" + t.licText + "</span>" +
+            "<span class=\"lic-chips\">" + licChipsHtml + "</span></span>" +
+        "</div>" +
+        "<div class=\"signup-steps-grid\">" + stepsHtml + "</div>" +
+        "<div class=\"signup-bottom-grid\">" +
+          "<div class=\"signup-mock\">" +
+            "<div class=\"signup-mock-label\">" + t.signupScreenLabel + "</div>" +
+            "<div class=\"signup-mock-card\">" +
+              "<div class=\"signup-mock-title\">" + t.signupScreenTitle + "</div>" +
+              "<div class=\"signup-mock-google\">🔵 " + t.signupGoogleBtn + "</div>" +
+              "<div class=\"signup-mock-divider\"><span></span><span class=\"or\">" + t.signupOr + "</span><span></span></div>" +
+              "<div class=\"signup-mock-email\">" + t.signupEmailField + "</div>" +
+            "</div>" +
+            "<div class=\"signup-mock-note\"><span class=\"check\">✓</span><span>" + t.signupScreenNote + "</span></div>" +
+          "</div>" +
+          "<div class=\"signup-side\">" +
+            "<div class=\"signup-note-box warn\"><div class=\"head\"><span class=\"emoji\">⚠️</span><span class=\"title\">" + t.signupWarnTitle + "</span></div><div class=\"body\">" + t.signupWarnText + "</div></div>" +
+            "<div class=\"signup-note-box help\"><div class=\"head\"><span class=\"emoji\">💬</span><span class=\"title\">" + t.signupHelpTitle + "</span></div><div class=\"body\">" + t.signupHelpText + "</div></div>" +
+          "</div>" +
+        "</div>" +
+      "</div>";
   }
 
   function renderCalendar(t, calCategories, calendar){
@@ -885,8 +1035,9 @@
     var chips2 = t.coordChips.map(function(c){ return "<span>" + c + "</span>"; }).join("");
     var facHtml = faculties.map(function(f, fi){
       var deptsHtml = f.departments.map(function(d){
+        var rulesHtml = d.hasRules ? ("<a href=\"" + d.rulesUrl + "\" target=\"_blank\" rel=\"noopener\" class=\"dept-rules-pill\">📄 " + t.deptRules + " ↗</a>") : "";
         return "<div class=\"fac-dept-row\"><span class=\"dname\">" + d.name + "</span><span class=\"dcoord\">" + d.coordinator + "</span>" +
-          "<span><a href=\"mailto:" + d.email + "\">" + d.email + "</a></span></div>";
+          "<span class=\"dept-email-row\"><a href=\"mailto:" + d.email + "\">" + d.email + "</a>" + rulesHtml + "</span></div>";
       }).join("");
       return "<div class=\"fac-item" + (f.open ? " open" : "") + "\">" +
         "<button type=\"button\" class=\"fac-toggle\" data-action=\"fac:" + fi + "\">" +
