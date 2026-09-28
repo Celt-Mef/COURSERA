@@ -122,7 +122,7 @@
   .rail-btn.done .circle{background:var(--navy); color:#fff; border-color:var(--navy)}
   .rail-btn.done .label{color:var(--navy)}
   .rail-btn.current .circle{background:var(--green); color:#fff; border-color:var(--green)}
-  .rail-btn.current .label{color:var(--green)}
+  .rail-btn.current .label{color:var(--navy)}
   .rail-btn.selected{background:var(--navy)}
   .rail-btn.selected .circle{background:#fff; border-color:#fff; color:var(--navy)}
   .rail-btn.selected .label{color:#fff}
@@ -429,7 +429,7 @@
   "use strict";
 
   /* ============ CONFIG — CELT team can edit here ============ */
-  var CURRENT_STEP = "apply"; // one of: apply | result | bundle | learn | deliver | transcript
+  var CURRENT_STEP = "bundle+learn"; // one of: apply | result | bundle | learn | deliver | transcript — join two with "+" (e.g. "bundle+learn") to span a range
   var LINKS = {
     applicationForm: "https://forms.gle/QJtmagJb77CvF3P7A",
     courseList: "https://docs.google.com/spreadsheets/d/1UMVP2HVuiDOX4zz484hQk3gmw2C7w-qGyOb0diPqci4/edit?gid=0#gid=0",
@@ -632,11 +632,15 @@
       deliver: L("Sertifika ve sunum teslimi", "Certificate & presentation submission"),
       transcript: L("Transkriptler işleniyor", "Transcripts being processed")
     };
-    var currentIdx = Math.max(0, stepDefs.findIndex(function(s){ return s.key === CURRENT_STEP; }));
-    var currentStepLabel = STAGE_LABELS[CURRENT_STEP] || STAGE_LABELS.apply;
+    var curKeys = CURRENT_STEP.split("+");
+    var curIdxs = curKeys.map(function(k){ return stepDefs.findIndex(function(s){ return s.key === k; }); }).filter(function(i){ return i >= 0; });
+    if (!curIdxs.length) curIdxs.push(0);
+    var currentIdx = Math.min.apply(null, curIdxs);
+    var lastCurIdx = Math.max.apply(null, curIdxs);
+    var currentStepLabel = curKeys.map(function(k){ return STAGE_LABELS[k]; }).filter(Boolean).join(" · ") || STAGE_LABELS.bundle;
     var stepSel = STATE.stepSel == null ? currentIdx : STATE.stepSel;
     var steps = stepDefs.map(function(s, i){
-      var done = i < currentIdx, isCurrent = i === currentIdx;
+      var done = i < currentIdx, isCurrent = i >= currentIdx && i <= lastCurIdx;
       return Object.assign({}, s, {
         idx: i, done: done, isCurrent: isCurrent,
         railLabel: RAIL_LABELS[s.key]
